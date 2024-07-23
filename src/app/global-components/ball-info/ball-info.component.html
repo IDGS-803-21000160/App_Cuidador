@@ -1,0 +1,28 @@
+<div class="relative group" style="width: 2.5rem">
+  <div class="contentBall bg-blue-500 text-white p-2 rounded-full w-6 h-6">
+    <!-- Aquí puedes poner cualquier ícono, por ejemplo, un ícono de información -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+      />
+    </svg>
+  </div>
+  <div
+    class="w-96 absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-gray-800 text-white text-sm p-2 rounded"
+  >
+    @for (info of textInfo; track $index) {
+    <div class="pb-2">
+      {{ info }}
+    </div>
+    }
+  </div>
+</div>

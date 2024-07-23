@@ -1,0 +1,16 @@
+.contentBall {
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  background-color: #6096ba;
+}
+
+.parent-element {
+  position: relative; /* Ensure the parent has a position context */
+  overflow: visible; /* Ensure the overflow is visible */
+}
+
+.z-50 {
+  z-index: 50;
+}

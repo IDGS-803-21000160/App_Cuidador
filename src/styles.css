@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.buttonConfirm {
+  background-color: #395886;
+  color: white;
+}
+
+.buttonDisabled {
+  background-color: #9aa5b5;
+  color: aliceblue;
+}
+
+.loginTitle {
+  font-family: "Anek Malayalam", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: 100;
+  font-size: 2rem;
+}
+
+.miniSubTitles {
+  font-family: "Anek Malayalam", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}

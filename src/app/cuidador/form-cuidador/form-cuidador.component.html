@@ -1,0 +1,13 @@
+<div class="flex flex-row">
+  <div class="basis-1/5"><app-sidebar-cuidador></app-sidebar-cuidador></div>
+  <div class="basis-1/5 w-screen">
+    @switch (componentRender) { @case ('') {
+    <app-info-privacy-notice></app-info-privacy-notice>
+
+    }@case ('privacyNotice') {
+    <app-requirements></app-requirements>
+    }@case ('form') {
+    <app-form></app-form>
+    } }
+  </div>
+</div>

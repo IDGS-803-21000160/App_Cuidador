@@ -1,0 +1,407 @@
+<div class="content w-screen pl-10">
+  <p class="text-4xl font-bold">Formulario de registro</p>
+  <br />
+  <p class="subtitle font-bold">Información Personal</p>
+  <br />
+
+  <form class="max-w-sm">
+    <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
+      <div class="mb-2">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+          >Nombre(s)</label
+        >
+        <input
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtApPaterno"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Apellido Paterno</label
+        >
+        <input
+          type="text"
+          id="apPaterno"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtApMaterno"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Apellido Materno</label
+        >
+        <input
+          type="text"
+          id="apMaterno"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtCorreo"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Correo Electronico</label
+        >
+        <input
+          type="email"
+          id="corroElectronico"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="name@cuidador.com"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtFechaNac"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Fecha Nacimiento</label
+        >
+        <input
+          type="date"
+          id="fechaNac"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtGenero"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Genero</label
+        >
+        <select
+          id="genero"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option>Hombre</option>
+          <option>Mujer</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="mb-2">
+        <label
+          for="txtEstadoCivil"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Estado Civil</label
+        >
+        <select
+          id="estadoCivil"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option>Soltero/a</option>
+          <option>Casado/a</option>
+          <option>Unión libre</option>
+          <option>Separado/a</option>
+          <option>Divorciado/a</option>
+          <option>Viudo/a</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="txtRFC" class="block mb-2 text-sm font-medium text-gray-900"
+          >RFC</label
+        >
+        <input
+          type="text"
+          id="rfc"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtCURP"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >CURP</label
+        >
+        <input
+          type="text"
+          id="curp"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtTelParticular"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Teléfono particular</label
+        >
+        <input
+          type="number"
+          id="telParticular"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtTelmovil"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Teléfono móvil</label
+        >
+        <input
+          type="number"
+          id="telMovil"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtTelEmerg"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Teléfono de emergencia</label
+        >
+        <input
+          type="number"
+          id="telEmergencia"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_input"
+          >
+            Fotografía reciente
+          </label>
+          <app-ball-info class="pl-2" [textInfo]="textInfoFoto"></app-ball-info>
+        </div>
+        <input
+          type="file"
+          id="file_input"
+          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
+        />
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_input"
+          >
+            Fotografía de identificación oficial
+          </label>
+          <app-ball-info class="pl-2" [textInfo]="textINE"></app-ball-info>
+        </div>
+        <input
+          type="file"
+          id="file_input"
+          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
+        />
+      </div>
+    </div>
+    <br />
+    <p class="subtitle font-bold">Información de Residencia</p>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
+      <div class="mb-2">
+        <label
+          for="txtPais"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >País</label
+        >
+        <select
+          id="pais"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option>México</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtEstado"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Estado</label
+        >
+        <select
+          id="estado"
+          (change)="onEstadoChange($event)"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          @for (estado of estados; track $index) {
+          <option [value]="estado">{{ estado }}</option>
+          }
+        </select>
+      </div>
+      <div class="mb-2">
+        <label
+          for="txtMunicipio"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Municipio</label
+        >
+        <select
+          id="municipio"
+          [disabled]="municipios.length === 0"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          @for (municipio of municipios; track $index) {
+          <option [value]="municipio">{{ municipio }}</option>
+          }
+        </select>
+      </div>
+      <div class="mb-2">
+        <label
+          for="colonia"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Colonia</label
+        >
+        <input
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="calle" class="block mb-2 text-sm font-medium text-gray-900"
+          >Calle</label
+        >
+        <input
+          type="calle"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="numInterior"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Número interior</label
+        >
+        <input
+          id="numInterior"
+          type="number"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <label
+          for="numExterior"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Número Exterior</label
+        >
+        <input
+          id="numExterior"
+          type="number"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="referencias"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Referencias </label
+        >
+        <input
+          id="referencias"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Ej. Casa verde de dos pisos con ventanales negros. "
+          required
+        />
+      </div>
+    </div>
+    <br />
+    <p class="subtitle font-bold">Verificaciones Legales</p>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_cerAntecedentes"
+          >
+            Certificado de Antecedentes Penales
+          </label>
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="txtCeAntecedentes"
+          ></app-ball-info>
+        </div>
+        <input
+          type="file"
+          id="file_cerAntecedentes"
+          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
+        />
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_VeriAntecedentes"
+          >
+            Autorización para Verificación de Antecedentes
+          </label>
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="txtVerAntecedentes"
+          ></app-ball-info>
+        </div>
+        <input
+          type="file"
+          id="file_VeriAntecedentes"
+          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
+        />
+      </div>
+    </div>
+    <br />
+    <p class="subtitle font-bold">Información de Contacto</p>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_refProfesional"
+          >
+            Referencias Profesionales
+          </label>
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="referenciasProfesionales"
+          ></app-ball-info>
+        </div>
+        <input
+          type="file"
+          id="file_refProfesional"
+          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
+        />
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_refPersonales"
+          >
+            Referencias Personales
+          </label>
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="referenciasPersonales"
+          ></app-ball-info>
+        </div>
+        <app-file-upload></app-file-upload>
+      </div>
+    </div>
+  </form>
+</div>
