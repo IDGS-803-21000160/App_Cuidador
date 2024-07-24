@@ -4,6 +4,7 @@ import { GlobalNavbarComponent } from './global-components/global-navbar/global-
 import { InfoRolsComponent } from './global-components/info-rols/info-rols.component';
 import { CuidadorModule } from './cuidador/cuidador.module';
 import { LoginModule } from './login/login.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ import { LoginModule } from './login/login.module';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     RouterOutlet,
     GlobalNavbarComponent,
     InfoRolsComponent,

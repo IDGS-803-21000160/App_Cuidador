@@ -179,11 +179,10 @@
           </label>
           <app-ball-info class="pl-2" [textInfo]="textInfoFoto"></app-ball-info>
         </div>
-        <input
-          type="file"
-          id="file_input"
-          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
-        />
+        <app-file-upload
+          [tipoDocumento]="'Información Personal'"
+          [nombreDoc]="'Fotografía reciente'"
+        ></app-file-upload>
       </div>
       <div class="mb-2">
         <div class="flex">
@@ -195,11 +194,10 @@
           </label>
           <app-ball-info class="pl-2" [textInfo]="textINE"></app-ball-info>
         </div>
-        <input
-          type="file"
-          id="file_input"
-          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
-        />
+        <app-file-upload
+          [tipoDocumento]="'Información Personal'"
+          [nombreDoc]="'Fotografía de identificación oficial'"
+        ></app-file-upload>
       </div>
     </div>
     <br />
@@ -338,11 +336,10 @@
             [textInfo]="txtCeAntecedentes"
           ></app-ball-info>
         </div>
-        <input
-          type="file"
-          id="file_cerAntecedentes"
-          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
-        />
+        <app-file-upload
+          [tipoDocumento]="'Verificaciones Legales'"
+          [nombreDoc]="'Certificado de Antecedentes Penales'"
+        ></app-file-upload>
       </div>
       <div class="mb-2">
         <div class="flex">
@@ -357,11 +354,10 @@
             [textInfo]="txtVerAntecedentes"
           ></app-ball-info>
         </div>
-        <input
-          type="file"
-          id="file_VeriAntecedentes"
-          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
-        />
+        <app-file-upload
+          [tipoDocumento]="'Verificaciones Legales'"
+          [nombreDoc]="'Autorización para Verificación de Antecedentes'"
+        ></app-file-upload>
       </div>
     </div>
     <br />
@@ -381,11 +377,10 @@
             [textInfo]="referenciasProfesionales"
           ></app-ball-info>
         </div>
-        <input
-          type="file"
-          id="file_refProfesional"
-          class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
-        />
+        <app-file-upload
+          [tipoDocumento]="'refProfesionales'"
+          [nombreDoc]="'Referencias Profesionales'"
+        ></app-file-upload>
       </div>
       <div class="mb-2">
         <div class="flex">
@@ -400,7 +395,427 @@
             [textInfo]="referenciasPersonales"
           ></app-ball-info>
         </div>
-        <app-file-upload></app-file-upload>
+        <app-file-upload
+          [tipoDocumento]="'refPersonales'"
+          [nombreDoc]="'Referencias Personales'"
+        ></app-file-upload>
+      </div>
+    </div>
+    <br />
+    <p class="subtitle font-bold">Información Médica y de Salud.</p>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
+      <div class="mb-2">
+        <label
+          for="txtTipoSanguineo"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Tipo sanguíneo</label
+        >
+        <select
+          id="tipo-sanguineo"
+          name="tipo-sanguineo"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+          >Nombre del médico familiar.</label
+        >
+        <input
+          id="nameMedicoFamiliar"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+          >Número telefónico del médico familiar.</label
+        >
+        <input
+          id="numMedicoFamiliar"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_refProfesional"
+          >
+            Certificado Médico de Buena Salud
+          </label>
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="datosCertificadoMedico"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Información Médica y de Salud'"
+          [nombreDoc]="'Certificado Médico de Buena Salud'"
+        ></app-file-upload>
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_refPersonales"
+          >
+            Pruebas de Drogas y Alcohol
+          </label>
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="datosPruebasDrogasAlcohol"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Información Médica y de Salud'"
+          [nombreDoc]="'Pruebas de Drogas y Alcohol'"
+        ></app-file-upload>
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <div
+          class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
+          style="background-color: #fafafa"
+        >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+            >Alergias</label
+          >
+          <div class="flex">
+            <input
+              id="alergia"
+              [(ngModel)]="alergia"
+              name="alergia"
+              type="text"
+              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+            />
+            <button
+              (click)="agregarAlergia()"
+              type="button"
+              style="background-color: #6096ba"
+              class="w-48 mt-3 ml-5 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+            >
+              Agregar Alergia
+            </button>
+          </div>
+          <ul class="my-4 space-y-3">
+            @for (alergia of alergias; track $index) {
+            <span
+              id="badge-dismiss-default"
+              class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 rounded dark:bg-blue-200 dark:text-blue-900"
+            >
+              {{ alergia }}
+              <button
+                (click)="eliminarAlergia($index)"
+                type="button"
+                class="inline-flex items-center p-1 ms-2 text-sm text-blue-900 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900"
+                data-dismiss-target="#badge-dismiss-default"
+                aria-label="Remove"
+              >
+                <svg
+                  class="w-2 h-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span class="sr-only">Remove badge</span>
+              </button>
+            </span>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <div
+          class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
+          style="background-color: #fafafa"
+        >
+          <p>Padecimientos</p>
+          <br />
+          <div class="flex w-screen max-w-5xl grid grid-cols-2 gap-4">
+            <div>
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Nombre del padecimiento:</label
+              >
+              <input
+                id="namePadecimiento"
+                name="padecimiento"
+                [(ngModel)]="nombrePadecimiento"
+                type="text"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ej.: Diabete."
+                required
+              />
+              <label
+                for="desPadecimiento"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Descripción del padecimiento:</label
+              >
+              <textarea
+                id="descPadecimiento"
+                name="descPadecimiento"
+                [(ngModel)]="descPadecimiento"
+                type="text"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ej.: Sufro de diabetes tipo 2, una condición crónica que afecta la forma en que mi cuerpo metaboliza la glucosa."
+                required
+              ></textarea>
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Padece desde:</label
+              >
+              <input
+                id="fechaPadecimiento"
+                name="fechaPadecimiento"
+                [(ngModel)]="fechaPadecimiento"
+                type="date"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+              />
+              <button
+                (click)="agregarPadecimiento()"
+                type="button"
+                style="background-color: #6096ba"
+                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+              >
+                Agregar Padecimiento
+              </button>
+            </div>
+            <div class="padecimientos rounded-lg">
+              @for (pad of objPadecimientos; track $index) {
+              <span
+                id="badge-dismiss-default"
+                class="w-full block mt-3 items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 rounded dark:bg-blue-200 dark:text-blue-900"
+              >
+                <div class="flex justify-between items-center">
+                  <div>{{ pad.nombre }}</div>
+
+                  <button
+                    (click)="eliminarPadecimiento($index)"
+                    type="button"
+                    class="inline-flex items-center p-1 text-sm text-blue-900 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900"
+                    data-dismiss-target="#badge-dismiss-default"
+                    aria-label="Remove"
+                  >
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
+                    </svg>
+                    <span class="sr-only">Remove badge</span>
+                  </button>
+                </div>
+              </span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+          >Observaciones.</label
+        >
+        <textarea
+          id="observaciones"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        ></textarea>
+      </div>
+    </div>
+    <br />
+    <p class="subtitle font-bold">Información Profesional.</p>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <div
+          class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
+          style="background-color: #fafafa"
+        >
+          <p>Certificaciones, Licencias, Educación y Títulos Académicos </p>
+          <br />
+          <div class="flex w-screen max-w-5xl grid grid-cols-2 gap-4">
+            <div>
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Tipo de certificación :</label
+              >
+              <input
+                id="typeCerticacion"
+                name="typeCerticacion"
+                [(ngModel)]="tipoCertificacio"
+                type="text"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ej.: Académica, Médica "
+                required
+              />
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Institución emisora :</label
+              >
+              <input
+                id="institusionEm"
+                name="institusionEm"
+                [(ngModel)]="institucion"
+                type="text"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ej.: Instituto Tecnológico de salud, etc.
+                "
+                required
+              />
+              <label
+                for="fechaCertificacion"
+                class="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Fecha de la certificación:
+              </label>
+              <input
+                id="fechaCertificacion"
+                name="fechaCertificacion"
+                [(ngModel)]="fechaCertificacion"
+                type="date"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+              />
+
+              <label
+                for="desCertificacion"
+                class="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Descripción:
+              </label>
+              <textarea
+                id="desCertificacion"
+                name="desCertificacion"
+                [(ngModel)]="descCertificacion"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Describe detalladamente las habilidades adquiridas en la certificación"
+                required
+              ></textarea>
+
+              <div class="flex">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  for="file_refPersonales"
+                >
+                  Referencias Personales
+                </label>
+                <app-ball-info
+                  class="pl-2"
+                  [textInfo]="referenciasPersonales"
+                ></app-ball-info>
+              </div>
+
+              <app-file-upload
+                [tipoDocumento]="'Información Profesional'"
+                [nombreDoc]="'Certificado'"
+              ></app-file-upload>
+
+              <button
+                (click)="agregarCertificacion()"
+                type="button"
+                style="background-color: #6096ba"
+                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+              >
+                Agregar Certificación
+              </button>
+
+              <button
+                (click)="limpiarCampos()"
+                type="button"
+                style="background-color: #d9534f"
+                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none"
+              >
+                Limpiar Campos
+              </button>
+            </div>
+            <div class="padecimientos rounded-lg">
+              @for (pad of objPadecimientos; track $index) {
+              <span
+                id="badge-dismiss-default"
+                class="w-full block mt-3 items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 rounded dark:bg-blue-200 dark:text-blue-900"
+              >
+                <div class="flex justify-between items-center">
+                  <div>{{ pad.nombre }}</div>
+
+                  <button
+                    type="button"
+                    class="inline-flex items-center p-1 text-sm text-blue-900 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900"
+                    data-dismiss-target="#badge-dismiss-default"
+                    aria-label="Remove"
+                  >
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
+                    </svg>
+                    <span class="sr-only">Remove badge</span>
+                  </button>
+                </div>
+              </span>
+              }
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </form>

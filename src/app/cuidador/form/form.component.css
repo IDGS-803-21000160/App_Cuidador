@@ -27,3 +27,9 @@ input[type="file"]::file-selector-button {
 input[type="file"]::file-selector-button:hover {
   background-color: #374151; /* Cambia esto según tus necesidades */
 }
+
+.padecimientos {
+  background-color: #f0f3fa;
+  width: 29rem;
+  padding: 15px;
+}

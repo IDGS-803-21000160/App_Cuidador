@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   AngularFireStorage,
   AngularFireUploadTask,
 } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EventServiceService } from '../../services/event-service.service';
 import { Documentacion } from '../../interfaces/documentacion';
@@ -21,11 +21,24 @@ export class FileUploadComponent {
   uploadStatus: string = '';
   uploadProgress: Observable<number | undefined> | undefined;
   downloadURL: Observable<string> | undefined;
+  @Output() reset: EventEmitter<void> = new EventEmitter<void>();
+
+  //Propiedades para el objeto
+  @Input() tipoDocumento: string = '';
+  @Input() nombreDoc: string = '';
 
   constructor(
     private storage: AngularFireStorage,
     private eventServices: EventServiceService
   ) {}
+
+  //Funcion para formatear la fecha
+  getFormattedDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] ?? null;
@@ -60,16 +73,16 @@ export class FileUploadComponent {
                 const datosDocumento: Documentacion = {
                   id_documentacion: 0,
                   persona_id: 0,
-                  tipo_documento: '',
-                  nombre_documento: '',
+                  tipo_documento: this.tipoDocumento,
+                  nombre_documento: this.nombreDoc,
                   url_documento: url,
-                  fecha_emision: Date.now(),
-                  fecha_expiracion: Date.now(),
+                  fecha_emision: this.getFormattedDate(new Date()),
+                  fecha_expiracion: this.getFormattedDate(new Date()),
                   version: 1,
                   estatus_id: 1,
-                  fecha_registro: Date.now(),
+                  fecha_registro: this.getFormattedDate(new Date()),
                   usuario_registro: 0,
-                  fecha_modificacion: Date.now(),
+                  fecha_modificacion: this.getFormattedDate(new Date()),
                   usuario_modifico: 0,
                 };
                 this.eventServices.setDownloadURL(datosDocumento);
@@ -97,5 +110,23 @@ export class FileUploadComponent {
     } else {
       this.uploadStatus = 'No se seleccionó ningún archivo';
     }
+  }
+
+  //Metodo para limpiar:
+  resetFileInput(): void {
+    console.log('Hola');
+
+    const fileInput = <HTMLInputElement>(
+      document.getElementById('file_refPersonales')
+    );
+    if (fileInput) {
+      fileInput.value = '';
+    }
+    this.uploadStatus = '';
+    this.uploadProgress = of(undefined);
+    this.selectedFile = null;
+    this.downloadURL = undefined;
+    this.reset.emit();
+    console.log('popo');
   }
 }

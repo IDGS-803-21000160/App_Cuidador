@@ -4,12 +4,12 @@ export interface Documentacion {
   tipo_documento: string;
   nombre_documento: string;
   url_documento: string;
-  fecha_emision: number;
-  fecha_expiracion: number;
+  fecha_emision: string;
+  fecha_expiracion: string;
   version: number;
   estatus_id: number;
-  fecha_registro: number;
+  fecha_registro: string;
   usuario_registro: number;
-  fecha_modificacion: number;
+  fecha_modificacion: string;
   usuario_modifico: number;
 }
