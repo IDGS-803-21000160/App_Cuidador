@@ -5,6 +5,7 @@ import { Documentacion } from '../../interfaces/documentacion';
 import { ItPadecimiento } from '../../interfaces/padecimientos';
 import { ItCertificacion } from '../../interfaces/certificaciones';
 import { FileUploadComponent } from '../../global-components/file-upload/file-upload.component';
+import { registroCuidador } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-form',
@@ -32,7 +33,48 @@ export class FormComponent {
   descCertificacion: string = '';
   docCertificacion: Documentacion[] = [];
   certificaciones: ItCertificacion[] = [];
-  @ViewChild(FileUploadComponent) fileUploadComponent!: FileUploadComponent;
+
+  //Propiedades Domicilio
+  pais: string = '';
+  estado: string = '';
+  municipio: string = '';
+  colonia: string = '';
+  calle: string = '';
+  numInterior: string = '';
+  numExterior: string = '';
+  referencias: string = '';
+
+  //Propiedades  Datos Médicos
+  tipoSanguineo: string = '';
+  nombreMedicoFam: string = '';
+  numMedicoFam: string = '';
+  alergiasFormat: string = this.alergias.join(',');
+  observaciones: string = '';
+
+  //Propiedades Usuario
+  usuario: string = '';
+  contrasenia: string = '';
+
+  //Propiedades Persona
+  nombre: string = '';
+  apellido_paterno: string = '';
+  apellido_materno: string = '';
+  correo_electronico: string = '';
+  fecha_nacimiento: Date = new Date();
+  genero: string = '';
+  estado_civil: string = '';
+  rfc: string = '';
+  curp: string = '';
+  telefono_particular: string = '';
+  telefono_movil: string = '';
+  telefono_emergencia: string = '';
+  fotoAvatar: Documentacion | undefined;
+
+  //Objeto de registro
+  objRegistrar: registroCuidador | undefined;
+
+  @ViewChild('fileUploadCertificacion')
+  fileUploadCertificacion!: FileUploadComponent;
 
   onEstadoChange(event: Event) {
     const target = event.target as HTMLSelectElement;
@@ -56,10 +98,12 @@ export class FormComponent {
         if (this.objDataDoc.tipo_documento === 'Información Profesional') {
           this.docCertificacion.push(this.objDataDoc);
           console.log('Hola Soy de certificaciones', this.docCertificacion);
+        } else if (this.objDataDoc.nombre_documento === 'Fotografía reciente') {
+          this.fotoAvatar = this.objDataDoc;
+          console.log('Avatar', this.fotoAvatar);
         } else {
           this.objDocuments.push(data);
-          console.log('Received Documentacion:', this.objDataDoc);
-          console.log('Yo soy el array', this.objDocuments);
+          console.log('Received Documentacion:', this.objDocuments);
         }
       },
       (error) => {
@@ -136,7 +180,6 @@ export class FormComponent {
       this.institucion = '';
       this.descCertificacion = '';
       this.limpiarCampos();
-      this.onFileUploadReset();
       this.docCertificacion = [];
     }
     console.log(this.certificaciones);
@@ -149,13 +192,106 @@ export class FormComponent {
     if (dateInput) {
       dateInput.value = '';
     }
-    if (this.fileUploadComponent) {
-      this.fileUploadComponent.resetFileInput();
+    if (this.fileUploadCertificacion) {
+      this.fileUploadCertificacion.resetFileInput();
     }
   }
 
-  onFileUploadReset(): void {
-    // Lógica adicional cuando se resetea el componente de subida de archivos
+  quitarCertificacion(elemento: number) {
+    this.certificaciones.splice(elemento, 1);
+    console.log(this.certificaciones);
+  }
+
+  registroCuidador() {
+    //Objeto de Información de residencia
+    const residencia = {
+      id_domicilio: 0,
+      calle: this.calle,
+      colonia: this.colonia,
+      numero_interior: this.numInterior,
+      numero_exterior: this.numExterior,
+      ciudad: this.municipio,
+      estado: this.estado,
+      pais: this.pais,
+      referencias: this.referencias,
+      estatus_id: 5,
+      fecha_registro: new Date(),
+      usuario_registro: 0,
+      fecha_modificacion: new Date(),
+      usuario_modifico: 0,
+    };
+    const datosMedicos = {
+      id_datosmedicos: 0,
+      antecedentes_medicos: '',
+      alergias: this.alergias.join(','),
+      tipo_sanguineo: this.tipoSanguineo,
+      nombre_medicofamiliar: this.nombreMedicoFam,
+      telefono_medicofamiliar: this.numMedicoFam,
+      observaciones: this.observaciones,
+      fecha_registro: new Date(),
+      usuario_registro: 0,
+      fecha_modificacion: new Date(),
+      usuario_modifico: 0,
+    };
+
+    const padecimientos = this.objPadecimientos;
+
+    const usuario = {
+      id_usuario: 0,
+      usuarionivel_id: 6,
+      tipo_usuarioid: 1,
+      estatusid: 5,
+      usuario: this.usuario,
+      contrasenia: this.contrasenia,
+      fecha_registro: new Date(),
+      usuario_registro: 0,
+      fecha_modificacion: new Date(),
+      usuario_modifico: 0,
+    };
+
+    const persona = {
+      id_persona: 0,
+      usuario_id: 0,
+      nombre: this.nombre,
+      apellido_paterno: this.apellido_paterno,
+      apellido_materno: this.apellido_materno,
+      correo_electronico: this.correo_electronico,
+      fecha_nacimiento: this.fecha_nacimiento,
+      genero: this.genero,
+      estado_civil: this.estado_civil,
+      rfc: this.rfc,
+      curp: this.curp,
+      telefono_particular: this.telefono_particular,
+      telefono_movil: this.telefono_movil,
+      telefono_emergencia: this.telefono_emergencia,
+      nombrecompleto_familiar: '',
+      domicilio_id: 0,
+      datos_medicosid: 0,
+      avatar_image: this.fotoAvatar?.url_documento,
+      estatus_id: 5,
+      fecha_registro: new Date(),
+      usuario_registro: 0,
+      fecha_modificacion: new Date(),
+      usuario_modifico: 0,
+    };
+
+    const documentacion = this.objDocuments;
+
+    const CertificacionesExperiencia = {
+      certificaciones: this.certificaciones,
+    };
+
+    this.objRegistrar = {
+      domicilio: residencia,
+      datos_medicos: datosMedicos,
+      padecimientos: padecimientos,
+      usuario: usuario,
+      persona: persona,
+      documentacion: documentacion,
+      certificaciones: CertificacionesExperiencia,
+    };
+
+    console.log('Objeto Padre', this.objRegistrar);
   }
 
   textInfoFoto: string[] = [

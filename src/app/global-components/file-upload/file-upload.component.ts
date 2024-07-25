@@ -23,16 +23,17 @@ export class FileUploadComponent {
   downloadURL: Observable<string> | undefined;
   @Output() reset: EventEmitter<void> = new EventEmitter<void>();
 
-  //Propiedades para el objeto
+  // Propiedades para el objeto
   @Input() tipoDocumento: string = '';
   @Input() nombreDoc: string = '';
+  @Input() uploadId: string = ''; // Identificador único para cada instancia
 
   constructor(
     private storage: AngularFireStorage,
     private eventServices: EventServiceService
   ) {}
 
-  //Funcion para formatear la fecha
+  // Función para formatear la fecha
   getFormattedDate(date: Date): string {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -112,13 +113,9 @@ export class FileUploadComponent {
     }
   }
 
-  //Metodo para limpiar:
+  // Método para limpiar:
   resetFileInput(): void {
-    console.log('Hola');
-
-    const fileInput = <HTMLInputElement>(
-      document.getElementById('file_refPersonales')
-    );
+    const fileInput = <HTMLInputElement>document.getElementById(this.uploadId);
     if (fileInput) {
       fileInput.value = '';
     }
@@ -127,6 +124,5 @@ export class FileUploadComponent {
     this.selectedFile = null;
     this.downloadURL = undefined;
     this.reset.emit();
-    console.log('popo');
   }
 }

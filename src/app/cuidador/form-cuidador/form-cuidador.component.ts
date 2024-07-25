@@ -9,7 +9,7 @@ import { EventServiceService } from '../../services/event-service.service';
 })
 export class FormCuidadorComponent {
   private subscription?: Subscription;
-  componentRender: string = 'form';
+  componentRender: string = '';
 
   constructor(private eventsService: EventServiceService) {
     this.subscription = this.eventsService.bodyStep$.subscribe((event) => {
