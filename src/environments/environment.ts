@@ -10,3 +10,8 @@ export const environment = {
     measurementId: 'G-1RQR4K4RMZ',
   },
 };
+
+export const environmentAPI = {
+  production: true,
+  endPoint: 'https://65d60ba3f6967ba8e3bd5cc9.mockapi.io/',
+};
