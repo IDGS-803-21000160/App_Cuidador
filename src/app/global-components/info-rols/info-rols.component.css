@@ -19,11 +19,7 @@
   color: white;
   padding: 20px;
   height: 100%;
-  font-family: "Anek Malayalam", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
+
   font-size: 25px;
 }
 
@@ -40,6 +36,8 @@
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: large;
+  font-size: 25px;
+  color: #395886;
 }
 
 .textContainerTwo {
@@ -55,4 +53,8 @@
   align-content: center;
   justify-content: center;
   margin-top: 10%;
+}
+
+.colorButton {
+  background-color: white;
 }

@@ -27,3 +27,12 @@
   font-weight: 100;
   font-style: normal;
 }
+
+.h1Cuidador {
+  font-family: "Anek Malayalam", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: 100;
+  font-size: 2rem;
+}

@@ -14,6 +14,22 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'administrador',
+    loadChildren: () =>
+      import('./module-administrador/module-administrador.module').then(
+        (m) => m.ModuleAdministradorModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'familiar',
+    loadChildren: () =>
+      import('./module-familiar/module-familiar.module').then(
+        (m) => m.ModuleFamiliarModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'homePageCuidador',
     loadChildren: () =>
       import('./homepage-cuidador/homepage-cuidador.module').then(

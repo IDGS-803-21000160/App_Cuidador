@@ -1,0 +1,39 @@
+.userGradient {
+  background: rgb(214, 247, 252);
+  background: linear-gradient(
+    to bottom right,
+    rgba(214, 247, 252, 1) 0%,
+    rgba(227, 251, 255, 1) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.userActives {
+  background: rgb(222, 252, 225);
+  background: linear-gradient(
+    to bottom right,
+    rgba(222, 252, 225, 1) 0%,
+    rgba(241, 252, 242, 1) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.userReturn {
+  background: rgb(222, 233, 252);
+  background: linear-gradient(
+    to bottom right,
+    rgba(222, 233, 252, 1) 0%,
+    rgba(239, 245, 255, 1) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.userCanceled {
+  background: rgb(252, 222, 222);
+  background: linear-gradient(
+    to bottom right,
+    rgba(252, 222, 222, 1) 0%,
+    rgba(255, 239, 241, 1) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
