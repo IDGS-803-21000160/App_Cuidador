@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InformativeHomepageComponent } from './informative-homepage/informative-homepage.component';
 import { LoginComponent } from '../auth/login/login.component';
 import { InfoRolsComponent } from '../global-components/info-rols/info-rols.component';
+import { PageInitialComponent } from './components/page-initial/page-initial.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     component: InformativeHomepageComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'home', component: InfoRolsComponent },
+      { path: 'home', component: PageInitialComponent },
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

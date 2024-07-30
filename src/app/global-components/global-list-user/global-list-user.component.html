@@ -1,0 +1,28 @@
+<div class="mt-8 space-y-4">
+  @for (user of ItemsUser; track $index) { @for (userss of user.users; track
+  $index) {
+
+  <button
+    [routerLink]="user.routerLink"
+    (click)="selectUser(user.routerLink, userss)"
+    [class.dark:bg-gray-200]="usuarioSeleccionado === userss"
+    class="flex items-center w-full px-5 py-2 transition-colors duration-200 dark:hover:bg-blue-50 gap-x-2 hover:bg-gray-100 focus:outline-none"
+  >
+    <img
+      class="object-cover w-8 h-8 rounded-full"
+      [src]="userss.persona.avatar_image"
+      alt=""
+    />
+
+    <div class="text-left rtl:text-right">
+      <h1 class="text-sm font-medium text-gray-700 capitalize">
+        {{ userss.persona.nombre }}
+      </h1>
+
+      <p class="text-xs text-gray-500 dark:text-gray-400">
+        {{ userss.persona.genero }}
+      </p>
+    </div>
+  </button>
+  } }
+</div>

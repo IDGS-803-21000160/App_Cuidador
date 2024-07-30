@@ -1,0 +1,11 @@
+<div
+  class="fixed h-screen py-8 overflow-y-auto bg-white border-l border-r sm:ml-56 sm:w-64 w-60 dark:bg-white dark:border-gray-200"
+>
+  <br /><br />
+  <h2 class="px-5 text-lg font-medium text-gray-800">Solicitudes</h2>
+
+  <app-global-list-user [ItemsUser]="userItems"></app-global-list-user>
+</div>
+<div class="p-4 sm:ml-1">
+  <router-outlet></router-outlet>
+</div>

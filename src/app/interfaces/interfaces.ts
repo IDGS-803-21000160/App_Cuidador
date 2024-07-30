@@ -20,3 +20,13 @@ export interface registroCuidador {
   documentacion: Documentacion[];
   certificaciones: ItCertificaciones;
 }
+
+export interface ItAllUsers {
+  domicilio: ItDomicilio;
+  datos_medicos: ItDatosMedicos;
+  padecimientos: ItPadecimiento[];
+  usuario: ItUsuario;
+  persona: ItPersonaFisica;
+  documentacion: Documentacion[];
+  certificaciones: ItCertificaciones;
+}

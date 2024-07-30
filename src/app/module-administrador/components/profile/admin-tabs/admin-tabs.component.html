@@ -1,0 +1,60 @@
+<div
+  class="profiles p-4 mt-20 sm:ml-96 rounded-lg mr-5 border-solid border-inherit border-2"
+>
+  <div class="w-full flex grid place-items-center">
+    <section class="imgbanner w-full h-48 grid place-items-center rounded-lg">
+      <div class="fotoPerfil mt-20 grid place-items-center">
+        <img class="imgProfile rounded-full" [src]="imgPerfil" alt="" />
+      </div>
+    </section>
+  </div>
+  <div class="w-full mt-10">
+    <ul
+      class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700"
+    >
+      <li class="me-2">
+        <a
+          aria-current="page"
+          class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:text-blue-500"
+          >Perfil</a
+        >
+      </li>
+      <li class="me-2">
+        <a
+          [routerLink]="['/administrador/solicitudes/profile/infoPersonal']"
+          class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+          >Información personal</a
+        >
+      </li>
+      <li class="me-2">
+        <a
+          class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+          >Documentos</a
+        >
+      </li>
+      <li class="me-2">
+        <a
+          class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+          >Contacto</a
+        >
+      </li>
+      <li>
+        <a
+          class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500"
+          >Desabilitado</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="containerInfo p-4 sm:ml-56">
+  <div class="p-4 border-solid border-inherit border-2 rounded-lg">
+    <div class="flex p-2 mb-4">
+      <p class="text-2xl text-gray-400 font-semibold dark:text-gray-500">
+        Información Personal
+      </p>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -19,7 +19,7 @@ export class PageadminPrincipalComponent {
       notification: false,
     },
     {
-      routerLink: ['/homePageCuidador/login'],
+      routerLink: ['/administrador/tabs'],
       svgViewBox: '0 0 18 18',
       svgFill: 'currentColor',
       svgPaths: [

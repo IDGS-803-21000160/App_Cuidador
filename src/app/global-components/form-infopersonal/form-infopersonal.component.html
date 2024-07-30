@@ -1,0 +1,203 @@
+<div class="grid grid-cols-1 gap-4 mb-4">
+  <form>
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div>
+        <label
+          for="first_name"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Nombre</label
+        >
+        <input
+          type="text"
+          id="first_name"
+          name="nombre"
+          [(ngModel)]="propsPersona!.nombre"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="John"
+          required
+          disabled
+        />
+      </div>
+      <div>
+        <label
+          for="last_name"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Apellido Paterno</label
+        >
+        <input
+          type="text"
+          id="last_name"
+          name="last_name"
+          [(ngModel)]="propsPersona!.apellido_paterno"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Doe"
+          required
+          disabled
+        />
+      </div>
+      <div>
+        <label
+          for="apMaterno"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Apellido Materno</label
+        >
+        <input
+          type="text"
+          id="apMaterno"
+          name="apMaterno"
+          [(ngModel)]="propsPersona!.apellido_materno"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Flowbite"
+          required
+          disabled
+        />
+      </div>
+      <div>
+        <label for="mail" class="block mb-2 text-sm font-medium text-gray-900"
+          >Correo Electronico</label
+        >
+        <input
+          type="mail"
+          id="email"
+          name="email"
+          [(ngModel)]="propsPersona!.correo_electronico"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="userCuidador@cuidador.com"
+          required
+          disabled
+        />
+      </div>
+      <div>
+        <label
+          for="fechaNac"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Fecha Nacimiento</label
+        >
+        <input
+          type="date"
+          id="fechaNac"
+          name="fechaNac"
+          [(ngModel)]="propsPersona!.fecha_nacimiento"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          disabled
+        />
+      </div>
+      <div>
+        <label
+          for="txtGenero"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Genero</label
+        >
+        <select
+          id="genero"
+          name="genero"
+          [(ngModel)]="propsPersona!.genero"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div>
+        <label
+          for="txtEstadoCivil"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Estado Civil</label
+        >
+        <select
+          id="estadoCivil"
+          name="estado_civil"
+          [(ngModel)]="propsPersona!.estado_civil"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option value="Soltero">Soltero</option>
+          <option value="Casado">Casado</option>
+          <option value="Unión libre">Unión libre</option>
+          <option value="Separado">Separado</option>
+          <option value="Divorciado">Divorciado</option>
+          <option value="Viudo">Viudo</option>
+        </select>
+      </div>
+      <div>
+        <label for="rfc" class="block mb-2 text-sm font-medium text-gray-900"
+          >RFC</label
+        >
+        <input
+          type="text"
+          id="rfc"
+          name="rfc"
+          [(ngModel)]="propsPersona!.rfc"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div>
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900"
+          >CURP</label
+        >
+        <input
+          type="text"
+          id="curp"
+          name="curp"
+          [(ngModel)]="propsPersona!.curp"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div>
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900"
+          >Telefono Particular</label
+        >
+        <input
+          type="number"
+          id="telPar"
+          name="telPar"
+          [(ngModel)]="propsPersona!.telefono_particular"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div>
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900"
+          >Telefono Movil</label
+        >
+        <input
+          type="number"
+          id="telMovil"
+          name="telMovil"
+          [(ngModel)]="propsPersona!.telefono_movil"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+      <div>
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900"
+          >Telefono Emergencias</label
+        >
+        <input
+          type="number"
+          id="telPar"
+          name="telEmergencia"
+          [(ngModel)]="propsPersona!.telefono_emergencia"
+          class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""
+          required
+        />
+      </div>
+    </div>
+
+    <button
+      (click)="hola()"
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Submit
+    </button>
+  </form>
+</div>

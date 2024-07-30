@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { BodyStep } from '../interfaces/interfaces';
 import { Documentacion } from '../interfaces/documentacion';
+import { ItPersonaFisica } from '../interfaces/personaFisica';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,27 @@ export class EventServiceService {
 
   getDownloadURL(): Observable<Documentacion> {
     return this.downloadURLSubject.asObservable();
+  }
+
+  //Servicios para emitir eventi en modulo-administrador:
+  private eventoSubject = new Subject<any>();
+
+  lanzarUsuario(data: any) {
+    this.eventoSubject.next(data);
+  }
+
+  recibirUsuario() {
+    return this.eventoSubject.asObservable();
+  }
+
+  //Evento para mandar persona
+  private eventPersona = new Subject<ItPersonaFisica>();
+
+  lanzarPersona(persona: any) {
+    this.eventPersona.next(persona);
+  }
+
+  obtenerPersona() {
+    return this.eventPersona.asObservable();
   }
 }

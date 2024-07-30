@@ -60,7 +60,7 @@ export class FormComponent {
   apellido_paterno: string = '';
   apellido_materno: string = '';
   correo_electronico: string = '';
-  fecha_nacimiento: Date = new Date();
+  fecha_nacimiento: string = '';
   genero: string = '';
   estado_civil: string = '';
   rfc: string = '';
@@ -269,9 +269,9 @@ export class FormComponent {
       datos_medicosid: 0,
       avatar_image: this.fotoAvatar?.url_documento,
       estatus_id: 5,
-      fecha_registro: new Date(),
+      fecha_registro: new Date().toISOString(),
       usuario_registro: 0,
-      fecha_modificacion: new Date(),
+      fecha_modificacion: new Date().toISOString(),
       usuario_modifico: 0,
     };
 

@@ -5,7 +5,7 @@ export interface ItPersonaFisica {
   apellido_paterno: string;
   apellido_materno: string;
   correo_electronico: string;
-  fecha_nacimiento: Date;
+  fecha_nacimiento?: string;
   genero: string;
   estado_civil: string;
   rfc: string;
@@ -18,8 +18,8 @@ export interface ItPersonaFisica {
   datos_medicosid: number;
   avatar_image?: string;
   estatus_id: number;
-  fecha_registro: Date;
+  fecha_registro?: string;
   usuario_registro: number;
-  fecha_modificacion: Date;
+  fecha_modificacion?: string;
   usuario_modifico: number;
 }
