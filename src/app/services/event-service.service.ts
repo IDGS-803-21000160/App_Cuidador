@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { BodyStep } from '../interfaces/interfaces';
+import { BodyStep, ItAllUsers } from '../interfaces/interfaces';
 import { Documentacion } from '../interfaces/documentacion';
 import { ItPersonaFisica } from '../interfaces/personaFisica';
+import { ItDatosMedicos } from '../interfaces/datos_medicos';
+import { ItPadecimiento } from '../interfaces/padecimientos';
 
 @Injectable({
   providedIn: 'root',
@@ -30,24 +32,74 @@ export class EventServiceService {
   }
 
   //Servicios para emitir eventi en modulo-administrador:
-  private eventoSubject = new Subject<any>();
+  // private eventoSubject = new Subject<any>();
+  private usuarioSubject: BehaviorSubject<ItAllUsers | undefined> =
+    new BehaviorSubject<ItAllUsers | undefined>(undefined);
 
-  lanzarUsuario(data: any) {
-    this.eventoSubject.next(data);
+  recibirUsuario(): Observable<ItAllUsers | undefined> {
+    return this.usuarioSubject.asObservable();
   }
 
-  recibirUsuario() {
-    return this.eventoSubject.asObservable();
+  lanzarUsuario(usuario: ItAllUsers): void {
+    this.usuarioSubject.next(usuario);
   }
 
-  //Evento para mandar persona
-  private eventPersona = new Subject<ItPersonaFisica>();
+  // lanzarUsuario(data: any) {
+  // this.eventoSubject.next(data);
+  //}
 
-  lanzarPersona(persona: any) {
-    this.eventPersona.next(persona);
+  //recibirUsuario() {
+  // return this.eventoSubject.asObservable();
+  // }
+
+  //------------------- Evento para mandar persona -------------------------------
+  private personaSubject = new BehaviorSubject<ItPersonaFisica | undefined>(
+    undefined
+  );
+
+  lanzarPersona(persona: ItPersonaFisica | undefined): void {
+    this.personaSubject.next(persona);
   }
 
-  obtenerPersona() {
-    return this.eventPersona.asObservable();
+  obtenerPersona(): Observable<ItPersonaFisica | undefined> {
+    return this.personaSubject.asObservable();
+  }
+
+  //-------------------- Evento para mandar Datos Médicos------------------------
+  private datosMedSubject = new BehaviorSubject<ItDatosMedicos | undefined>(
+    undefined
+  );
+  lanzarDatosMedicos(datosMedicos: ItDatosMedicos | undefined): void {
+    this.datosMedSubject.next(datosMedicos);
+  }
+
+  obtenerDatosMedicos(): Observable<ItDatosMedicos | undefined> {
+    return this.datosMedSubject.asObservable();
+  }
+
+  //-------------------- Evento para mandar Padecimientos------------------------
+  private padecimientosSubject = new BehaviorSubject<
+    ItPadecimiento[] | undefined
+  >(undefined);
+
+  lanzarPadecimientos(padecimientos: ItPadecimiento[] | undefined): void {
+    this.padecimientosSubject.next(padecimientos);
+  }
+
+  obtenerPadecimientos(): Observable<ItPadecimiento[] | undefined> {
+    return this.padecimientosSubject.asObservable();
+  }
+
+  //-------------------- Evento para mandar Documentos------------------------
+  private documentacionSubject = new BehaviorSubject<
+    Documentacion[] | undefined
+  >(undefined);
+
+  lanzarDocumentos(documentos: Documentacion[] | undefined): void {
+    this.documentacionSubject.next(documentos);
+  }
+
+  obtenerDocumentos(): Observable<Documentacion[] | undefined> {
+    return this.documentacionSubject.asObservable();
   }
 }

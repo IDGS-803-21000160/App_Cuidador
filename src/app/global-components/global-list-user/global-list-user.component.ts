@@ -23,7 +23,7 @@ export class GlobalListUserComponent {
 
   selectUser(router: any, user: any) {
     this.usuarioSeleccionado = user;
-    console.log(this.usuarioSeleccionado);
+    console.log('hola gorda', this.usuarioSeleccionado);
 
     this.service.lanzarUsuario(user);
   }

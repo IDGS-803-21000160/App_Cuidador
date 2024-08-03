@@ -5,14 +5,22 @@
   <button
     [routerLink]="user.routerLink"
     (click)="selectUser(user.routerLink, userss)"
-    [class.dark:bg-gray-200]="usuarioSeleccionado === userss"
-    class="flex items-center w-full px-5 py-2 transition-colors duration-200 dark:hover:bg-blue-50 gap-x-2 hover:bg-gray-100 focus:outline-none"
+    [class.bg-gray-200]="
+      usuarioSeleccionado?.usuario.id_usuario === userss.usuario.id_usuario
+    "
+    class="flex items-center w-full px-5 py-2 transition-colors duration-200 hover:bg-blue-50 gap-x-2 hover:bg-gray-100 focus:outline-none"
   >
-    <img
-      class="object-cover w-8 h-8 rounded-full"
-      [src]="userss.persona.avatar_image"
-      alt=""
-    />
+    <div
+      style="background-color: #6096ba"
+      [class.dark:bg-gray-200]="usuarioSeleccionado === userss"
+      class="flex justify-center w-10 h-10 pt-1 rounded-full"
+    >
+      <img
+        class="object-cover w-8 h-8 rounded-full"
+        [src]="userss.persona.avatar_image"
+        alt=""
+      />
+    </div>
 
     <div class="text-left rtl:text-right">
       <h1 class="text-sm font-medium text-gray-700 capitalize">
@@ -20,7 +28,7 @@
       </h1>
 
       <p class="text-xs text-gray-500 dark:text-gray-400">
-        {{ userss.persona.genero }}
+        {{ userss.persona.correo_electronico }}
       </p>
     </div>
   </button>

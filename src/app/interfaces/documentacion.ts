@@ -1,3 +1,5 @@
+import { SafeResourceUrl } from '@angular/platform-browser';
+
 export interface Documentacion {
   id_documentacion: number;
   persona_id: number;
@@ -12,4 +14,5 @@ export interface Documentacion {
   usuario_registro: number;
   fecha_modificacion: string;
   usuario_modifico: number;
+  safeUrl?: SafeResourceUrl;
 }

@@ -36,10 +36,10 @@ export const routes: Routes = [
         (m) => m.HomepageCuidadorModule
       ),
   },
-  { path: '', redirectTo: '/administrador', pathMatch: 'full' },
+  { path: '', redirectTo: '/homePageCuidador', pathMatch: 'full' },
   {
     path: '**',
-    redirectTo: '/administrador',
+    redirectTo: '/homePageCuidador',
   },
 ];
 

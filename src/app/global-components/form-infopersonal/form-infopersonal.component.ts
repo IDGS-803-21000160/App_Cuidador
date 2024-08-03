@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItPersonaFisica } from '../../interfaces/personaFisica';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,10 +11,12 @@ import { EventServiceService } from '../../services/event-service.service';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './form-infopersonal.component.html',
-  styleUrl: './form-infopersonal.component.css',
+  styleUrls: ['./form-infopersonal.component.css'],
 })
-export class FormInfopersonalComponent {
+export class FormInfopersonalComponent implements OnInit, OnDestroy {
+  eventoSubscription: Subscription | undefined;
   persona: ItPersonaFisica | undefined;
+
   propsPersona: ItPersonaFisica = {
     apellido_materno: '',
     apellido_paterno: '',
@@ -40,17 +43,23 @@ export class FormInfopersonalComponent {
     usuario_registro: 0,
   };
 
-  constructor(private service: EventServiceService) {
-    console.log('Hola people');
-    this.service.obtenerPersona().subscribe((data) => {
-      console.log(data);
+  constructor(private service: EventServiceService) {}
 
-      this.persona = data;
-    });
+  ngOnInit(): void {
+    this.eventoSubscription = this.service
+      .obtenerPersona()
+      .subscribe((data) => {
+        this.persona = data;
+        if (this.persona) {
+          this.propsPersona = { ...this.persona };
+        }
+        console.log('Recibí esto', this.propsPersona);
+      });
+  }
 
-    if (this.persona) {
-      this.propsPersona = { ...this.persona };
-      console.log('0000', this.propsPersona);
+  ngOnDestroy(): void {
+    if (this.eventoSubscription) {
+      this.eventoSubscription.unsubscribe();
     }
   }
 

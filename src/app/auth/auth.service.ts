@@ -80,7 +80,7 @@ export class AuthService {
       case 'admin':
         console.log('entre a admins');
 
-        return '/cuidador/pagePrincipal';
+        return '/administrador';
       case 'popo':
         console.log('entre a popo');
 

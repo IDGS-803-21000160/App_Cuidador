@@ -9,9 +9,11 @@
   height: 150px;
   border-radius: 50%;
 }
+/*   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+ */
 
 .imgbanner {
-  background-image: url("/assets/bannerProfile.png");
+  background-image: url("/assets/fondoBanner.svg");
 }
 
 .imgProfile {

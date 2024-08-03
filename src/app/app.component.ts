@@ -7,6 +7,7 @@ import { LoginModule } from './login/login.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModuleCuidadorModule } from './module-cuidador/module-cuidador.module';
 import { AuthModule } from './auth/auth.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',

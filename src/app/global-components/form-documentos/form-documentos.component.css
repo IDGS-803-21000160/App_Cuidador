@@ -1,0 +1,31 @@
+.pdf-preview-container {
+  cursor: pointer;
+}
+
+.subtitle {
+  color: #000000;
+}
+
+.watermark-container {
+  position: relative;
+  background-color: white;
+}
+
+.watermark-container::before {
+  content: "Cuidador";
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.watermark-container img,
+.watermark-container .absolute {
+  position: relative;
+  z-index: 1;
+}

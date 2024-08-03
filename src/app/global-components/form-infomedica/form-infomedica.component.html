@@ -1,0 +1,180 @@
+<div class="grid grid-cols-1 gap-4 mb-4">
+  <form>
+    <div class="flex p-2 mb-4">
+      <p
+        class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500"
+      >
+        Información Médica
+      </p>
+    </div>
+    <hr />
+    <br />
+    <section>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="alergias"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Alergias</label
+            >
+          </div>
+          <div class="w-full flex">
+            @for (alergia of listaAlergias; track $index) {
+            <div>
+              <span
+                class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-100 dark:text-indigo-800"
+                >{{ alergia }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="tipo_sanguineo"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Tipo Sanguíneo</label
+            >
+          </div>
+          <div class="w-full">
+            <select
+              id="tipo-sanguineo"
+              name="tipo-sanguineo"
+              [(ngModel)]="objtDatosMedicos.tipo_sanguineo"
+              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="nombre_medicofamiliar"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Nombre Médico Familiar</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="nombre_medicofamiliar"
+              name="nombre_medicofamiliar"
+              [(ngModel)]="objtDatosMedicos.nombre_medicofamiliar"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Nombre Médico Familiar"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="telefono_medicofamiliar"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Teléfono Médico Familiar</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="telefono_medicofamiliar"
+              name="telefono_medicofamiliar"
+              [(ngModel)]="objtDatosMedicos.telefono_medicofamiliar"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Teléfono Médico Familiar"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="observaciones"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Observaciones</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="observaciones"
+              name="observaciones"
+              [(ngModel)]="objtDatosMedicos.observaciones"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Observaciones"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex p-2 mb-4">
+      <p
+        class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500"
+      >
+        Padecimientos
+      </p>
+    </div>
+    <hr />
+    <br />
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table
+        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-500"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-sky-50 dark:bg-sky-50 dark:text-gray-700"
+        >
+          <tr>
+            <th scope="col" class="px-6 py-3">Nombre</th>
+            <th scope="col" class="px-6 py-3">Descripción</th>
+            <th scope="col" class="px-6 py-3">Padece desde:</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (padecimiento of padecimientos; track $index) {
+          <tr class="bg-white border-b">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+            >
+              {{ padecimiento.nombre }}
+            </th>
+            <td class="px-6 py-4">{{ padecimiento.descripcion }}</td>
+            <td class="px-6 py-4">{{ padecimiento.padece_desde }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <button
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Submit
+    </button>
+  </form>
+</div>
