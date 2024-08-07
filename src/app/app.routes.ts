@@ -11,7 +11,7 @@ export const routes: Routes = [
       import('./module-cuidador/module-cuidador.module').then(
         (m) => m.ModuleCuidadorModule
       ),
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
   },
   {
     path: 'administrador',
