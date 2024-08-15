@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-global-sidebar',
@@ -14,6 +15,7 @@ export class GlobalSidebarComponent {
   @Input() menuItems: Array<any> = [];
   @Input() menuItemsProfile: Array<any> = [];
 
+  constructor(private authService: AuthService) {}
   sidebarVisible = false;
   dropdownVisible = false;
 
@@ -23,5 +25,9 @@ export class GlobalSidebarComponent {
 
   toggleDropdown() {
     this.dropdownVisible = !this.dropdownVisible;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

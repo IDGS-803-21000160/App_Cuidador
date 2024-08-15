@@ -1,11 +1,22 @@
 import { Component, NgModule, ViewChild } from '@angular/core';
 import { estadosYMunicipios } from '../../interfaces/estadosMX';
 import { EventServiceService } from '../../services/event-service.service';
-import { Documentacion } from '../../interfaces/documentacion';
+import { ItDocumentacion } from '../../interfaces/documentacion';
 import { ItPadecimiento } from '../../interfaces/padecimientos';
 import { ItCertificacion } from '../../interfaces/certificaciones';
 import { FileUploadComponent } from '../../global-components/file-upload/file-upload.component';
 import { registroCuidador } from '../../interfaces/interfaces';
+import { FormsRegisterService } from '../../services/forms-register.service';
+import {
+  textInfoFoto,
+  textINE,
+  txtCeAntecedentes,
+  txtVerAntecedentes,
+  referenciasProfesionales,
+  referenciasPersonales,
+  datosPruebasDrogasAlcohol,
+  datosCertificadoMedico,
+} from '../../interfaces/locales';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +27,7 @@ export class FormComponent {
   estados = Object.keys(estadosYMunicipios);
   municipios: string[] = [];
   selectedEstado: string = '';
-  objDocuments: Documentacion[] = [];
+  objDocuments: ItDocumentacion[] = [];
   alergia: string = '';
   alergias: string[] = [];
 
@@ -31,7 +42,7 @@ export class FormComponent {
   institucion: string = '';
   fechaCertificacion: Date = new Date();
   descCertificacion: string = '';
-  docCertificacion: Documentacion[] = [];
+  docCertificacion: ItDocumentacion[] = [];
   certificaciones: ItCertificacion[] = [];
 
   //Propiedades Domicilio
@@ -60,7 +71,7 @@ export class FormComponent {
   apellido_paterno: string = '';
   apellido_materno: string = '';
   correo_electronico: string = '';
-  fecha_nacimiento: string = '';
+  fecha_nacimiento: Date = new Date();
   genero: string = '';
   estado_civil: string = '';
   rfc: string = '';
@@ -68,7 +79,7 @@ export class FormComponent {
   telefono_particular: string = '';
   telefono_movil: string = '';
   telefono_emergencia: string = '';
-  fotoAvatar: Documentacion | undefined;
+  fotoAvatar: ItDocumentacion | undefined;
 
   //Objeto de registro
   objRegistrar: registroCuidador | undefined;
@@ -87,18 +98,21 @@ export class FormComponent {
     }
   }
 
-  objDataDoc: Documentacion | null = null;
+  objDataDoc: ItDocumentacion | undefined = undefined;
 
-  constructor(private eventServices: EventServiceService) {}
+  constructor(
+    private eventServices: EventServiceService,
+    private formsRegister: FormsRegisterService
+  ) {}
 
   ngOnInit(): void {
     this.eventServices.getDownloadURL().subscribe(
-      (data: Documentacion) => {
+      (data: ItDocumentacion) => {
         this.objDataDoc = data;
-        if (this.objDataDoc.tipo_documento === 'Información Profesional') {
+        if (this.objDataDoc.tipoDocumento === 'Información Profesional') {
           this.docCertificacion.push(this.objDataDoc);
           console.log('Hola Soy de certificaciones', this.docCertificacion);
-        } else if (this.objDataDoc.nombre_documento === 'Fotografía reciente') {
+        } else if (this.objDataDoc.nombreDocumento === 'Fotografía reciente') {
           this.fotoAvatar = this.objDataDoc;
           console.log('Avatar', this.fotoAvatar);
         } else {
@@ -129,15 +143,11 @@ export class FormComponent {
   agregarPadecimiento() {
     if (this.nombrePadecimiento || this.descPadecimiento) {
       const newPadecimiento = {
-        id_padecimiento: 0,
-        datosmedicos_id: 0,
         nombre: this.nombrePadecimiento,
         descripcion: this.descPadecimiento,
-        padece_desde: this.fechaPadecimiento,
-        fecha_registro: new Date(),
-        usuario_registro: 0,
-        fecha_modificacion: new Date(),
-        usuario_modifico: 0,
+        padeceDesde: this.fechaPadecimiento,
+        fechaRegistro: new Date(),
+        usuarioRegistro: 0,
       };
 
       this.objPadecimientos.push(newPadecimiento);
@@ -156,18 +166,13 @@ export class FormComponent {
   agregarCertificacion() {
     if (this.tipoCertificacio && this.institucion && this.descCertificacion) {
       const newCertificacion = {
-        id_certificacion: 0,
-        tipo_certificacion: this.tipoCertificacio,
-        institucion_emisora: this.institucion,
-        fecha_certificacion: this.fechaCertificacion,
+        tipoCertificacion: this.tipoCertificacio,
+        institucionEmisora: this.institucion,
+        fechaCertificacion: this.fechaCertificacion,
         vigente: true,
         descripcion: this.descCertificacion,
-        fecha_registro: new Date(),
-        usuario_registro: 0,
-        fecha_modificacion: new Date(),
-        usuario_modifico: 0,
-        persona_id: 0,
-        documento_id: 0,
+        fechaRegistro: new Date(),
+        usuarioRegistro: 0,
       };
 
       const certificacion = {
@@ -203,222 +208,150 @@ export class FormComponent {
   }
 
   registroCuidador() {
-    //Objeto de Información de residencia
-    const residencia = {
-      id_domicilio: 0,
-      calle: this.calle,
-      colonia: this.colonia,
-      numero_interior: this.numInterior,
-      numero_exterior: this.numExterior,
-      ciudad: this.municipio,
-      estado: this.estado,
-      pais: this.pais,
-      referencias: this.referencias,
-      estatus_id: 5,
-      fecha_registro: new Date(),
-      usuario_registro: 0,
-      fecha_modificacion: new Date(),
-      usuario_modifico: 0,
-    };
-    const datosMedicos = {
-      id_datosmedicos: 0,
-      antecedentes_medicos: '',
-      alergias: this.alergias.join(','),
-      tipo_sanguineo: this.tipoSanguineo,
-      nombre_medicofamiliar: this.nombreMedicoFam,
-      telefono_medicofamiliar: this.numMedicoFam,
-      observaciones: this.observaciones,
-      fecha_registro: new Date(),
-      usuario_registro: 0,
-      fecha_modificacion: new Date(),
-      usuario_modifico: 0,
-    };
+    if (true) {
+      //Objeto de Información de residencia
+      const residencia = {
+        calle: this.calle,
+        colonia: this.colonia,
+        numeroInterior: this.numInterior,
+        numeroExterior: this.numExterior,
+        ciudad: this.municipio,
+        estado: this.estado,
+        pais: this.pais,
+        referencias: this.referencias,
+        estatusId: 2,
+        fechaRegistro: new Date(),
+        usuarioRegistro: 0,
+      };
+      const datosMedicos = {
+        antecedentesMedicos: '',
+        alergias: this.alergias.join(','),
+        tipoSanguineo: this.tipoSanguineo,
+        nombreMedicoFamiliar: this.nombreMedicoFam,
+        telefonoMedicoFamiliar: this.numMedicoFam,
+        observaciones: this.observaciones,
+        usuarioRegistro: 0,
+      };
 
-    const padecimientos = this.objPadecimientos;
+      const padecimientos = this.objPadecimientos;
 
-    const usuario = {
-      id_usuario: 0,
-      usuarionivel_id: 6,
-      tipo_usuarioid: 1,
-      estatusid: 5,
-      usuario: this.usuario,
-      contrasenia: this.contrasenia,
-      fecha_registro: new Date(),
-      usuario_registro: 0,
-      fecha_modificacion: new Date(),
-      usuario_modifico: 0,
-    };
+      const usuario = {
+        usuarioNivelId: 6,
+        tipoUsuarioId: 1,
+        estatusId: 18,
+        usuario: this.usuario,
+        contrasenia: this.contrasenia,
+        fechaRegistro: new Date(),
+      };
 
-    const persona = {
-      id_persona: 0,
-      usuario_id: 0,
-      nombre: this.nombre,
-      apellido_paterno: this.apellido_paterno,
-      apellido_materno: this.apellido_materno,
-      correo_electronico: this.correo_electronico,
-      fecha_nacimiento: this.fecha_nacimiento,
-      genero: this.genero,
-      estado_civil: this.estado_civil,
-      rfc: this.rfc,
-      curp: this.curp,
-      telefono_particular: this.telefono_particular,
-      telefono_movil: this.telefono_movil,
-      telefono_emergencia: this.telefono_emergencia,
-      nombrecompleto_familiar: '',
-      domicilio_id: 0,
-      datos_medicosid: 0,
-      avatar_image: this.fotoAvatar?.url_documento,
-      estatus_id: 5,
-      fecha_registro: new Date().toISOString(),
-      usuario_registro: 0,
-      fecha_modificacion: new Date().toISOString(),
-      usuario_modifico: 0,
-    };
+      const persona = {
+        nombre: this.nombre,
+        apellidoPaterno: this.apellido_paterno,
+        apellidoMaterno: this.apellido_materno,
+        correoElectronico: this.correo_electronico,
+        fechaNacimiento: this.fecha_nacimiento,
+        genero: this.genero,
+        estadoCivil: this.estado_civil,
+        rfc: this.rfc,
+        curp: this.curp,
+        telefonoParticular: this.telefono_particular,
+        telefonoMovil: this.telefono_movil,
+        telefonoEmergencia: this.telefono_emergencia,
+        nombreCompletoFamiliar: '',
+        avatarImage: this.fotoAvatar?.urlDocumento,
+        estatusId: 18,
+        fechaRegistro: new Date(),
+        usuarioRegistro: 0,
+      };
 
-    const documentacion = this.objDocuments;
+      const documentacion = this.objDocuments;
 
-    const CertificacionesExperiencia = {
-      certificaciones: this.certificaciones,
-    };
+      const CertificacionesExperiencia = {
+        certificaciones: this.certificaciones,
+      };
 
-    this.objRegistrar = {
-      domicilio: residencia,
-      datos_medicos: datosMedicos,
-      padecimientos: padecimientos,
-      usuario: usuario,
-      persona: persona,
-      documentacion: documentacion,
-      certificaciones: CertificacionesExperiencia,
-    };
+      this.objRegistrar = {
+        domicilio: residencia,
+        datos_medicos: datosMedicos,
+        padecimientos: padecimientos,
+        usuario: usuario,
+        persona: persona,
+        documentacion: documentacion,
+        certificacionesExperiencia: CertificacionesExperiencia,
+      };
 
-    console.log('Objeto Padre', this.objRegistrar);
+      this.formsRegister.registrarUsuarioWeb(this.objRegistrar).subscribe(
+        (response) => {
+          console.log('Usuario registrado exitosamente', response);
+        },
+        (error) => {
+          console.error('Error al registrar el usuario', error);
+        }
+      );
+
+      alert(JSON.stringify(this.objRegistrar));
+      console.log('Objeto Padre', this.objRegistrar);
+    } else {
+      console.log('Error');
+    }
   }
 
-  textInfoFoto: string[] = [
-    'Tamaño: Normalmente, 2 pulgadas x 2 pulgadas (5 cm x 5 cm) o similar.',
-    'Fondo: Fondo blanco o de color claro uniforme.',
-    'Iluminación: Luz suave y uniforme para evitar sombras en el rostro.',
-    'Posición: Debe ser frontal y centrada, mirando directamente a la cámara.',
-    'Expresión facial: Neutral, con una ligera sonrisa.',
-    'Ropa: Preferiblemente ropa formal o neutra.',
-    'Orientación: Vertical.',
-    'Calidad: Alta resolución, nítida y sin borrones.',
-    'Formato: Formato JPG o PNG.',
-  ];
+  validarFormulario(): boolean {
+    const campos = [
+      { valor: this.nombre, nombre: 'Nombre' },
+      { valor: this.apellido_paterno, nombre: 'Apellido Paterno' },
+      { valor: this.apellido_materno, nombre: 'Apellido Materno' },
+      { valor: this.correo_electronico, nombre: 'Correo Electrónico' },
+      { valor: this.genero, nombre: 'Género' },
+      { valor: this.estado_civil, nombre: 'Estado Civil' },
+      { valor: this.rfc, nombre: 'RFC' },
+      { valor: this.curp, nombre: 'CURP' },
+      { valor: this.telefono_particular, nombre: 'Teléfono Particular' },
+      { valor: this.telefono_movil, nombre: 'Teléfono Móvil' },
+      { valor: this.telefono_emergencia, nombre: 'Teléfono de Emergencia' },
+      { valor: this.pais, nombre: 'País' },
+      { valor: this.estado, nombre: 'Estado' },
+      { valor: this.municipio, nombre: 'Municipio' },
+      { valor: this.colonia, nombre: 'Colonia' },
+      { valor: this.calle, nombre: 'Calle' },
+      { valor: this.numInterior, nombre: 'Número Interior' },
+      { valor: this.numExterior, nombre: 'Número Exterior' },
+      { valor: this.referencias, nombre: 'Referencias' },
+      { valor: this.tipoSanguineo, nombre: 'Tipo Sanguíneo' },
+      { valor: this.nombreMedicoFam, nombre: 'Nombre del Médico Familiar' },
+      {
+        valor: this.numMedicoFam,
+        nombre: 'Número Telefónico del Médico Familiar',
+      },
+      { valor: this.observaciones, nombre: 'Observaciones' },
+      { valor: this.usuario, nombre: 'Usuario' },
+      { valor: this.contrasenia, nombre: 'Contraseña' },
+    ];
 
-  textINE: string[] = [
-    'Fotografías Requeridas:',
-    'Anverso: Parte frontal de la identificación.',
-    'Reverso: Parte trasera de la identificación.',
-    '',
-    'Calidad de la Fotografía: Alta resolución y en color.',
-    '',
-    'Iluminación y Claridad: Área bien iluminada y visible.',
-    '',
-    'Composición: Sobre superficie plana y neutra.',
-    '',
-    'Formato de Archivo:',
-    'JPG, PNG o PDF.',
-    'Tamaño máximo: 5 MB por archivo.',
-  ];
+    for (let campo of campos) {
+      if (!campo.valor || campo.valor.trim() === '') {
+        alert(`Por favor complete el campo: ${campo.nombre}`);
+        return false;
+      }
+    }
 
-  txtCeAntecedentes: string[] = [
-    'Documento oficial emitido por una autoridad gubernamental (generalmente el Ministerio de Justicia o equivalente) que certifica la existencia o inexistencia de antecedentes penales en el registro de una persona.',
-    'Formato de Archivo: PDF',
-  ];
+    alert('Todos los campos están completos');
+    return true;
+  }
 
-  txtVerAntecedentes: string[] = [
-    'Permiso otorgado por una persona para que un tercero (generalmente un empleador, institución educativa o agencia de investigación) realice una verificación de sus antecedentes personales.',
-    'Formato de Archivo: PDF',
-  ];
+  textInfoFoto: string[] = textInfoFoto;
 
-  referenciasProfesionales: string[] = [
-    'Número de Referencias: Proporciona al menos dos referencias profesionales.',
-    '',
-    'Formato: Incluye la siguiente información para cada referencia profesional:',
-    '',
-    'Nombre Completo',
-    'Título o Cargo',
-    'Empresa u Organización',
-    'Relación Laboral: Describe tu relación laboral con esta persona (e.g., supervisor, colega, subordinado).',
-    'Tiempo de Conocimiento: Indica cuánto tiempo has trabajado o interactuado profesionalmente con esta persona.',
-    '',
-    'Datos de Contacto:',
-    'Teléfono',
-    'Correo Electrónico',
-    'Dirección ',
-    '',
-    'Comentarios: Una breve declaración de la persona referenciadora sobre tu desempeño y habilidades profesionales',
-  ];
+  textINE: string[] = textINE;
 
-  referenciasPersonales: string[] = [
-    'Número de Referencias: Proporciona al menos dos referencias personales.',
-    '',
-    'Formato: Incluye la siguiente información para cada referencia personal:',
-    '',
-    'Nombre Completo',
-    'Relación: Describe brevemente tu relación con esta persona (e.g., amigo, vecino, colega).',
-    'Tiempo de Conocimiento: Indica cuánto tiempo conoces a esta persona.',
-    '',
-    'Datos de Contacto:',
-    'Teléfono',
-    'Correo Electrónico',
-    'Dirección ',
-    '',
-    'Comentarios: Una breve declaración de la persona referenciadora sobre tu carácter y habilidades',
-    'Formato de Archivo: PDF',
-  ];
+  txtCeAntecedentes: string[] = txtCeAntecedentes;
 
-  datosCertificadoMedico: string[] = [
-    '* Datos del Paciente:',
-    '-Nombre completo, -Fecha de nacimiento etc.',
-    '',
-    '* Datos del Médico:',
-    '-Nombre completo, -Número de cédula médica, -Especialidad, -Dirección del consultorio, -Número de contacto',
-    '',
-    '* Exámenes Realizados:',
-    '-Historia clínica, -Examen físico general (peso, altura, presión arterial, etc.)',
-    '-Evaluación de sistemas principales (cardiovascular, respiratorio, etc.), -Exámenes de laboratorio (sangre, orina, etc.)',
-    '-Pruebas adicionales (electrocardiograma, radiografía, etc.)',
-    '',
-    '* Declaración de Salud:',
-    '- Donde el paciente no presenta enfermedades contagiosas ni restricciones médicas.',
-    '',
-    '* Fecha de Emisión:',
-    '- Fecha de examen y emisión del certificado.',
-    '',
-    '* Firma y Sello del Médico:',
-    '-Firma del médico y Sello del consultorio',
-    '',
-    '* Observaciones Adicionales:',
-    '-Observaciones relevantes del médico.',
-    'Formato de Archivo: PDF',
-  ];
+  txtVerAntecedentes: string[] = txtVerAntecedentes;
 
-  datosPruebasDrogasAlcohol: string[] = [
-    '* Datos del Paciente:',
-    '(1)Nombre completo (2)Fecha de nacimiento',
-    '',
-    '* Datos del Proveedor de la Prueba:',
-    '(1)Nombre completo (2)Número de cédula médica o certificación (3)Especialidad (4)Dirección del laboratorio o clínica (5)Número de contacto',
-    '',
-    '* Detalles de la Prueba:',
-    '(1)Tipo de prueba (orina, sangre, saliva, cabello, etc.) (2)Sustancias analizadas (alcohol, THC, opioides, cocaína, etc.) (3)Fecha y hora de la recolección de la muestra',
-    '',
-    '* Resultados de la Prueba:',
-    '(1)Resultado para cada sustancia (negativo, positivo, niveles específicos, etc.) (2)Observaciones del técnico o médico que realizó la prueba',
-    '',
-    '* Declaración de Resultados:',
-    '(1)Declaración que indique si el paciente está libre de drogas y alcohol según los resultados obtenidos.',
-    '',
-    '* Fecha de Emisión:',
-    '(1)Fecha en la que se emitió el documento de resultados.',
-    '',
-    '* Firma y Sello del Proveedor de la Prueba:',
-    '(1)Firma del técnico o médico responsable (2)Sello del laboratorio o clínica',
-    '',
-    '* Observaciones Adicionales:',
-    '(1)Cualquier observación relevante que el técnico o médico considere importante.',
-    'Formato de Archivo: PDF',
-  ];
+  referenciasProfesionales: string[] = referenciasProfesionales;
+
+  referenciasPersonales: string[] = referenciasPersonales;
+
+  datosCertificadoMedico: string[] = datosCertificadoMedico;
+
+  datosPruebasDrogasAlcohol: string[] = datosPruebasDrogasAlcohol;
 }

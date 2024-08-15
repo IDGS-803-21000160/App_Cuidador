@@ -1,23 +1,23 @@
-import { Documentacion } from './documentacion';
+import { ItDocumentacion } from './documentacion';
 
 export interface ItCertificacionExperiencia {
-  id_certificacion?: number;
-  tipo_certificacion: string;
-  institucion_emisora: string;
-  fecha_certificacion: Date;
+  idCertificacion?: number;
+  tipoCertificacion: string;
+  institucionEmisora: string;
+  fechaCertificacion: Date;
   vigente: boolean;
   descripcion: string;
-  fecha_registro: Date;
-  usuario_registro: number;
-  fecha_modificacion: Date;
-  usuario_modifico: number;
-  persona_id?: number;
-  documento_id?: number;
+  fechaRegistro: Date;
+  usuarioRegistro: number;
+  fechaModificacion?: Date;
+  usuarioModifico?: number;
+  personaId?: number;
+  documentoId?: number;
 }
 
 export interface ItCertificacion {
   certificacion: ItCertificacionExperiencia;
-  documento: Documentacion;
+  documento: ItDocumentacion;
 }
 
 export interface ItCertificaciones {

@@ -1,0 +1,28 @@
+<div class="flex flex-row">
+  <div class="basis-1/5">
+    <div class="sidebarBlock flex flex-col p-10">
+      <div class="title text-center font-bold text-2xl pb-20">
+        Registró Familiar
+      </div>
+      <div class="stepComplete p-3 w-55 rounded-full">
+        <p class="pl-3 text-lg text-white font-semibold">Aviso de privacidad</p>
+      </div>
+      <div class="p-3 w-55 rounded-full mt-6" id="requisitos">
+        <p class="pl-3 text-lg font-semibold">Requisitos</p>
+      </div>
+      <div class="p-3 w-55 rounded-full mt-6" id="formulario">
+        <p class="pl-3 text-lg font-semibold">Formulario de registro</p>
+      </div>
+    </div>
+  </div>
+  <div class="basis-1/5 w-screen">
+    @switch (componentRender) { @case ('') {
+    <app-privacy-notice></app-privacy-notice>
+
+    } @case ('requirements') {
+    <app-requirements></app-requirements>
+    } @case ('formFam') {
+    <app-form></app-form>
+    } }
+  </div>
+</div>

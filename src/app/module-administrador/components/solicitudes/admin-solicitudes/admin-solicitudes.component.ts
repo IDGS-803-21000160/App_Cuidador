@@ -20,8 +20,8 @@ export class AdminSolicitudesComponent {
         this.allUsers = data;
         this.allUsers.map((user) => {
           if (
-            user.usuario.tipo_usuarioid === 1 &&
-            user.usuario.estatusid === 2
+            user.usuario.tipoUsuarioId === 1 &&
+            user.usuario.estatusId === 2
           ) {
             this.cuidadores.push(user);
           } else {

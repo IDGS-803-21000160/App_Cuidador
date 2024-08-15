@@ -8,7 +8,7 @@
 <div class="grid grid-cols-1 gap-4">
   <div *ngFor="let documento of documentos" class="flex w-full">
     <div
-      id="popover-{{ documento.id_documentacion }}"
+      id="popover-{{ documento.idDocumentacion }}"
       role="tooltip"
       class="overflow-auto inline-block w-96 h-full text-sm text-gray-500 duration-300 bg-white border border-gray-200 rounded-lg shadow-sm"
     >
@@ -18,7 +18,7 @@
         </h3>
       </div>
       <div class="px-3 py-2">
-        @switch (documento.nombre_documento) { @case ('Fotografía reciente'){
+        @switch (documento.nombreDocumento) { @case ('Fotografía reciente'){
         <div class="especificaciones">
           <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
             Aprobar el documento si cumple con lo siguiente:
@@ -1218,17 +1218,17 @@
 
             <div class="ml-2">
               <div class="text-sm font-semibold text-gray-900">
-                {{ documento.nombre_documento }}
+                {{ documento.nombreDocumento }}
               </div>
               <div class="text-xs text-gray-500">
-                {{ documento.fecha_emision | date }}
+                {{ documento.fechaEmision | date }}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div
-        id="verifi{{ documento.id_documentacion }}"
+        id="verifi{{ documento.idDocumentacion }}"
         class="rounded-lg w-full mt-8 flex py-5 justify-center"
       >
         <div class="inline-flex rounded-md shadow-sm" role="group">
@@ -1303,7 +1303,7 @@
     <!-- Modal -->
     <div
       #modalElement
-      id="extralarge-modal-{{ documento.id_documentacion }}"
+      id="extralarge-modal-{{ documento.idDocumentacion }}"
       tabindex="-1"
       class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
@@ -1313,7 +1313,7 @@
             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
           >
             <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-              {{ documento.nombre_documento }}
+              {{ documento.nombreDocumento }}
             </h3>
             <button
               type="button"

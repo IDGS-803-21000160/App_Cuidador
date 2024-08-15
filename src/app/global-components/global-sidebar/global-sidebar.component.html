@@ -46,6 +46,7 @@
               alt="user photo"
             />
           </button>
+
           <div
             *ngIf="dropdownVisible"
             class="absolute right-0 z-50 mt-2 w-48 bg-white rounded-lg shadow-lg dark:bg-gray-700"
@@ -71,21 +72,14 @@
                 <a
                   href="#"
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Settings</a
+                  >Configuración</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  (click)="logout()"
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Earnings</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Sign out</a
+                  >Cerrar Sesión</a
                 >
               </li>
             </ul>
@@ -123,6 +117,8 @@
                 [attr.stroke-linejoin]="item.strokeLinejoin"
                 [attr.stroke-width]="item.strokeWidth"
                 [attr.d]="path"
+                [attr.fill-rule]="item?.fillRule"
+                [attr.clip-rule]="item?.clipRule"
               ></path>
             </g>
           </svg>

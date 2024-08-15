@@ -11,9 +11,17 @@ const routes: Routes = [
     path: '',
     component: InformativeHomepageComponent,
     children: [
+      { path: '', redirectTo: 'formFamiliar', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'home', component: PageInitialComponent },
       { path: 'form', component: FormCuidadorComponent },
+      {
+        path: 'formFamiliar',
+        loadChildren: () =>
+          import('../adultomayor/adultomayor.module').then(
+            (m) => m.AdultomayorModule
+          ),
+      },
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

@@ -44,7 +44,7 @@
             <select
               id="tipo-sanguineo"
               name="tipo-sanguineo"
-              [(ngModel)]="objtDatosMedicos.tipo_sanguineo"
+              [(ngModel)]="objtDatosMedicos.tipoSanguineo"
               class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option value="A+">A+</option>
@@ -73,7 +73,7 @@
               type="text"
               id="nombre_medicofamiliar"
               name="nombre_medicofamiliar"
-              [(ngModel)]="objtDatosMedicos.nombre_medicofamiliar"
+              [(ngModel)]="objtDatosMedicos.nombreMedicoFamiliar"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Nombre Médico Familiar"
               required
@@ -96,7 +96,7 @@
               type="text"
               id="telefono_medicofamiliar"
               name="telefono_medicofamiliar"
-              [(ngModel)]="objtDatosMedicos.telefono_medicofamiliar"
+              [(ngModel)]="objtDatosMedicos.telefonoMedicoFamiliar"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Teléfono Médico Familiar"
               required
@@ -163,7 +163,7 @@
               {{ padecimiento.nombre }}
             </th>
             <td class="px-6 py-4">{{ padecimiento.descripcion }}</td>
-            <td class="px-6 py-4">{{ padecimiento.padece_desde }}</td>
+            <td class="px-6 py-4">{{ padecimiento.padeceDesde }}</td>
           </tr>
           }
         </tbody>

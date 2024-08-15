@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventServiceService } from '../../services/event-service.service';
+import { Persona } from '../../interfaces/interfaceCuidador';
 
 @Component({
   selector: 'app-form-infopersonal',
@@ -18,29 +19,29 @@ export class FormInfopersonalComponent implements OnInit, OnDestroy {
   persona: ItPersonaFisica | undefined;
 
   propsPersona: ItPersonaFisica = {
-    apellido_materno: '',
-    apellido_paterno: '',
-    avatar_image: '',
-    correo_electronico: '',
+    apellidoMaterno: '',
+    apellidoPaterno: '',
+    avatarImage: '',
+    correoElectronico: '',
     curp: '',
-    datos_medicosid: 0,
-    domicilio_id: 0,
-    estado_civil: '',
-    estatus_id: 0,
-    fecha_modificacion: '',
-    fecha_nacimiento: '',
-    fecha_registro: '',
+    datosMedicosId: 0,
+    domicilioId: 0,
+    estadoCivil: '',
+    estatusId: 0,
+    fechaModificacion: new Date(),
+    fechaNacimiento: new Date(),
+    fechaRegistro: new Date(),
     genero: '',
-    id_persona: 0,
+    idPersona: 0,
     nombre: '',
-    nombrecompleto_familiar: '',
+    nombreCompletoFamiliar: '',
     rfc: '',
-    telefono_emergencia: '',
-    telefono_movil: '',
-    telefono_particular: '',
-    usuario_id: 0,
-    usuario_modifico: 0,
-    usuario_registro: 0,
+    telefonoEmergencia: '',
+    telefonoMovil: '',
+    telefonoParticular: '',
+    usuarioId: 0,
+    usuarioModifico: 0,
+    usuarioRegistro: 0,
   };
 
   constructor(private service: EventServiceService) {}

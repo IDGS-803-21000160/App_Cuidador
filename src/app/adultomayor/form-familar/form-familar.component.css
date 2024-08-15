@@ -1,0 +1,14 @@
+.sidebarBlock {
+  width: 20rem;
+  height: 100vh;
+  background: #fafafa;
+  border-radius: 35px;
+}
+
+.title {
+  color: #395886;
+}
+
+.stepComplete {
+  background-color: #395886;
+}

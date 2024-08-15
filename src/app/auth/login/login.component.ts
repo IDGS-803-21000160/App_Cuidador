@@ -14,8 +14,10 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   async onSubmit() {
-    const user = { email: this.email, password: this.password };
+    const user = { usuario: this.email, contrasenia: this.password };
     const validacion = await this.authService.login(user);
+    console.log('Validacion:', validacion);
+
     if (validacion) {
       const redirectUrl = this.authService.redirectUrl();
       console.log('Redirecting to:', redirectUrl);
@@ -23,5 +25,9 @@ export class LoginComponent {
     } else {
       alert('Invalid credentials');
     }
+  }
+
+  cerrarSesion() {
+    this.authService.logout();
   }
 }

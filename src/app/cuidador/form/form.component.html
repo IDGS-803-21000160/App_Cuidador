@@ -1,27 +1,29 @@
 <div class="content w-screen pl-10">
+  <!-- Sección: Encabezado del Formulario -->
   <p class="text-4xl font-bold">Formulario de registro</p>
   <br />
   <p class="subtitle font-bold">Información Personal</p>
   <br />
 
   <form class="max-w-sm">
+    <!-- Sección: Información Personal -->
     <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
       <div class="mb-2">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900"
           >Nombre(s)</label
         >
         <input
           type="text"
           name="nombre"
+          id="nombre"
           [(ngModel)]="nombre"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtApPaterno"
+          for="apPaterno"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Apellido Paterno</label
         >
@@ -30,13 +32,13 @@
           id="apPaterno"
           name="apellido_paterno"
           [(ngModel)]="apellido_paterno"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtApMaterno"
+          for="apMaterno"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Apellido Materno</label
         >
@@ -45,29 +47,29 @@
           id="apMaterno"
           name="apellido_materno"
           [(ngModel)]="apellido_materno"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtCorreo"
+          for="correoElectronico"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Correo Electronico</label
+          >Correo Electrónico</label
         >
         <input
           type="email"
-          id="corroElectronico"
+          id="correoElectronico"
           name="correo_electronico"
           [(ngModel)]="correo_electronico"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           placeholder="name@cuidador.com"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtFechaNac"
+          for="fechaNac"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Fecha Nacimiento</label
         >
@@ -76,31 +78,29 @@
           id="fechaNac"
           name="fecha_nacimiento"
           [(ngModel)]="fecha_nacimiento"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
-        <label
-          for="txtGenero"
-          class="block mb-2 text-sm font-medium text-gray-900"
-          >Genero</label
+        <label for="genero" class="block mb-2 text-sm font-medium text-gray-900"
+          >Género</label
         >
         <select
           id="genero"
           name="genero"
           [(ngModel)]="genero"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
-          <option>Hombre</option>
-          <option>Mujer</option>
-          <option>Otro</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
 
       <div class="mb-2">
         <label
-          for="txtEstadoCivil"
+          for="estadoCivil"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Estado Civil</label
         >
@@ -108,18 +108,18 @@
           id="estadoCivil"
           name="estado_civil"
           [(ngModel)]="estado_civil"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
-          <option>Soltero/a</option>
-          <option>Casado/a</option>
-          <option>Unión libre</option>
-          <option>Separado/a</option>
-          <option>Divorciado/a</option>
-          <option>Viudo/a</option>
+          <option value="Soltero/a">Soltero/a</option>
+          <option value="Casado/a">Casado/a</option>
+          <option value="Unión libre">Unión libre</option>
+          <option value="Separado/a">Separado/a</option>
+          <option value="Divorciado/a">Divorciado/a</option>
+          <option value="Viudo/a">Viudo/a</option>
         </select>
       </div>
       <div class="mb-2">
-        <label for="txtRFC" class="block mb-2 text-sm font-medium text-gray-900"
+        <label for="rfc" class="block mb-2 text-sm font-medium text-gray-900"
           >RFC</label
         >
         <input
@@ -127,14 +127,12 @@
           id="rfc"
           name="rfc"
           [(ngModel)]="rfc"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
-        <label
-          for="txtCURP"
-          class="block mb-2 text-sm font-medium text-gray-900"
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900"
           >CURP</label
         >
         <input
@@ -142,65 +140,66 @@
           id="curp"
           name="curp"
           [(ngModel)]="curp"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtTelParticular"
+          for="telParticular"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Teléfono particular</label
         >
         <input
-          type="number"
+          type="text"
           id="telParticular"
           name="telefono_particular"
           [(ngModel)]="telefono_particular"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtTelmovil"
+          for="telMovil"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Teléfono móvil</label
         >
         <input
-          type="number"
+          type="text"
           id="telMovil"
           name="telefono_movil"
           [(ngModel)]="telefono_movil"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
         <label
-          for="txtTelEmerg"
+          for="telEmergencia"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Teléfono de emergencia</label
         >
         <input
-          type="number"
+          type="text"
           id="telEmergencia"
           name="telefono_emergencia"
           [(ngModel)]="telefono_emergencia"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
     </div>
+
+    <!-- Sección: Fotografía e Identificación -->
     <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
       <div class="mb-2">
         <div class="flex">
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_input"
+            >Fotografía reciente</label
           >
-            Fotografía reciente
-          </label>
           <app-ball-info class="pl-2" [textInfo]="textInfoFoto"></app-ball-info>
         </div>
         <app-file-upload
@@ -213,9 +212,8 @@
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_input"
+            >Fotografía de identificación oficial</label
           >
-            Fotografía de identificación oficial
-          </label>
           <app-ball-info class="pl-2" [textInfo]="textINE"></app-ball-info>
         </div>
         <app-file-upload
@@ -224,30 +222,29 @@
         ></app-file-upload>
       </div>
     </div>
+
     <br />
     <p class="subtitle font-bold">Información de Residencia</p>
     <br />
+
+    <!-- Sección: Información de Residencia -->
     <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
       <div class="mb-2">
-        <label
-          for="txtPais"
-          class="block mb-2 text-sm font-medium text-gray-900"
+        <label for="pais" class="block mb-2 text-sm font-medium text-gray-900"
           >País</label
         >
         <select
           id="pais"
           name="pais"
           [(ngModel)]="pais"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
           <option value="México">México</option>
           <option value="Otro">Otro</option>
         </select>
       </div>
       <div class="mb-2">
-        <label
-          for="txtEstado"
-          class="block mb-2 text-sm font-medium text-gray-900"
+        <label for="estado" class="block mb-2 text-sm font-medium text-gray-900"
           >Estado</label
         >
         <select
@@ -255,7 +252,7 @@
           name="estado"
           [(ngModel)]="estado"
           (change)="onEstadoChange($event)"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
           @for (estado of estados; track $index) {
           <option [value]="estado">{{ estado }}</option>
@@ -264,7 +261,7 @@
       </div>
       <div class="mb-2">
         <label
-          for="txtMunicipio"
+          for="municipio"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Municipio</label
         >
@@ -273,7 +270,7 @@
           name="municipio"
           [(ngModel)]="municipio"
           [disabled]="municipios.length === 0"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
           @for (municipio of municipios; track $index) {
           <option [value]="municipio">{{ municipio }}</option>
@@ -291,8 +288,7 @@
           name="colonia"
           [(ngModel)]="colonia"
           type="text"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
@@ -305,8 +301,7 @@
           name="calle"
           [(ngModel)]="calle"
           type="text"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
@@ -320,9 +315,8 @@
           id="numInterior"
           name="numInterior"
           [(ngModel)]="numInterior"
-          type="number"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
@@ -336,11 +330,10 @@
         >
         <input
           id="numExterior"
-          type="number"
+          type="text"
           name="numExterior"
           [(ngModel)]="numExterior"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
@@ -348,31 +341,33 @@
         <label
           for="referencias"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Referencias </label
+          >Referencias</label
         >
         <input
           id="referencias"
           type="text"
           name="referencias"
           [(ngModel)]="referencias"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Ej. Casa verde de dos pisos con ventanales negros. "
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Ej. Casa verde de dos pisos con ventanales negros."
           required
         />
       </div>
     </div>
+
     <br />
     <p class="subtitle font-bold">Verificaciones Legales</p>
     <br />
+
+    <!-- Sección: Verificaciones Legales -->
     <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
       <div class="mb-2">
         <div class="flex">
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_cerAntecedentes"
+            >Certificado de Antecedentes Penales</label
           >
-            Certificado de Antecedentes Penales
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="txtCeAntecedentes"
@@ -388,9 +383,8 @@
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_VeriAntecedentes"
+            >Autorización para Verificación de Antecedentes</label
           >
-            Autorización para Verificación de Antecedentes
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="txtVerAntecedentes"
@@ -402,18 +396,20 @@
         ></app-file-upload>
       </div>
     </div>
+
     <br />
     <p class="subtitle font-bold">Información de Contacto</p>
     <br />
+
+    <!-- Sección: Información de Contacto -->
     <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
       <div class="mb-2">
         <div class="flex">
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_refProfesional"
+            >Referencias Profesionales</label
           >
-            Referencias Profesionales
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="referenciasProfesionales"
@@ -429,9 +425,8 @@
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_refPersonales"
+            >Referencias Personales</label
           >
-            Referencias Personales
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="referenciasPersonales"
@@ -443,13 +438,16 @@
         ></app-file-upload>
       </div>
     </div>
+
     <br />
-    <p class="subtitle font-bold">Información Médica y de Salud.</p>
+    <p class="subtitle font-bold">Información Médica y de Salud</p>
     <br />
+
+    <!-- Sección: Información Médica y de Salud -->
     <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
       <div class="mb-2">
         <label
-          for="txtTipoSanguineo"
+          for="tipo-sanguineo"
           class="block mb-2 text-sm font-medium text-gray-900"
           >Tipo sanguíneo</label
         >
@@ -457,7 +455,7 @@
           id="tipo-sanguineo"
           name="tipo-sanguineo"
           [(ngModel)]="tipoSanguineo"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
           <option value="A+">A+</option>
           <option value="A-">A-</option>
@@ -470,30 +468,32 @@
         </select>
       </div>
       <div class="mb-2">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
-          >Nombre del médico familiar.</label
+        <label
+          for="nameMedicoFamiliar"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Nombre del médico familiar</label
         >
         <input
           id="nameMedicoFamiliar"
           type="text"
           name="nameMedicoFamiliar"
           [(ngModel)]="nombreMedicoFam"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
       <div class="mb-2">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
-          >Número telefónico del médico familiar.</label
+        <label
+          for="numMedicoFamiliar"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Número telefónico del médico familiar</label
         >
         <input
           id="numMedicoFamiliar"
           type="text"
           name="numMedicoFamiliar"
           [(ngModel)]="numMedicoFam"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
@@ -503,10 +503,9 @@
         <div class="flex">
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
-            for="file_refProfesional"
+            for="file_certMedico"
+            >Certificado Médico de Buena Salud</label
           >
-            Certificado Médico de Buena Salud
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="datosCertificadoMedico"
@@ -521,10 +520,9 @@
         <div class="flex">
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
-            for="file_refPersonales"
+            for="file_pruebasDrogas"
+            >Pruebas de Drogas y Alcohol</label
           >
-            Pruebas de Drogas y Alcohol
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="datosPruebasDrogasAlcohol"
@@ -542,7 +540,9 @@
           class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
           style="background-color: #fafafa"
         >
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+          <label
+            for="alergia"
+            class="block mb-2 text-sm font-medium text-gray-900"
             >Alergias</label
           >
           <div class="flex">
@@ -551,15 +551,14 @@
               [(ngModel)]="alergia"
               name="alergia"
               type="text"
-              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
+              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required
             />
             <button
               (click)="agregarAlergia()"
               type="button"
               style="background-color: #6096ba"
-              class="w-48 mt-3 ml-5 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+              class="w-48 mt-3 ml-5 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5"
             >
               Agregar Alergia
             </button>
@@ -568,7 +567,7 @@
             @for (alergia of alergias; track $index) {
             <span
               id="badge-dismiss-default"
-              class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 rounded dark:bg-blue-200 dark:text-blue-900"
+              class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-800 rounded"
             >
               {{ alergia }}
               <button
@@ -613,7 +612,7 @@
           <div class="flex w-screen max-w-5xl grid grid-cols-2 gap-4">
             <div>
               <label
-                for="name"
+                for="namePadecimiento"
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Nombre del padecimiento:</label
               >
@@ -622,12 +621,12 @@
                 name="padecimiento"
                 [(ngModel)]="nombrePadecimiento"
                 type="text"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Ej.: Diabete."
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Ej.: Diabetes."
                 required
               />
               <label
-                for="desPadecimiento"
+                for="descPadecimiento"
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Descripción del padecimiento:</label
               >
@@ -636,12 +635,12 @@
                 name="descPadecimiento"
                 [(ngModel)]="descPadecimiento"
                 type="text"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Ej.: Sufro de diabetes tipo 2, una condición crónica que afecta la forma en que mi cuerpo metaboliza la glucosa."
                 required
               ></textarea>
               <label
-                for="name"
+                for="fechaPadecimiento"
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Padece desde:</label
               >
@@ -650,14 +649,14 @@
                 name="fechaPadecimiento"
                 [(ngModel)]="fechaPadecimiento"
                 type="date"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 required
               />
               <button
                 (click)="agregarPadecimiento()"
                 type="button"
                 style="background-color: #6096ba"
-                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5"
               >
                 Agregar Padecimiento
               </button>
@@ -666,7 +665,7 @@
               @for (pad of objPadecimientos; track $index) {
               <span
                 id="badge-dismiss-default"
-                class="w-full block mt-3 items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 rounded dark:bg-blue-200 dark:text-blue-900"
+                class="w-full block mt-3 items-center px-2 py-1 text-sm font-medium text-blue-800 rounded"
               >
                 <div class="flex justify-between items-center">
                   <div>{{ pad.nombre }}</div>
@@ -703,119 +702,117 @@
         </div>
       </div>
     </div>
+
     <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
       <div class="mb-2">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
-          >Observaciones.</label
+        <label
+          for="observaciones"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Observaciones</label
         >
         <textarea
           id="observaciones"
           type="text"
           [(ngModel)]="observaciones"
           name="observaciones"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           placeholder=""
           required
         ></textarea>
       </div>
     </div>
+
     <br />
-    <p class="subtitle font-bold">Información Profesional.</p>
+    <p class="subtitle font-bold">Información Profesional</p>
     <br />
+
+    <!-- Sección: Información Profesional -->
     <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
       <div class="mb-2">
         <div
           class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
           style="background-color: #fafafa"
         >
-          <p>Certificaciones, Licencias, Educación y Títulos Académicos </p>
+          <p>Certificaciones, Licencias, Educación y Títulos Académicos</p>
           <br />
           <div class="flex w-screen max-w-5xl grid grid-cols-2 gap-4">
             <div>
               <label
-                for="name"
+                for="typeCerticacion"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Tipo de certificación :</label
+                >Tipo de certificación:</label
               >
               <input
                 id="typeCerticacion"
                 name="typeCerticacion"
                 [(ngModel)]="tipoCertificacio"
                 type="text"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Ej.: Académica, Médica "
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Ej.: Académica, Médica"
                 required
               />
               <label
-                for="name"
+                for="institusionEm"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Institución emisora :</label
+                >Institución emisora:</label
               >
               <input
                 id="institusionEm"
                 name="institusionEm"
                 [(ngModel)]="institucion"
                 type="text"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Ej.: Instituto Tecnológico de salud, etc.
-                "
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Ej.: Instituto Tecnológico de salud, etc."
                 required
               />
               <label
                 for="fechaCertificacion"
                 class="block mb-2 text-sm font-medium text-gray-900"
+                >Fecha de la certificación:</label
               >
-                Fecha de la certificación:
-              </label>
               <input
                 id="fechaCertificacion"
                 name="fechaCertificacion"
                 [(ngModel)]="fechaCertificacion"
                 type="date"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 required
               />
-
               <label
                 for="desCertificacion"
                 class="block mb-2 text-sm font-medium text-gray-900"
+                >Descripción:</label
               >
-                Descripción:
-              </label>
               <textarea
                 id="desCertificacion"
                 name="desCertificacion"
                 [(ngModel)]="descCertificacion"
-                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Describe detalladamente las habilidades adquiridas en la certificación"
                 required
               ></textarea>
-
               <div class="flex">
                 <label
                   class="block mb-2 text-sm font-medium text-gray-900"
-                  for="file_refPersonales"
+                  for="file_certificado"
+                  >Documento que avale la información proporcionada</label
                 >
-                  Documento que avale la información proporcionada.
-                </label>
                 <app-ball-info
                   class="pl-2"
                   [textInfo]="referenciasPersonales"
                 ></app-ball-info>
               </div>
-
               <app-file-upload
                 #fileUploadCertificacion
                 [uploadId]="'fileUploadCertificacion'"
                 [tipoDocumento]="'Información Profesional'"
                 [nombreDoc]="'Certificado'"
               ></app-file-upload>
-
               <button
                 (click)="agregarCertificacion()"
                 type="button"
                 style="background-color: #6096ba"
-                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5"
               >
                 Agregar Certificación
               </button>
@@ -824,12 +821,12 @@
               @for (certificacion of certificaciones; track $index) {
               <span
                 id="badge-dismiss-default"
-                class="w-full block mt-3 items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 rounded dark:bg-blue-200 dark:text-blue-900"
+                class="w-full block mt-3 items-center px-2 py-1 text-sm font-medium text-blue-800 rounded"
               >
                 <div class="flex justify-between items-center">
                   <div>
-                    {{ certificacion.certificacion.tipo_certificacion }} -
-                    {{ certificacion.certificacion.institucion_emisora }}
+                    {{ certificacion.certificacion.tipoCertificacion }} -
+                    {{ certificacion.certificacion.institucionEmisora }}
                   </div>
 
                   <button
@@ -868,9 +865,8 @@
           <label
             class="block mb-2 text-sm font-medium text-gray-900"
             for="file_histLaboral"
+            >Historial Laboral</label
           >
-            Historial Laboral
-          </label>
           <app-ball-info
             class="pl-2"
             [textInfo]="referenciasPersonales"
@@ -882,34 +878,41 @@
         ></app-file-upload>
       </div>
     </div>
+
     <br />
-    <p class="subtitle font-bold">Configuración de usuario.</p>
+    <p class="subtitle font-bold">Configuración de usuario</p>
     <br />
+
+    <!-- Sección: Configuración de usuario -->
     <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
       <div class="mb-2">
-        <label for="user" class="block mb-2 text-sm font-medium text-gray-900"
-          >Usuario:</label
+        <label
+          for="nameUsuario"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Usuario</label
         >
         <input
           id="nameUsuario"
           name="nameUsuario"
           [(ngModel)]="usuario"
           type="text"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           placeholder=""
           required
         />
       </div>
       <div class="mb-2">
-        <label for="user" class="block mb-2 text-sm font-medium text-gray-900"
+        <label
+          for="contrasenia"
+          class="block mb-2 text-sm font-medium text-gray-900"
           >Contraseña</label
         >
         <input
-          id="nameUsuario"
-          name="nameUsuario"
+          id="contrasenia"
+          name="contrasenia"
           [(ngModel)]="contrasenia"
-          type="text"
-          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          type="password"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           placeholder="* * * * * * *"
           required
         />

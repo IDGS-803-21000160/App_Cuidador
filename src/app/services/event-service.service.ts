@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { BodyStep, ItAllUsers } from '../interfaces/interfaces';
-import { Documentacion } from '../interfaces/documentacion';
 import { ItPersonaFisica } from '../interfaces/personaFisica';
 import { ItDatosMedicos } from '../interfaces/datos_medicos';
 import { ItPadecimiento } from '../interfaces/padecimientos';
+import { Persona, RootObject } from '../interfaces/interfaceCuidador';
+import { ItDocumentacion } from '../interfaces/documentacion';
 
 @Injectable({
   providedIn: 'root',
@@ -19,15 +20,19 @@ export class EventServiceService {
     this.stepCompleteSource.next({ bodyStep });
   }
 
+  //Evento para Formulario Familiar form-familiar
+  private stepComplete = new Subject<{ bodySteptwo: BodyStep }>();
+  bodySteptwo$ = this.stepComplete.asObservable();
+
   // Servicios Para obtención de la URL generada
 
-  private downloadURLSubject = new Subject<Documentacion>();
+  private downloadURLSubject = new Subject<ItDocumentacion>();
 
-  setDownloadURL(objDataDoc: Documentacion) {
+  setDownloadURL(objDataDoc: ItDocumentacion) {
     this.downloadURLSubject.next(objDataDoc);
   }
 
-  getDownloadURL(): Observable<Documentacion> {
+  getDownloadURL(): Observable<ItDocumentacion> {
     return this.downloadURLSubject.asObservable();
   }
 
@@ -91,15 +96,29 @@ export class EventServiceService {
   }
 
   //-------------------- Evento para mandar Documentos------------------------
-  private documentacionSubject = new BehaviorSubject<
-    Documentacion[] | undefined
+  private ItDocumentacionSubject = new BehaviorSubject<
+    ItDocumentacion[] | undefined
   >(undefined);
 
-  lanzarDocumentos(documentos: Documentacion[] | undefined): void {
-    this.documentacionSubject.next(documentos);
+  lanzarDocumentos(documentos: ItDocumentacion[] | undefined): void {
+    this.ItDocumentacionSubject.next(documentos);
   }
 
-  obtenerDocumentos(): Observable<Documentacion[] | undefined> {
-    return this.documentacionSubject.asObservable();
+  obtenerDocumentos(): Observable<ItDocumentacion[] | undefined> {
+    return this.ItDocumentacionSubject.asObservable();
+  }
+
+  // Evento para lanzar usuario cuando se logea Cuidador
+
+  private cuidadorSubject = new BehaviorSubject<RootObject | undefined>(
+    undefined
+  );
+
+  lanzarCuidador(rootObj: RootObject | undefined): void {
+    this.cuidadorSubject.next(rootObj);
+  }
+
+  recibirCuidador(): Observable<RootObject | undefined> {
+    return this.cuidadorSubject.asObservable();
   }
 }

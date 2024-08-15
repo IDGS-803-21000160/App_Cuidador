@@ -1,13 +1,13 @@
 export interface ItDatosMedicos {
-  id_datosmedicos: number;
-  antecedentes_medicos: string;
+  idDatosmedicos?: number;
+  antecedentesMedicos: string;
   alergias: string;
-  tipo_sanguineo: string;
-  nombre_medicofamiliar: string;
-  telefono_medicofamiliar: string;
+  tipoSanguineo: string;
+  nombreMedicoFamiliar: string;
+  telefonoMedicoFamiliar: string;
   observaciones: string;
-  fecha_registro: Date;
-  usuario_registro: number;
-  fecha_modificacion: Date;
-  usuario_modifico: number;
+  fechaRegistro?: Date;
+  usuarioRegistro?: number;
+  fechaModificacion?: Date;
+  usuarioModifico?: number;
 }

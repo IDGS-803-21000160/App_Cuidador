@@ -23,30 +23,30 @@ export class FormInfomedicaComponent implements OnInit, OnDestroy {
   listaAlergias: string[] = [];
 
   objtDatosMedicos: ItDatosMedicos = {
-    id_datosmedicos: 0,
-    antecedentes_medicos: '',
+    idDatosmedicos: 0,
+    antecedentesMedicos: '',
     alergias: '',
-    tipo_sanguineo: '',
-    nombre_medicofamiliar: '',
-    telefono_medicofamiliar: '',
+    tipoSanguineo: '',
+    nombreMedicoFamiliar: '',
+    telefonoMedicoFamiliar: '',
     observaciones: '',
-    fecha_registro: new Date(),
-    usuario_registro: 0,
-    fecha_modificacion: new Date(),
-    usuario_modifico: 0,
+    fechaRegistro: new Date(),
+    usuarioRegistro: 0,
+    fechaModificacion: new Date(),
+    usuarioModifico: 0,
   };
 
   objPadecimiento: ItPadecimiento[] = [
     {
-      id_padecimiento: 0,
-      datosmedicos_id: 0,
+      idPadecimiento: 0,
+      datosMedicosId: 0,
       nombre: '',
       descripcion: '',
-      padece_desde: new Date(),
-      fecha_registro: new Date(),
-      usuario_registro: 0,
-      fecha_modificacion: new Date(),
-      usuario_modifico: 0,
+      padeceDesde: new Date(),
+      fechaRegistro: new Date(),
+      usuarioRegistro: 0,
+      fechaModificacion: new Date(),
+      usuarioModifico: 0,
     },
   ];
 

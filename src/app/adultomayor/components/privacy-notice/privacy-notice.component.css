@@ -1,0 +1,8 @@
+.subtitle {
+  color: #6096ba;
+}
+
+.content {
+  overflow-y: scroll;
+  height: 110vh;
+}

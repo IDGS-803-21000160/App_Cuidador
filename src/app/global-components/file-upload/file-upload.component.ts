@@ -7,7 +7,7 @@ import { finalize } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EventServiceService } from '../../services/event-service.service';
-import { Documentacion } from '../../interfaces/documentacion';
+import { ItDocumentacion } from '../../interfaces/documentacion';
 
 @Component({
   selector: 'app-file-upload',
@@ -38,7 +38,7 @@ export class FileUploadComponent {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    return `${year}-${month}-${day}`;
   }
 
   onFileSelected(event: any) {
@@ -71,20 +71,16 @@ export class FileUploadComponent {
               next: (url) => {
                 this.uploadStatus = 'Archivo subido exitosamente';
                 this.downloadURL = fileRef.getDownloadURL();
-                const datosDocumento: Documentacion = {
-                  id_documentacion: 0,
-                  persona_id: 0,
-                  tipo_documento: this.tipoDocumento,
-                  nombre_documento: this.nombreDoc,
-                  url_documento: url,
-                  fecha_emision: this.getFormattedDate(new Date()),
-                  fecha_expiracion: this.getFormattedDate(new Date()),
+                const datosDocumento: ItDocumentacion = {
+                  tipoDocumento: this.tipoDocumento,
+                  nombreDocumento: this.nombreDoc,
+                  urlDocumento: url,
+                  fechaEmision: this.getFormattedDate(new Date()),
+                  fechaExpiracion: this.getFormattedDate(new Date()),
                   version: 1,
-                  estatus_id: 1,
-                  fecha_registro: this.getFormattedDate(new Date()),
-                  usuario_registro: 0,
-                  fecha_modificacion: this.getFormattedDate(new Date()),
-                  usuario_modifico: 0,
+                  estatusId: 18,
+                  fechaRegistro: this.getFormattedDate(new Date()),
+                  usuarioRegistro: 0,
                 };
                 this.eventServices.setDownloadURL(datosDocumento);
               },

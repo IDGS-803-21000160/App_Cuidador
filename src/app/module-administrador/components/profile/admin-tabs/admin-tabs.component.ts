@@ -6,7 +6,7 @@ import { ItAllUsers } from '../../../../interfaces/interfaces';
 import { ItPersonaFisica } from '../../../../interfaces/personaFisica';
 import { ItDatosMedicos } from '../../../../interfaces/datos_medicos';
 import { ItPadecimiento } from '../../../../interfaces/padecimientos';
-import { Documentacion } from '../../../../interfaces/documentacion';
+import { ItDocumentacion } from '../../../../interfaces/documentacion';
 
 @Component({
   selector: 'app-admin-tabs',
@@ -23,7 +23,7 @@ export class AdminTabsComponent implements OnInit, OnDestroy {
   infopersona: ItPersonaFisica | undefined;
   infoDatosMedicos: ItDatosMedicos | undefined;
   infoPadecimientos: ItPadecimiento[] | undefined = [];
-  infoDocs: Documentacion[] | undefined = [];
+  infoDocs: ItDocumentacion[] | undefined = [];
   showFirstDiv = true;
 
   constructor(private router: Router, private eventoServ: EventServiceService) {
@@ -38,11 +38,11 @@ export class AdminTabsComponent implements OnInit, OnDestroy {
         .subscribe((data) => {
           if (data) {
             this.datosUsuario = data;
-            this.imgPerfil = this.datosUsuario.persona.avatar_image;
+            this.imgPerfil = this.datosUsuario.persona.avatarImage;
             this.nameCuidador =
               this.datosUsuario.persona.nombre +
               ' ' +
-              this.datosUsuario.persona.apellido_paterno;
+              this.datosUsuario.persona.apellidoPaterno;
             this.userName = '@' + this.datosUsuario.usuario.usuario;
             this.infopersona = this.datosUsuario.persona;
             this.infoDatosMedicos = this.datosUsuario.datos_medicos;

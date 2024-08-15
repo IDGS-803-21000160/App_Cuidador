@@ -1,6 +1,6 @@
 import { ItCertificaciones } from './certificaciones';
 import { ItDatosMedicos } from './datos_medicos';
-import { Documentacion } from './documentacion';
+import { ItDocumentacion } from './documentacion';
 import { ItDomicilio } from './domicilio';
 import { ItPadecimiento } from './padecimientos';
 import { ItPersonaFisica } from './personaFisica';
@@ -17,8 +17,8 @@ export interface registroCuidador {
   padecimientos: ItPadecimiento[];
   usuario: ItUsuario;
   persona: ItPersonaFisica;
-  documentacion: Documentacion[];
-  certificaciones: ItCertificaciones;
+  documentacion: ItDocumentacion[];
+  certificacionesExperiencia: ItCertificaciones;
 }
 
 export interface ItAllUsers {
@@ -27,6 +27,15 @@ export interface ItAllUsers {
   padecimientos: ItPadecimiento[];
   usuario: ItUsuario;
   persona: ItPersonaFisica;
-  documentacion: Documentacion[];
-  certificaciones: ItCertificaciones;
+  documentacion: ItDocumentacion[];
+  certificacionesExperiencia: ItCertificaciones;
+}
+
+export interface registroFamiliar {
+  domicilio: ItDomicilio;
+  datos_medicos: ItDatosMedicos;
+  padecimientos: ItPadecimiento[];
+  usuario: ItUsuario;
+  persona: ItPersonaFisica;
+  documentacion: ItDocumentacion[];
 }

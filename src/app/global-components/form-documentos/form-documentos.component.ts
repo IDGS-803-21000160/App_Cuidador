@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Modal, ModalOptions, ModalInterface } from 'flowbite';
 import { EventServiceService } from '../../services/event-service.service';
 import { Subscription } from 'rxjs';
-import { Documentacion } from '../../interfaces/documentacion';
+import { ItDocumentacion } from '../../interfaces/documentacion';
 
 @Component({
   selector: 'app-form-documentos',
@@ -22,7 +22,7 @@ import { Documentacion } from '../../interfaces/documentacion';
 })
 export class FormDocumentosComponent implements AfterViewInit, OnInit {
   eventoSubscription: Subscription | undefined;
-  documentos: Documentacion[] | undefined = [];
+  documentos: ItDocumentacion[] | undefined = [];
   backgroundStyle = 'linear-gradient(to right, #ffffff, #f0f0f0)';
 
   @ViewChild('modalElement', { static: true }) modalElement!: ElementRef;
@@ -41,7 +41,7 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
         console.log('La Data en Data', data);
         this.documentos = data?.map((documento) => {
           documento.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-            documento.url_documento
+            documento.urlDocumento
           );
           return documento;
         });
@@ -68,28 +68,32 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
       };
 
       const modalElement = document.getElementById(
-        `extralarge-modal-${documento.id_documentacion}`
+        `extralarge-modal-${documento.idDocumentacion}`
       );
       if (modalElement) {
-        this.modals[documento.id_documentacion] = new Modal(
-          modalElement,
-          modalOptions
-        );
+        if (documento.idDocumentacion !== undefined) {
+          this.modals[documento.idDocumentacion] = new Modal(
+            modalElement,
+            modalOptions
+          );
+        } else {
+          console.error('documento.idDocumentacion is undefined');
+        }
       }
     });
   }
 
   openModal(documento: any) {
-    this.modals[documento.id_documentacion].show();
+    this.modals[documento.idDocumentacion].show();
   }
 
   closeModal(documento: any) {
-    this.modals[documento.id_documentacion].hide();
+    this.modals[documento.idDocumentacion].hide();
   }
 
   updateStatus(documento: any, status: number) {
     let div = document.getElementById(
-      `verifi${documento.id_documentacion}`
+      `verifi${documento.idDocumentacion}`
     ) as HTMLElement;
     documento.estatus_id = status;
 
@@ -103,7 +107,7 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
         'linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(244,244,244,1) 50%, rgba(255,255,255,1) 100%)';
     }
     console.log(
-      `Documento ${documento.id_documentacion} actualizado a estado ${status}`
+      `Documento ${documento.idDocumentacion} actualizado a estado ${status}`
     );
 
     console.log(div);

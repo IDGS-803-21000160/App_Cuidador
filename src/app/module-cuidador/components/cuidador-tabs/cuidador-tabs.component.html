@@ -1,0 +1,52 @@
+<div
+  class="profiles p-4 mt-20 sm:ml-64 rounded-lg mr-5 border-solid border-inherit border-2"
+>
+  <div class="w-full flex grid place-items-center">
+    <section class="imgbanner w-full h-48 grid place-items-center rounded-lg">
+      <div class="fotoPerfil mt-20 grid place-items-center">
+        <img class="imgProfile rounded-full" alt="" [src]="fotoProfile" />
+      </div>
+      <p class="mt-5 font-sans text-xl font-bold">Hola</p>
+      <p class="font-sans text-base font-medium text-slate-400">Jose</p>
+    </section>
+  </div>
+  <div class="w-full mt-32">
+    <ul
+      class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700"
+    >
+      <li class="me-2">
+        <a
+          class="inline-block p-4 rounded-t-lg"
+          routerLink="/cuidador/profile/infoPersonal"
+          >Información personal</a
+        >
+      </li>
+      <li class="me-2">
+        <a
+          class="inline-block p-4 rounded-t-lg"
+          routerLink="/cuidador/profile/infoMedica"
+          >Información Médica</a
+        >
+      </li>
+      <li class="me-2">
+        <a
+          class="inline-block p-4 rounded-t-lg"
+          routerLink="/cuidador/profile/documentos"
+          >Documentos</a
+        >
+      </li>
+      <li>
+        <a
+          class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500"
+          >Deshabilitado</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="containerInfo p-4 sm:ml-60">
+  <div class="p-4 border-solid border-inherit border-2 rounded-lg">
+    <router-outlet></router-outlet>
+  </div>
+</div>
