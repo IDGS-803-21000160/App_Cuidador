@@ -54,11 +54,24 @@ export class TablaDocsComponent implements AfterViewInit, OnInit {
   }
 
   updateRejectedDocumentsListener() {
-    this.eventoServ.getDownloadURL().subscribe(
+    this.eventoServ.getDownloadURLCuidador().subscribe(
       (data: ItDocumentacion | null) => {
         if (data) {
-          console.log('getDownloadURL received:', data); // Debugging
-          // Lógica para manejar el documento recibido
+          console.log('getDownloadURL received:', data);
+
+          this.docsRechazados.forEach((docRechazado, index) => {
+            if (
+              docRechazado.nombreDocumento === data.nombreDocumento &&
+              docRechazado.tipoDocumento === data.tipoDocumento
+            ) {
+              docRechazado.estatusId = data.estatusId;
+              docRechazado.urlDocumento = data.urlDocumento;
+              this.docsActualizados.push(docRechazado);
+              this.docsRechazados.splice(index, 1);
+            }
+          });
+
+          console.log('Documentos actualizados:', this.docsActualizados);
         }
       },
       (error) => {

@@ -80,7 +80,11 @@ export class AuthService {
         if (response) {
           switch (this.tipousuario) {
             case 1:
-              this.currentUser = { user: response.usuario, role: 'cuidador' };
+              this.currentUser = {
+                user: response.usuario,
+                persona: response.personaFisica,
+                role: 'cuidador',
+              };
               localStorage.setItem(
                 'currentUser',
                 JSON.stringify(this.currentUser)
@@ -89,7 +93,7 @@ export class AuthService {
               const persona = response.personaFisica;
 
               const objCuidador = {
-                datos_medicos: datosMedicos,
+                datosMedicos: datosMedicos,
                 persona,
               };
 
@@ -148,6 +152,10 @@ export class AuthService {
     return this.currentUser?.role;
   }
 
+  getCurrentUser(): any {
+    return this.currentUser;
+  }
+
   redirectUrl(): string {
     const role = this.getUserRole();
     console.log('Yo soy el rol', role);
@@ -160,7 +168,7 @@ export class AuthService {
       case 'cuidador':
         return '/cuidador';
       case 'cliente':
-        return '/admin/dashboard';
+        return '/familiar';
       default:
         console.log('entre a Login');
 

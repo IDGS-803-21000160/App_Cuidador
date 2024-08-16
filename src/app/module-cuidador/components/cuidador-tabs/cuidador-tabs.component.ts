@@ -10,6 +10,7 @@ import { ItPersonaFisica } from '../../../interfaces/personaFisica';
 import { ItDatosMedicos } from '../../../interfaces/datos_medicos';
 import { ItPadecimiento } from '../../../interfaces/padecimientos';
 import { ItDocumentacion } from '../../../interfaces/documentacion';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-cuidador-tabs',
@@ -18,7 +19,13 @@ import { ItDocumentacion } from '../../../interfaces/documentacion';
 })
 export class CuidadorTabsComponent implements OnInit {
   fotoProfile: string = '';
-  constructor(private eventService: EventServiceService) {}
+  currentUser: any;
+  constructor(
+    private eventService: EventServiceService,
+    private authService: AuthService
+  ) {
+    this.currentUser = this.authService.getCurrentUser();
+  }
 
   ngOnInit() {
     // Suscribirse al observable al inicializar el componente
@@ -28,9 +35,9 @@ export class CuidadorTabsComponent implements OnInit {
         if (cuidador && cuidador.persona && cuidador.persona.avatarImage) {
           this.fotoProfile = cuidador.persona.avatarImage;
           const perosna = this.mapPersonaToPropsPersona(cuidador.persona);
-          const datosMedicos = this.mapDatosMedicos(cuidador.datos_medicos);
+          const datosMedicos = this.mapDatosMedicos(cuidador.datosMedicos);
           const padecimientos = this.mapPadecimientoToPadecimiento(
-            cuidador.datos_medicos.padecimientos
+            cuidador.datosMedicos.padecimientos
           );
           const documentacion = this.mapDocumentacion(
             cuidador.persona.documentacions
@@ -50,7 +57,6 @@ export class CuidadorTabsComponent implements OnInit {
       }
     );
   }
-
   mapPersonaToPropsPersona(persona: Persona): ItPersonaFisica {
     return {
       apellidoMaterno: persona.apellidoMaterno,
@@ -80,7 +86,6 @@ export class CuidadorTabsComponent implements OnInit {
       usuarioRegistro: persona.usuarioRegistro,
     };
   }
-
   mapDatosMedicos(datos_medicos: DatosMedicos): ItDatosMedicos {
     return {
       idDatosmedicos: datos_medicos.idDatosmedicos,
@@ -98,7 +103,6 @@ export class CuidadorTabsComponent implements OnInit {
       usuarioModifico: datos_medicos.usuarioModifico || 0,
     };
   }
-
   mapPadecimientoToPadecimiento(
     padecimientos: Padecimiento[]
   ): ItPadecimiento[] {
@@ -118,7 +122,6 @@ export class CuidadorTabsComponent implements OnInit {
       usuarioRegistro: padecimiento.usuarioRegistro,
     }));
   }
-
   mapDocumentacion(documentacion: Documentacion[]): ItDocumentacion[] {
     return documentacion.map((doc) => ({
       estatusId: doc.estatusId,

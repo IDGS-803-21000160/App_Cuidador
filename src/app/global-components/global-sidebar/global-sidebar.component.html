@@ -42,7 +42,7 @@
             <span class="sr-only">Open user menu</span>
             <img
               class="w-10 h-10 rounded-full"
-              src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              [src]="currentUser.persona.avatarImage"
               alt="user photo"
             />
           </button>
@@ -52,12 +52,12 @@
             class="absolute right-0 z-50 mt-2 w-48 bg-white rounded-lg shadow-lg dark:bg-gray-700"
           >
             <div class="py-3 px-4">
-              <span class="block text-sm text-gray-900 dark:text-white"
-                >Bonnie Green</span
-              >
+              <span class="block text-sm text-gray-900 dark:text-white">{{
+                currentUser.persona.nombre
+              }}</span>
               <span
                 class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"
-                >nameflowbite.com</span
+                >{{ currentUser.persona.correoElectronico }}</span
               >
             </div>
             <ul class="py-2">

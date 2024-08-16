@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '',
     component: PageadminPrincipalComponent,
     children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: AdminDashboardComponent },
       {
         path: 'solicitudes',

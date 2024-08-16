@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class PagePrincipalComponent {
   menuItems = [
     {
-      routerLink: ['/'],
+      routerLink: ['/cuidador/home'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -31,7 +31,7 @@ export class PagePrincipalComponent {
       notification: false,
     },
     {
-      routerLink: ['/'],
+      routerLink: ['/cuidador/profile'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [

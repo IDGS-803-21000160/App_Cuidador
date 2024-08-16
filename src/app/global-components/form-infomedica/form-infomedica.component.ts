@@ -22,19 +22,21 @@ export class FormInfomedicaComponent implements OnInit, OnDestroy {
   padecimientos: ItPadecimiento[] | undefined;
   listaAlergias: string[] = [];
 
-  objtDatosMedicos: ItDatosMedicos = {
-    idDatosmedicos: 0,
-    antecedentesMedicos: '',
-    alergias: '',
-    tipoSanguineo: '',
-    nombreMedicoFamiliar: '',
-    telefonoMedicoFamiliar: '',
-    observaciones: '',
-    fechaRegistro: new Date(),
-    usuarioRegistro: 0,
-    fechaModificacion: new Date(),
-    usuarioModifico: 0,
-  };
+  objtDatosMedicos: ItDatosMedicos[] = [
+    {
+      idDatosmedicos: 0,
+      antecedentesMedicos: '',
+      alergias: '',
+      tipoSanguineo: '',
+      nombreMedicoFamiliar: '',
+      telefonoMedicoFamiliar: '',
+      observaciones: '',
+      fechaRegistro: new Date(),
+      usuarioRegistro: 0,
+      fechaModificacion: new Date(),
+      usuarioModifico: 0,
+    },
+  ];
 
   objPadecimiento: ItPadecimiento[] = [
     {
@@ -58,10 +60,11 @@ export class FormInfomedicaComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.datosMedicos = data;
         if (this.datosMedicos) {
-          this.objtDatosMedicos = { ...this.datosMedicos };
+          this.objtDatosMedicos = [{ ...this.datosMedicos }];
         }
-        console.log('Recibí Datos medicos', this.datosMedicos);
-        this.listaAlergias = this.objtDatosMedicos.alergias.split(',');
+        console.log('Recibí Datos medicos', this.objtDatosMedicos);
+        this.listaAlergias = this.objtDatosMedicos[0].alergias.split(',');
+        console.log('Alergias', this.listaAlergias);
       });
     this.eventoSubscriptionPadeci = this.service
       .obtenerPadecimientos()

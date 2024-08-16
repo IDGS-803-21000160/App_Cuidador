@@ -15,6 +15,7 @@ import {
   datosCertificadoMedico,
 } from '../../../interfaces/locales';
 import { registroFamiliar } from '../../../interfaces/interfaces';
+import { FormsRegisterService } from '../../../services/forms-register.service';
 
 @Component({
   selector: 'app-form',
@@ -81,8 +82,12 @@ export class FormComponent {
   telefono_emergenciaFam: string = '';
   fotoAvatarFam: ItDocumentacion | undefined;
 
-  constructor(private eventServices: EventServiceService) {}
+  constructor(
+    private eventServices: EventServiceService,
+    private formsRegisterService: FormsRegisterService
+  ) {}
   objDataDoc: ItDocumentacion | null = null;
+  objRegistroFam: registroFamiliar | undefined;
 
   onEstadoChangeFam(event: Event) {
     const target = event.target as HTMLSelectElement;
@@ -196,12 +201,29 @@ export class FormComponent {
         telefonoParticular: this.telefono_particularFam,
         telefonoMovil: this.telefono_movilFam,
         telefonoEmergencia: this.telefono_emergenciaFam,
+        nombreCompletoFamiliar:
+          this.nombreFam +
+          ' ' +
+          this.apellido_paternoFam +
+          ' ' +
+          this.apellido_maternoFam,
         avatarImage: this.fotoAvatarFam?.urlDocumento,
         usuarioRegistro: 0,
         esFamiliar: 1,
       },
       documentacion: this.objDocuments,
     };
+    this.objRegistroFam = objFamiliar;
+
+    this.formsRegisterService.reguisFamiliarWeb(objFamiliar).subscribe(
+      (data) => {
+        console.log('Registro Familiar Exitoso:', data);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+
     alert(JSON.stringify(objFamiliar));
     console.log('Registro Familiar:', objFamiliar);
   }

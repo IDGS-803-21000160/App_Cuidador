@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventServiceService } from '../../services/event-service.service';
 import { Persona } from '../../interfaces/interfaceCuidador';
+import { ItDomicilio } from '../../interfaces/domicilio';
 
 @Component({
   selector: 'app-form-infopersonal',
@@ -16,7 +17,9 @@ import { Persona } from '../../interfaces/interfaceCuidador';
 })
 export class FormInfopersonalComponent implements OnInit, OnDestroy {
   eventoSubscription: Subscription | undefined;
+  eventoSubscription2: Subscription | undefined;
   persona: ItPersonaFisica | undefined;
+  domicilio: ItDomicilio | undefined;
 
   propsPersona: ItPersonaFisica = {
     apellidoMaterno: '',
@@ -44,6 +47,21 @@ export class FormInfopersonalComponent implements OnInit, OnDestroy {
     usuarioRegistro: 0,
   };
 
+  proposDomicilio: ItDomicilio = {
+    calle: '',
+    ciudad: '',
+    colonia: '',
+    estado: '',
+    referencias: '',
+    idDomicilio: 0,
+    numeroExterior: '',
+    numeroInterior: '',
+    pais: '',
+    usuarioModifico: 0,
+    usuarioRegistro: 0,
+    estatusId: 0,
+  };
+
   constructor(private service: EventServiceService) {}
 
   ngOnInit(): void {
@@ -55,6 +73,16 @@ export class FormInfopersonalComponent implements OnInit, OnDestroy {
           this.propsPersona = { ...this.persona };
         }
         console.log('Recibí esto', this.propsPersona);
+      });
+
+    this.eventoSubscription2 = this.service
+      .obtenerResidencia()
+      .subscribe((data) => {
+        this.domicilio = data;
+        if (this.domicilio) {
+          this.proposDomicilio = { ...this.domicilio };
+        }
+        console.log('Recibí Domicilio desde Form Persona', this.domicilio);
       });
   }
 

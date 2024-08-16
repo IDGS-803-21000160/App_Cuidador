@@ -12,6 +12,7 @@ import { FileUploadComponent } from '../global-components/file-upload/file-uploa
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { HomeCuidadorComponent } from './components/home-cuidador/home-cuidador.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     PagePrincipalComponent,
     CuidadorTabsComponent,
     TablaDocsComponent,
+    HomeCuidadorComponent,
   ],
   imports: [
     CommonModule,

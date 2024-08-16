@@ -6,8 +6,17 @@
       <div class="fotoPerfil mt-20 grid place-items-center">
         <img class="imgProfile rounded-full" alt="" [src]="fotoProfile" />
       </div>
-      <p class="mt-5 font-sans text-xl font-bold">Hola</p>
-      <p class="font-sans text-base font-medium text-slate-400">Jose</p>
+      <div class="flex w-full justify-center">
+        <hr class="border-cyan-300 mt-5 border-2 mt-8 mr-10" width="20%" />
+        <p class="mt-5 font-sans text-xl font-bold">
+          {{ currentUser.persona.nombre }}
+        </p>
+        <hr class="border-cyan-300 mt-5 border-2 mt-8 ml-10" width="20%" />
+      </div>
+      <p class="font-sans text-base font-medium text-slate-400">
+        &#64;
+        {{ currentUser.user.usuario1 }}
+      </p>
     </section>
   </div>
   <div class="w-full mt-32">

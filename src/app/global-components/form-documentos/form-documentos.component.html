@@ -1,7 +1,31 @@
 <div class="flex p-2 mb-4">
-  <p class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500">
-    Documentación
-  </p>
+  <div class="flex">
+    <p class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500">
+      Documentación
+    </p>
+  </div>
+</div>
+<div
+  class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+  role="alert"
+>
+  <svg
+    class="flex-shrink-0 inline w-4 h-4 me-3"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+  >
+    <path
+      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+    />
+  </svg>
+  <span class="sr-only">Info</span>
+  <div>
+    <span class="font-medium"></span>Una vez validados todos los documentos, por
+    favor asegúrate de guardar los cambios y, si todo cumple con lo establecido,
+    libera al usuario para que pueda comenzar a trabajar.
+  </div>
 </div>
 <hr />
 <br />
@@ -1227,75 +1251,85 @@
           </div>
         </div>
       </div>
-      <div
-        id="verifi{{ documento.idDocumentacion }}"
-        class="rounded-lg w-full mt-8 flex py-5 justify-center"
-      >
-        <div class="inline-flex rounded-md shadow-sm" role="group">
-          <button
-            type="button"
-            class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
-            (click)="updateStatus(documento, 2)"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="size-6"
-              style="color: green"
+      <div *ngIf="documento.estatusId !== 2">
+        <div
+          id="verifi{{ documento.idDocumentacion }}"
+          class="rounded-lg w-full mt-8 flex py-5 justify-center"
+        >
+          <div class="inline-flex rounded-md shadow-sm" role="group">
+            <button
+              type="button"
+              class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              (click)="updateStatus(documento, 2)"
             >
-              <path
-                fill-rule="evenodd"
-                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                clip-rule="evenodd"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6"
+                style="color: green"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
 
-            Aprobar
-          </button>
-          <button
-            type="button"
-            class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
-            (click)="updateStatus(documento, 1)"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="size-6"
-              style="color: red"
+              Aprobar
+            </button>
+            <button
+              type="button"
+              class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              (click)="updateStatus(documento, 4)"
             >
-              <path
-                fill-rule="evenodd"
-                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                clip-rule="evenodd"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6"
+                style="color: red"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
 
-            Rechazar
-          </button>
-          <button
-            type="button"
-            class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
-            (click)="comentar(documento)"
-          >
-            <svg
-              class="w-3 h-3 me-2"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="size-6"
-              style="color: blue"
+              Rechazar
+            </button>
+            <button
+              type="button"
+              class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              (click)="comentar(documento)"
             >
-              <path
-                fill-rule="evenodd"
-                d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
-                clip-rule="evenodd"
-              />
-            </svg>
+              <svg
+                class="w-3 h-3 me-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6"
+                style="color: blue"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
 
-            Comentar
-          </button>
+              Comentar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="documento.estatusId === 2" class="">
+        <div
+          class="p-2 mb-2 mt-8 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+          role="alert"
+        >
+          <span class="font-medium">Documento Validado!</span>
         </div>
       </div>
     </div>
@@ -1364,15 +1398,30 @@
       </div>
     </div>
   </div>
-  <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
-    <div class="flex pt-10 w-full">
-      <button
-        (click)="guardarDocumentos()"
-        type="button"
-        class="buttonConfirm w-96 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-      >
-        Confirmar Documentos
-      </button>
+  <div class="flex">
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="flex pt-10 w-full">
+        <button
+          (click)="guardarDocumentos()"
+          type="button"
+          class="buttonConfirm w-96 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >
+          Confirmar Documentos
+        </button>
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="flex pt-10 w-full">
+        <button
+          id="btnLiberar"
+          disabled
+          type="button"
+          style="background-color: #6096ba; color: white"
+          class="w-96 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >
+          Liberar Usuario
+        </button>
+      </div>
     </div>
   </div>
 </div>

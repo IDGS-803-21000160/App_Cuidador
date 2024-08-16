@@ -14,8 +14,11 @@ import { AuthService } from '../../auth/auth.service';
 export class GlobalSidebarComponent {
   @Input() menuItems: Array<any> = [];
   @Input() menuItemsProfile: Array<any> = [];
+  currentUser: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    this.currentUser = this.authService.getCurrentUser();
+  }
   sidebarVisible = false;
   dropdownVisible = false;
 

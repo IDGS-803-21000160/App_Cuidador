@@ -6,6 +6,7 @@ import { ItDatosMedicos } from '../interfaces/datos_medicos';
 import { ItPadecimiento } from '../interfaces/padecimientos';
 import { Persona, RootObject } from '../interfaces/interfaceCuidador';
 import { ItDocumentacion } from '../interfaces/documentacion';
+import { ItDomicilio } from '../interfaces/domicilio';
 
 @Injectable({
   providedIn: 'root',
@@ -27,13 +28,20 @@ export class EventServiceService {
   // Servicios Para obtención de la URL generada
 
   private downloadURLSubject = new Subject<ItDocumentacion>();
+  private downloadURLSubjectCuidador =
+    new BehaviorSubject<ItDocumentacion | null>(null);
 
   setDownloadURL(objDataDoc: ItDocumentacion) {
     this.downloadURLSubject.next(objDataDoc);
+    this.downloadURLSubjectCuidador.next(objDataDoc);
   }
 
   getDownloadURL(): Observable<ItDocumentacion> {
     return this.downloadURLSubject.asObservable();
+  }
+
+  getDownloadURLCuidador(): Observable<ItDocumentacion | null> {
+    return this.downloadURLSubjectCuidador.asObservable();
   }
 
   //Servicios para emitir eventi en modulo-administrador:
@@ -106,6 +114,19 @@ export class EventServiceService {
 
   obtenerDocumentos(): Observable<ItDocumentacion[] | undefined> {
     return this.ItDocumentacionSubject.asObservable();
+  }
+
+  //-------------------- Evento para mandar Datos de recidencia------------------------
+  private residenciaSubject = new BehaviorSubject<ItDomicilio | undefined>(
+    undefined
+  );
+
+  lanzarResidencia(residencia: ItDomicilio | undefined): void {
+    this.residenciaSubject.next(residencia);
+  }
+
+  obtenerResidencia(): Observable<ItDomicilio | undefined> {
+    return this.residenciaSubject.asObservable();
   }
 
   // Evento para lanzar usuario cuando se logea Cuidador

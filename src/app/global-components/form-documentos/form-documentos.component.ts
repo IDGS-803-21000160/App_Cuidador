@@ -12,6 +12,7 @@ import { Modal, ModalOptions, ModalInterface } from 'flowbite';
 import { EventServiceService } from '../../services/event-service.service';
 import { Subscription } from 'rxjs';
 import { ItDocumentacion } from '../../interfaces/documentacion';
+import { AdminUsersService } from '../../services/admin-users.service';
 
 @Component({
   selector: 'app-form-documentos',
@@ -23,6 +24,7 @@ import { ItDocumentacion } from '../../interfaces/documentacion';
 export class FormDocumentosComponent implements AfterViewInit, OnInit {
   eventoSubscription: Subscription | undefined;
   documentos: ItDocumentacion[] | undefined = [];
+  docsLiberados: ItDocumentacion[] | undefined = [];
   backgroundStyle = 'linear-gradient(to right, #ffffff, #f0f0f0)';
 
   @ViewChild('modalElement', { static: true }) modalElement!: ElementRef;
@@ -31,7 +33,8 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
 
   constructor(
     private eventoServ: EventServiceService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private adminUsersService: AdminUsersService
   ) {}
 
   ngOnInit(): void {
@@ -43,9 +46,20 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
           documento.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
             documento.urlDocumento
           );
+          if (documento.estatusId === 2) {
+            this.docsLiberados?.push(documento);
+          }
           return documento;
         });
       });
+    this.verificarLiberar();
+  }
+
+  verificarLiberar() {
+    if (this.docsLiberados?.length === this.documentos?.length) {
+      const button = document.getElementById('btnLiberar') as HTMLButtonElement;
+      button.disabled = false;
+    }
   }
 
   ngAfterViewInit() {
@@ -95,13 +109,13 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
     let div = document.getElementById(
       `verifi${documento.idDocumentacion}`
     ) as HTMLElement;
-    documento.estatus_id = status;
+    documento.estatusId = status;
 
     if (status === 2) {
       div.style.background = 'rgb(76,180,58)';
       div.style.background =
         'linear-gradient(90deg, rgba(76,180,58,1) 0%, rgba(244,244,244,1) 50%, rgba(255,255,255,1) 100%)';
-    } else if (status === 1) {
+    } else if (status === 4) {
       div.style.background = 'rgb(255,0,0)';
       div.style.background =
         'linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(244,244,244,1) 50%, rgba(255,255,255,1) 100%)';
@@ -121,6 +135,14 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
   //Función para guardar los documentos
 
   guardarDocumentos() {
+    this.adminUsersService.updateDocumentos(this.documentos).subscribe(
+      (response) => {
+        console.log('Documentos actualizados correctamente', response);
+      },
+      (error) => {
+        console.error('Error al actualizar documentos', error);
+      }
+    );
     console.log('Documentos Guardados', this.documentos);
   }
 }

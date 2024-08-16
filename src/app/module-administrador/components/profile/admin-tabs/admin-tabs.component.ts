@@ -7,6 +7,7 @@ import { ItPersonaFisica } from '../../../../interfaces/personaFisica';
 import { ItDatosMedicos } from '../../../../interfaces/datos_medicos';
 import { ItPadecimiento } from '../../../../interfaces/padecimientos';
 import { ItDocumentacion } from '../../../../interfaces/documentacion';
+import { ItDomicilio } from '../../../../interfaces/domicilio';
 
 @Component({
   selector: 'app-admin-tabs',
@@ -24,6 +25,7 @@ export class AdminTabsComponent implements OnInit, OnDestroy {
   infoDatosMedicos: ItDatosMedicos | undefined;
   infoPadecimientos: ItPadecimiento[] | undefined = [];
   infoDocs: ItDocumentacion[] | undefined = [];
+  domicilio: ItDomicilio | undefined;
   showFirstDiv = true;
 
   constructor(private router: Router, private eventoServ: EventServiceService) {
@@ -48,11 +50,14 @@ export class AdminTabsComponent implements OnInit, OnDestroy {
             this.infoDatosMedicos = this.datosUsuario.datos_medicos;
             this.infoPadecimientos = this.datosUsuario.padecimientos;
             this.infoDocs = this.datosUsuario.documentacion;
+            this.domicilio = this.datosUsuario.domicilio;
+
             console.log('Se mandó la data', this.infoDocs);
             this.eventoServ.lanzarPersona(this.infopersona); // Emitir los datos al servicio
             this.eventoServ.lanzarDatosMedicos(this.infoDatosMedicos);
             this.eventoServ.lanzarPadecimientos(this.infoPadecimientos);
             this.eventoServ.lanzarDocumentos(this.infoDocs);
+            this.eventoServ.lanzarResidencia(this.domicilio);
           }
         });
       this.showFirstDiv = false;

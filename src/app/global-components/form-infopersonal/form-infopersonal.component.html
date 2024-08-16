@@ -299,7 +299,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="pais"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Pais</label
             >
@@ -307,9 +307,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="pais"
+              name="pais"
+              [(ngModel)]="proposDomicilio.pais"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -322,7 +322,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="estado"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Estado</label
             >
@@ -330,9 +330,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="estado"
+              name="estado"
+              [(ngModel)]="proposDomicilio.estado"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -345,7 +345,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="municipio"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Municipio</label
             >
@@ -353,9 +353,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="municipio"
+              name="municiopio"
+              [(ngModel)]="proposDomicilio.ciudad"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -368,7 +368,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="colonia"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Colonia</label
             >
@@ -376,9 +376,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="colonia"
+              name="colonia"
+              [(ngModel)]="proposDomicilio.colonia"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -391,7 +391,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="calle"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Calle</label
             >
@@ -399,9 +399,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="calle"
+              name="calle"
+              [(ngModel)]="proposDomicilio.calle"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -414,7 +414,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="numeroInt"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Número interior</label
             >
@@ -422,9 +422,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="numeroInt"
+              name="numeroInt"
+              [(ngModel)]="proposDomicilio.numeroInterior"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -437,7 +437,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="numeroExt"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Número Exterior</label
             >
@@ -445,9 +445,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="numeroExt"
+              name="numeroExt"
+              [(ngModel)]="proposDomicilio.numeroExterior"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -460,7 +460,7 @@
         <div class="flex">
           <div class="w-40">
             <label
-              for="first_name"
+              for="referencias"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Referencias</label
             >
@@ -468,9 +468,9 @@
           <div class="w-full">
             <input
               type="text"
-              id="first_name"
-              name="nombre"
-              [(ngModel)]="propsPersona.nombre"
+              id="referencias"
+              name="referencias"
+              [(ngModel)]="proposDomicilio.referencias"
               class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -486,7 +486,7 @@
       type="submit"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      Submit
+      Confirmar Datos
     </button>
   </form>
 </div>

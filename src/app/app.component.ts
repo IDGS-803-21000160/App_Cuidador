@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModuleCuidadorModule } from './module-cuidador/module-cuidador.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { Persona } from './interfaces/interfaceCuidador';
+import { ItPersonaFisica } from './interfaces/personaFisica';
 
 @Component({
   selector: 'app-root',
@@ -28,4 +30,6 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'CuidadorWeb';
+
+  //Funciones Usadas de forma Global
 }

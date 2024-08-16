@@ -21,12 +21,12 @@ export interface registroCuidador {
   certificacionesExperiencia: ItCertificaciones;
 }
 
-export interface ItAllUsers {
+export interface getCuidadores {
   domicilio: ItDomicilio;
   datos_medicos: ItDatosMedicos;
   padecimientos: ItPadecimiento[];
   usuario: ItUsuario;
-  persona: ItPersonaFisica;
+  persona: ItPersonaFisica | null;
   documentacion: ItDocumentacion[];
   certificacionesExperiencia: ItCertificaciones;
 }
@@ -38,4 +38,14 @@ export interface registroFamiliar {
   usuario: ItUsuario;
   persona: ItPersonaFisica;
   documentacion: ItDocumentacion[];
+}
+
+export interface ItAllUsers {
+  domicilio: ItDomicilio;
+  datos_medicos: ItDatosMedicos;
+  padecimientos: ItPadecimiento[];
+  usuario: ItUsuario;
+  persona: ItPersonaFisica;
+  documentacion: ItDocumentacion[];
+  certificacionesExperiencia?: ItCertificaciones;
 }

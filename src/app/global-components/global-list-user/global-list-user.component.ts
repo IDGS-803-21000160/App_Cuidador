@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { EventServiceService } from '../../services/event-service.service';
 import {
   Router,
@@ -14,16 +14,19 @@ import {
   templateUrl: './global-list-user.component.html',
   styleUrl: './global-list-user.component.css',
 })
-export class GlobalListUserComponent {
+export class GlobalListUserComponent implements OnInit {
   @Input() ItemsUser: Array<any> = [];
 
   usuarioSeleccionado: any = null;
 
   constructor(private router: Router, private service: EventServiceService) {}
+  ngOnInit(): void {
+    console.log('ItemsUser', this.ItemsUser);
+  }
 
   selectUser(router: any, user: any) {
     this.usuarioSeleccionado = user;
-    console.log('hola gorda', this.usuarioSeleccionado);
+    console.log('hola ', this.usuarioSeleccionado);
 
     this.service.lanzarUsuario(user);
   }
