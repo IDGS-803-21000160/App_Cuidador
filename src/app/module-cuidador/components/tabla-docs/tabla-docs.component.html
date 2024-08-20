@@ -4,7 +4,35 @@
       Documentos
     </p>
   </div>
-
+  <div *ngIf="estatus">
+    <div
+      class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-green-800 dark:text-green-400"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Success</span>
+      <div>
+        <span class="font-medium">Documentos Validados Correctamente:</span>
+        <ul class="mt-1.5 list-disc list-inside">
+          <li>
+            Tu usuario ha sido liberado y ahora puedes comenzar a trabajar.
+            ¡Mucha suerte!.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr />
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -114,9 +142,46 @@
       [nombreDoc]="documento.nombreDocumento"
     ></app-file-upload>
   </div>
-  <div>
-    <button>Enviar</button>
+  <div *ngIf="docsActualizados.length > 0">
+    <div
+      class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Info</span>
+      <div>
+        <span class="font-medium">Info alert!</span> Has cargado
+        {{ docsActualizados.length }} archivos que te fueron regresados por no
+        cumplir con las especificaciones solicitadas, por favor, presiona el
+        botón de enviar para su previa revisión una vez que los hayas cargado
+        todos.
+      </div>
+    </div>
+    <div class="w-full max-w-5xl grid grid-cols-1 gap-4">
+      <div class="flex pt-10 w-full">
+        <button
+          id="btnLiberar"
+          type="button"
+          (click)="enviarDocumentos()"
+          style="background-color: #6096ba; color: white"
+          class="w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >
+          Enviar Documentos
+        </button>
+      </div>
+    </div>
   </div>
+
   <!-- Modales -->
   <div *ngFor="let documento of docsNoRechazados">
     <div

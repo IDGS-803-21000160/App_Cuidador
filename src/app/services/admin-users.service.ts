@@ -27,4 +27,16 @@ export class AdminUsersService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(this.urlPutDoct, documentos, { headers });
   }
+
+  //Liberar el usuario
+  apiUrlLibUser =
+    'https://cuidadorapi.azurewebsites.net/api/Usuario/updateUsuario';
+
+  updateUsuario(usuario: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.put<any>(this.apiUrlLibUser, usuario, { headers });
+  }
 }

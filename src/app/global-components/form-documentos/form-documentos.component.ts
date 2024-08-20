@@ -13,6 +13,8 @@ import { EventServiceService } from '../../services/event-service.service';
 import { Subscription } from 'rxjs';
 import { ItDocumentacion } from '../../interfaces/documentacion';
 import { AdminUsersService } from '../../services/admin-users.service';
+import Swal from 'sweetalert2';
+import { ItUsuario } from '../../interfaces/usuario';
 
 @Component({
   selector: 'app-form-documentos',
@@ -23,8 +25,11 @@ import { AdminUsersService } from '../../services/admin-users.service';
 })
 export class FormDocumentosComponent implements AfterViewInit, OnInit {
   eventoSubscription: Subscription | undefined;
+  eventSubscriptionUser: Subscription | undefined;
+
   documentos: ItDocumentacion[] | undefined = [];
   docsLiberados: ItDocumentacion[] | undefined = [];
+  user: any = null;
   backgroundStyle = 'linear-gradient(to right, #ffffff, #f0f0f0)';
 
   @ViewChild('modalElement', { static: true }) modalElement!: ElementRef;
@@ -52,6 +57,24 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
           return documento;
         });
       });
+
+    this.eventSubscriptionUser = this.eventoServ
+      .obtenerUsuarioCuidador()
+      .subscribe((data: ItUsuario | undefined) => {
+        console.log('Usuario Cuidador en docs', data);
+        this.user = {
+          id_usuario: data?.id_usuario,
+          usuarionivel_id: data?.usuarioNivelId,
+          tipo_usuarioid: data?.tipoUsuarioId,
+          estatusid: 10,
+          usuario: data?.usuario,
+          contrasenia: data?.contrasenia,
+          fecha_registro: data?.fechaRegistro,
+          usuario_registro: data?.usuarioRegistro,
+          fecha_modificacion: new Date(),
+          usuario_modifico: data?.usuarioModifico,
+        };
+      });
     this.verificarLiberar();
   }
 
@@ -60,6 +83,27 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
       const button = document.getElementById('btnLiberar') as HTMLButtonElement;
       button.disabled = false;
     }
+  }
+
+  liberarDocumentos() {
+    this.adminUsersService.updateUsuario(this.user).subscribe(
+      (response) => {
+        console.log('Usuario actualizado correctamente', response);
+        Swal.fire({
+          title: '¡Operación exitosa!',
+          text: 'Todo se completó correctamente.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000, // La alerta desaparecerá automáticamente después de 2 segundos
+          customClass: {
+            icon: 'custom-icon-blue', // Clase personalizada para el icono
+          },
+        });
+      },
+      (error) => {
+        console.error('Error al actualizar usuario', error);
+      }
+    );
   }
 
   ngAfterViewInit() {
@@ -138,6 +182,16 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
     this.adminUsersService.updateDocumentos(this.documentos).subscribe(
       (response) => {
         console.log('Documentos actualizados correctamente', response);
+        Swal.fire({
+          title: '¡Operación exitosa!',
+          text: 'Se ha actualizado el estatus de los documentos.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000, // La alerta desaparecerá automáticamente después de 2 segundos
+          customClass: {
+            icon: 'custom-icon-blue', // Clase personalizada para el icono
+          },
+        });
       },
       (error) => {
         console.error('Error al actualizar documentos', error);

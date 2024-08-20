@@ -11,6 +11,7 @@ import { PageInitialComponent } from './components/page-initial/page-initial.com
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../../environments/environment';
+import { PerfilesRegistroComponent } from './components/perfiles-registro/perfiles-registro.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { environment } from '../../environments/environment';
     InfoAdultomayorComponent,
     InfoColaboradorComponent,
     PageInitialComponent,
+    PerfilesRegistroComponent,
   ],
   imports: [
     CommonModule,

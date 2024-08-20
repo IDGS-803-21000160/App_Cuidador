@@ -7,6 +7,7 @@ import { ItCertificacion } from '../../interfaces/certificaciones';
 import { FileUploadComponent } from '../../global-components/file-upload/file-upload.component';
 import { registroCuidador } from '../../interfaces/interfaces';
 import { FormsRegisterService } from '../../services/forms-register.service';
+import Swal from 'sweetalert2';
 import {
   textInfoFoto,
   textINE,
@@ -282,6 +283,16 @@ export class FormComponent {
 
       this.formsRegister.registrarUsuarioWeb(this.objRegistrar).subscribe(
         (response) => {
+          Swal.fire({
+            title: '¡Operación exitosa!',
+            text: 'Todo se completó correctamente.',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000, // La alerta desaparecerá automáticamente después de 2 segundos
+            customClass: {
+              icon: 'custom-icon-blue', // Clase personalizada para el icono
+            },
+          });
           console.log('Usuario registrado exitosamente', response);
         },
         (error) => {

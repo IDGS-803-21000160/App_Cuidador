@@ -7,6 +7,7 @@ import { ItPadecimiento } from '../interfaces/padecimientos';
 import { Persona, RootObject } from '../interfaces/interfaceCuidador';
 import { ItDocumentacion } from '../interfaces/documentacion';
 import { ItDomicilio } from '../interfaces/domicilio';
+import { ItUsuario } from '../interfaces/usuario';
 
 @Injectable({
   providedIn: 'root',
@@ -127,6 +128,19 @@ export class EventServiceService {
 
   obtenerResidencia(): Observable<ItDomicilio | undefined> {
     return this.residenciaSubject.asObservable();
+  }
+
+  //-------------------- Evento para mandar usuarioCuidador------------------------
+  private usuarioCuidadorSubject = new BehaviorSubject<ItUsuario | undefined>(
+    undefined
+  );
+
+  lanzarUsuarioCuidador(usuarioCuidador: ItUsuario | undefined): void {
+    this.usuarioCuidadorSubject.next(usuarioCuidador);
+  }
+
+  obtenerUsuarioCuidador(): Observable<ItUsuario | undefined> {
+    return this.usuarioCuidadorSubject.asObservable();
   }
 
   // Evento para lanzar usuario cuando se logea Cuidador

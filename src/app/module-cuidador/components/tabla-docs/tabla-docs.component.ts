@@ -10,6 +10,8 @@ import { EventServiceService } from '../../../services/event-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Modal, ModalOptions, ModalInterface } from 'flowbite';
 import { ItDocumentacion } from '../../../interfaces/documentacion';
+import { AdminUsersService } from '../../../services/admin-users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tabla-docs',
@@ -22,13 +24,15 @@ export class TablaDocsComponent implements AfterViewInit, OnInit {
   docsNoRechazados: ItDocumentacion[] = [];
   docsRechazados: ItDocumentacion[] = [];
   docsActualizados: ItDocumentacion[] = [];
+  estatus: boolean = false;
 
   @ViewChild('modalElement', { static: true }) modalElement!: ElementRef;
   private modals: { [key: string]: ModalInterface } = {};
 
   constructor(
     private eventoServ: EventServiceService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private adminUsersService: AdminUsersService
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +55,17 @@ export class TablaDocsComponent implements AfterViewInit, OnInit {
           return documento;
         });
       });
+
+    if (this.documentos?.every((documento) => documento.estatusId === 2)) {
+      this.estatus = true;
+    } else {
+      this.estatus = false;
+    }
+
+    console.log('Documentos:', this.documentos);
+    console.log('Documentos no rechazados:', this.docsNoRechazados);
+    console.log('Documentos rechazados:', this.docsRechazados);
+    console.log('documentos actualizados:', this.docsActualizados);
   }
 
   updateRejectedDocumentsListener() {
@@ -104,6 +119,28 @@ export class TablaDocsComponent implements AfterViewInit, OnInit {
         }
       }
     });
+  }
+
+  enviarDocumentos() {
+    this.adminUsersService.updateDocumentos(this.docsActualizados).subscribe(
+      (response) => {
+        console.log('Documentos actualizados correctamente', response);
+        Swal.fire({
+          title: '¡Operación exitosa!',
+          text: 'Se ha actualizado el estatus de los documentos.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000, // La alerta desaparecerá automáticamente después de 2 segundos
+          customClass: {
+            icon: 'custom-icon-blue', // Clase personalizada para el icono
+          },
+        });
+      },
+      (error) => {
+        console.error('Error al actualizar documentos', error);
+      }
+    );
+    console.log('Documentos Guardados', this.documentos);
   }
 
   openModal(documento: any) {

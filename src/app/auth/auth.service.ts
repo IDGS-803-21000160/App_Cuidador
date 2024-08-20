@@ -172,7 +172,7 @@ export class AuthService {
       default:
         console.log('entre a Login');
 
-        return '/login';
+        return '/administrador';
     }
   }
 }

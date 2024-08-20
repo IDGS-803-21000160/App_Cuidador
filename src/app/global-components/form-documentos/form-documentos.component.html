@@ -1251,7 +1251,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="documento.estatusId !== 2">
+      <div *ngIf="documento.estatusId !== 2 && documento.estatusId !== 4">
         <div
           id="verifi{{ documento.idDocumentacion }}"
           class="rounded-lg w-full mt-8 flex py-5 justify-center"
@@ -1330,6 +1330,14 @@
           role="alert"
         >
           <span class="font-medium">Documento Validado!</span>
+        </div>
+      </div>
+      <div *ngIf="documento.estatusId === 4" class="">
+        <div
+          class="p-2 mb-2 mt-8 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          <span class="font-medium">Documento Rechazado!</span>
         </div>
       </div>
     </div>
@@ -1415,6 +1423,7 @@
         <button
           id="btnLiberar"
           disabled
+          (click)="liberarDocumentos()"
           type="button"
           style="background-color: #6096ba; color: white"
           class="w-96 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"

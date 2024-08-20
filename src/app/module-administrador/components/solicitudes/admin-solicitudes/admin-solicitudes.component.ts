@@ -37,6 +37,7 @@ export class AdminSolicitudesComponent implements OnInit {
             this.cuidadores.push(user);
           }
         });
+        console.log('All users:', this.allUsers);
 
         console.log('Cuidadores:', this.cuidadores);
 

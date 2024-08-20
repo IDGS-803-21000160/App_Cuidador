@@ -5,16 +5,17 @@ import { LoginComponent } from '../auth/login/login.component';
 import { InfoRolsComponent } from '../global-components/info-rols/info-rols.component';
 import { PageInitialComponent } from './components/page-initial/page-initial.component';
 import { FormCuidadorComponent } from '../cuidador/form-cuidador/form-cuidador.component';
+import { PerfilesRegistroComponent } from './components/perfiles-registro/perfiles-registro.component';
 
 const routes: Routes = [
   {
     path: '',
     component: InformativeHomepageComponent,
     children: [
-      { path: '', redirectTo: 'formFamiliar', pathMatch: 'full' },
+      { path: '', redirectTo: 'form', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'home', component: PageInitialComponent },
-      { path: 'form', component: FormCuidadorComponent },
+      { path: 'form', component: PerfilesRegistroComponent },
       {
         path: 'formFamiliar',
         loadChildren: () =>
@@ -22,6 +23,7 @@ const routes: Routes = [
             (m) => m.AdultomayorModule
           ),
       },
+      { path: 'formCuidador', component: FormCuidadorComponent },
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

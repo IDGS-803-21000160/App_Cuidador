@@ -18,15 +18,7 @@ export class AdminDashboardComponent implements OnInit {
     const options = {
       xaxis: {
         show: true,
-        categories: [
-          '01 Feb',
-          '02 Feb',
-          '03 Feb',
-          '04 Feb',
-          '05 Feb',
-          '06 Feb',
-          '07 Feb',
-        ],
+        categories: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
         labels: {
           show: true,
           style: {
@@ -53,14 +45,9 @@ export class AdminDashboardComponent implements OnInit {
       },
       series: [
         {
-          name: 'Developer Edition',
-          data: [150, 141, 145, 152, 135, 125],
+          name: 'Adultos Mayores (65+)',
+          data: [10.5, 11.0, 11.6, 12.3, 13.0, 13.8, 14.6], // Millones de personas
           color: '#1A56DB',
-        },
-        {
-          name: 'Designer Edition',
-          data: [43, 13, 65, 12, 42, 73],
-          color: '#7E3BF2',
         },
       ],
       chart: {
@@ -118,13 +105,13 @@ export class AdminDashboardComponent implements OnInit {
     const options = {
       series: [
         {
-          name: 'Income',
+          name: 'Más barato',
           color: '#31C48D',
-          data: [1420, 1620, 1820, 1420, 1650, 2120],
+          data: [700, 750, 720, 740, 710, 780],
         },
         {
-          name: 'Expense',
-          data: [788, 810, 866, 788, 1100, 1200],
+          name: 'Más Caro',
+          data: [900, 920, 930, 980, 920, 1500],
           color: '#F05252',
         },
       ],
@@ -209,7 +196,7 @@ export class AdminDashboardComponent implements OnInit {
 
   optionsThirdChart() {
     const options = {
-      series: [90, 85, 70],
+      series: [90, 2, 10],
       colors: ['#1C64F2', '#16BDCA', '#FDBA8C'],
       chart: {
         height: 380,
@@ -243,7 +230,7 @@ export class AdminDashboardComponent implements OnInit {
           bottom: -20,
         },
       },
-      labels: ['Done', 'In progress', 'To do'],
+      labels: ['Hechos', 'En progreso', 'Cancelados'],
       legend: {
         show: true,
         position: 'bottom',
@@ -314,7 +301,7 @@ export class AdminDashboardComponent implements OnInit {
       series: [
         {
           name: 'New users',
-          data: [6500, 6418, 6456, 6526, 6356, 6456],
+          data: [1, 4, 6],
           color: '#1A56DB',
         },
       ],

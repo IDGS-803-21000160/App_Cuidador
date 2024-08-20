@@ -29,3 +29,19 @@
   position: relative;
   z-index: 1;
 }
+
+.custom-icon-blue .swal2-success-circular-line-left,
+.custom-icon-blue .swal2-success-circular-line-right,
+.custom-icon-blue .swal2-success-fix,
+.custom-icon-blue .swal2-success-line-tip,
+.custom-icon-blue .swal2-success-line-long {
+  background-color: blue !important;
+}
+
+.custom-icon-blue .swal2-success-ring {
+  border-color: blue !important;
+}
+
+.custom-icon-blue .swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: blue !important;
+}
