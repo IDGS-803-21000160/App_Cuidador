@@ -13,5 +13,5 @@ export const environment = {
 
 export const environmentAPI = {
   production: true,
-  endPoint: 'https://cuidadorapi.azurewebsites.net/api/',
+  endPoint: 'http://10.16.14.88:5003/api/',
 };

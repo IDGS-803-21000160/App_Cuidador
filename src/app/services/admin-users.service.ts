@@ -13,7 +13,7 @@ import { ItDocumentacion } from '../interfaces/documentacion';
 export class AdminUsersService {
   private _endPoint: string = environmentAPI.endPoint;
   private _apiURL: string =
-    'https://cuidadorapi.azurewebsites.net/api/Usuario/mostrarDatosCuidadoresWeb';
+    'http://10.16.14.88:5003/api/Usuario/mostrarDatosCuidadoresWeb';
   constructor(private router: Router, private http: HttpClient) {}
 
   getAllUsers(): Observable<ItCuidadores[]> {
@@ -21,7 +21,7 @@ export class AdminUsersService {
   }
 
   urlPutDoct: string =
-    'https://cuidadorapi.azurewebsites.net/api/Doocumentos/updateDocumento  ';
+    'http://10.16.14.88:5003/api/Doocumentos/updateDocumento  ';
 
   updateDocumentos(documentos: ItDocumentacion[] | undefined): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -29,8 +29,7 @@ export class AdminUsersService {
   }
 
   //Liberar el usuario
-  apiUrlLibUser =
-    'https://cuidadorapi.azurewebsites.net/api/Usuario/updateUsuario';
+  apiUrlLibUser = 'http://10.16.14.88:5003/api/Usuario/updateUsuario';
 
   updateUsuario(usuario: any): Observable<any> {
     const headers = new HttpHeaders({
