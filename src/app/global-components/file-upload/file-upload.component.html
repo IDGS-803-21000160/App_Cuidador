@@ -2,7 +2,7 @@
   <form>
     <input
       type="file"
-      id="file_refPersonales"
+      [id]="uploadId"
       class="border border-gray-300 w-full text-gray-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white rounded"
       (change)="onFileSelected($event)"
     />
@@ -17,15 +17,5 @@
         [style.width.%]="progress"
       ></div>
     </div>
-    <!--  <p class="mt-2 text-gray-600">{{ progress }}%</p>-->
   </div>
-  <!--
-  <div *ngIf="downloadURL | async as url">
-    <p class="mt-4 text-lg font-semibold text-gray-700">
-      URL de descarga:
-      <a [href]="url" target="_blank" class="text-blue-500 hover:underline">{{
-        url
-      }}</a>
-    </p>
-  </div>
---></div>
+</div>

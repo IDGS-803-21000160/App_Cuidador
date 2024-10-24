@@ -1,0 +1,1436 @@
+<div class="flex p-2 mb-4">
+  <div class="flex">
+    <p class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500">
+      Documentación
+    </p>
+  </div>
+</div>
+<div
+  class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+  role="alert"
+>
+  <svg
+    class="flex-shrink-0 inline w-4 h-4 me-3"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+  >
+    <path
+      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+    />
+  </svg>
+  <span class="sr-only">Info</span>
+  <div>
+    <span class="font-medium"></span>Una vez validados todos los documentos, por
+    favor asegúrate de guardar los cambios y, si todo cumple con lo establecido,
+    libera al usuario para que pueda comenzar a trabajar.
+  </div>
+</div>
+<hr />
+<br />
+<div class="grid grid-cols-1 gap-4">
+  <div *ngFor="let documento of documentos" class="flex w-full">
+    <div
+      id="popover-{{ documento.idDocumentacion }}"
+      role="tooltip"
+      class="overflow-auto inline-block w-96 h-full text-sm text-gray-500 duration-300 bg-white border border-gray-200 rounded-lg shadow-sm"
+    >
+      <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg">
+        <h3 class="font-semibold text-gray-900">
+          Especificaciones para validar el documento
+        </h3>
+      </div>
+      <div class="px-3 py-2">
+        @switch (documento.nombreDocumento) { @case ('Fotografía reciente'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Formato digital común (JPEG, PNG)
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Dimensiones estándar (generalmente 2x2 pulgadas o similar).
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Verifica que la foto coincida con la persona en otros documentos
+              presentados.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              La foto tiene más de 6 meses de antigüedad.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              La imagen está borrosa, pixelada o de baja resolución.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              La foto tiene un fondo muy distractor o inapropiado.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Fotografía de identificación oficial'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Documento vigente.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Datos coinciden con otros documentos.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Hologramas, sellos de agua y otras medidas de seguridad presentes.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Documento vencido.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Datos inconsistentes con otros documentos.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Falta de elementos de seguridad (hologramas, sellos de agua,
+              etc.).
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Certificado de Antecedentes Penales'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Fecha de emisión reciente (no más de 3 meses).
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Emitido por una autoridad gubernamental competente.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Incluye todos los antecedentes o la ausencia de ellos.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Fecha de emisión antigua (más de 3 meses).
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              No emitido por una autoridad gubernamental competente.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Presenta signos de manipulación o falsificación.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Autorización para Verificación de Antecedentes'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Firmada por el solicitante.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Autorización clara y explícita.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Fecha reciente.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              No está firmada por el solicitante.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              El texto es ambiguo en cuanto a la autorización.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              La fecha es antigua o falta.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Referencias Profesionales'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Datos de contacto válidos y actuales.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Relación laboral claramente descrita.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Duración de la relación especificada.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Contactos no válidos o no alcanzables.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Relación laboral no confirmada.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Inconsistencias en la información.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Referencias Personales'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Datos de contacto válidos y actuales.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Relación personal claramente descrita.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Duración de la relación especificada.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Contactos no válidos o no alcanzables.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Relación personal no confirmada.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Inconsistencias en la información.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Certificado Médico de Buena Salud'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Fecha de emisión reciente (no más de 6 meses).
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Firmado y sellado por un médico acreditado.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Especifica claramente el estado de salud del solicitante.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Fecha de emisión antigua (más de 6 meses).
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              No está firmado y sellado por un médico acreditado.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Información incompleta sobre el estado de salud.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Pruebas de Drogas y Alcohol'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Fecha de emisión reciente (no más de 3 meses).
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Realizadas por un laboratorio certificado.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Resultados claramente especificados (positivo o negativo).
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Fecha de emisión antigua (más de 3 meses).
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              No realizadas por un laboratorio certificado.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Resultados ambiguos o mal presentados.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Certificado'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Emitido por una institución reconocida y acreditada.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Fecha de emisión claramente indicada.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Contiene detalles del curso, duración y logros.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Incluye firma y sello de la autoridad correspondiente.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              No emitido por una institución reconocida.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Falta de firma y sello de la autoridad correspondiente.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Información inexacta o falsa sobre el curso o logros.
+            </li>
+          </ul>
+        </div>
+
+        } @case ('Historial Laboral'){
+        <div class="especificaciones">
+          <h4 class="mb-2 text-m font-semibold text-gray-900 dark:text-white">
+            Aprobar el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Empresas legítimas y verificables.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Fechas de inicio y fin claramente indicadas.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Posiciones ocupadas y responsabilidades especificadas.
+            </li>
+            <li class="flex items-center">
+              <svg
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Información de contacto para verificación proporcionada.
+            </li>
+          </ul>
+          <h4
+            class="mb-2 mt-2 text-m font-semibold text-gray-900 dark:text-white"
+          >
+            Rechaza el documento si cumple con lo siguiente:
+          </h4>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Empresas no verificables o inexistentes.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Fechas de empleo no coinciden con otros documentos.
+            </li>
+            <li class="flex items-center">
+              <svg
+                style="color: red"
+                class="w-3.5 h-3.5 me-2 text-red-600 dark:text-green-400 flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              No se proporcionan detalles de contacto para verificación.
+            </li>
+          </ul>
+        </div>
+
+        } }
+      </div>
+      <div data-popper-arrow></div>
+    </div>
+    <div
+      class="ml-10 w-96 border border-solid rounded-lg pdf-preview-container"
+    >
+      <div class="relative h-60 watermark-container">
+        <div class="flex justify-center">
+          <img
+            src="/assets/logoPDF.png"
+            alt="PDF Preview"
+            width="200rem"
+            height="200rem"
+            class="rounded-t-lg"
+            (click)="openModal(documento)"
+          />
+        </div>
+        <div
+          (click)="openModal(documento)"
+          class="absolute bottom-0 left-0 right-0 bg-white p-4 rounded-b-lg"
+        >
+          <div class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+              />
+            </svg>
+
+            <div class="ml-2">
+              <div class="text-sm font-semibold text-gray-900">
+                {{ documento.nombreDocumento }}
+              </div>
+              <div class="text-xs text-gray-500">
+                {{ documento.fechaEmision | date }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="documento.estatusId !== 2 && documento.estatusId !== 4">
+        <div
+          id="verifi{{ documento.idDocumentacion }}"
+          class="rounded-lg w-full mt-8 flex py-5 justify-center"
+        >
+          <div class="inline-flex rounded-md shadow-sm" role="group">
+            <button
+              type="button"
+              class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              (click)="updateStatus(documento, 2)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6"
+                style="color: green"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              Aprobar
+            </button>
+            <button
+              type="button"
+              class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              (click)="updateStatus(documento, 4)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6"
+                style="color: red"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              Rechazar
+            </button>
+            <button
+              type="button"
+              class="w-full inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              (click)="comentar(documento)"
+            >
+              <svg
+                class="w-3 h-3 me-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6"
+                style="color: blue"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              Comentar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="documento.estatusId === 2" class="">
+        <div
+          class="p-2 mb-2 mt-8 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+          role="alert"
+        >
+          <span class="font-medium">Documento Validado!</span>
+        </div>
+      </div>
+      <div *ngIf="documento.estatusId === 4" class="">
+        <div
+          class="p-2 mb-2 mt-8 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          <span class="font-medium">Documento Rechazado!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      #modalElement
+      id="extralarge-modal-{{ documento.idDocumentacion }}"
+      tabindex="-1"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative w-full max-w-7xl max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div
+            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+              {{ documento.nombreDocumento }}
+            </h3>
+            <button
+              type="button"
+              (click)="closeModal(documento)"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <div class="p-4 md:p-5 space-y-4">
+            <!-- Contenido del modal -->
+            <iframe class="w-full h-screen" [src]="documento.safeUrl"></iframe>
+
+            <!-- ... más contenido ... -->
+          </div>
+          <div
+            class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600"
+          >
+            <button
+              (click)="closeModal(documento)"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Aceptar
+            </button>
+            <button
+              (click)="closeModal(documento)"
+              class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Rechazar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="flex pt-10 w-full">
+        <button
+          (click)="guardarDocumentos()"
+          type="button"
+          class="buttonConfirm w-96 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >
+          Confirmar Documentos
+        </button>
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="flex pt-10 w-full">
+        <button
+          id="btnLiberar"
+          disabled
+          (click)="liberarDocumentos()"
+          type="button"
+          style="background-color: #6096ba; color: white"
+          class="w-96 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >
+          Liberar Usuario
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

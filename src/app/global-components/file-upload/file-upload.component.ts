@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   AngularFireStorage,
   AngularFireUploadTask,
 } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EventServiceService } from '../../services/event-service.service';
-import { Documentacion } from '../../interfaces/documentacion';
+import { ItDocumentacion } from '../../interfaces/documentacion';
 
 @Component({
   selector: 'app-file-upload',
@@ -21,11 +21,25 @@ export class FileUploadComponent {
   uploadStatus: string = '';
   uploadProgress: Observable<number | undefined> | undefined;
   downloadURL: Observable<string> | undefined;
+  @Output() reset: EventEmitter<void> = new EventEmitter<void>();
+
+  // Propiedades para el objeto
+  @Input() tipoDocumento: string = '';
+  @Input() nombreDoc: string = '';
+  @Input() uploadId: string = ''; // Identificador único para cada instancia
 
   constructor(
     private storage: AngularFireStorage,
     private eventServices: EventServiceService
   ) {}
+
+  // Función para formatear la fecha
+  getFormattedDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] ?? null;
@@ -57,20 +71,16 @@ export class FileUploadComponent {
               next: (url) => {
                 this.uploadStatus = 'Archivo subido exitosamente';
                 this.downloadURL = fileRef.getDownloadURL();
-                const datosDocumento: Documentacion = {
-                  id_documentacion: 0,
-                  persona_id: 0,
-                  tipo_documento: '',
-                  nombre_documento: '',
-                  url_documento: url,
-                  fecha_emision: Date.now(),
-                  fecha_expiracion: Date.now(),
+                const datosDocumento: ItDocumentacion = {
+                  tipoDocumento: this.tipoDocumento,
+                  nombreDocumento: this.nombreDoc,
+                  urlDocumento: url,
+                  fechaEmision: this.getFormattedDate(new Date()),
+                  fechaExpiracion: this.getFormattedDate(new Date()),
                   version: 1,
-                  estatus_id: 1,
-                  fecha_registro: Date.now(),
-                  usuario_registro: 0,
-                  fecha_modificacion: Date.now(),
-                  usuario_modifico: 0,
+                  estatusId: 18,
+                  fechaRegistro: this.getFormattedDate(new Date()),
+                  usuarioRegistro: 0,
                 };
                 this.eventServices.setDownloadURL(datosDocumento);
               },
@@ -97,5 +107,18 @@ export class FileUploadComponent {
     } else {
       this.uploadStatus = 'No se seleccionó ningún archivo';
     }
+  }
+
+  // Método para limpiar:
+  resetFileInput(): void {
+    const fileInput = <HTMLInputElement>document.getElementById(this.uploadId);
+    if (fileInput) {
+      fileInput.value = '';
+    }
+    this.uploadStatus = '';
+    this.uploadProgress = of(undefined);
+    this.selectedFile = null;
+    this.downloadURL = undefined;
+    this.reset.emit();
   }
 }

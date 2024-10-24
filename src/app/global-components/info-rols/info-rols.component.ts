@@ -15,13 +15,30 @@ export class InfoRolsComponent {
 
   contador: number = 0;
 
+  //contadorUp() {
+  //this.contador++;
+  //console.log(this.contador);
+
+  //this.up.emit(this.contador);
+  // }
+
+  //contadorDown() {
+  //this.contador--;
+  //this.up.emit(this.contador);
+  // }
+
+  activeButtonIndex: number = 0;
+
   contadorUp() {
-    this.contador++;
-    this.up.emit(this.contador);
+    if (this.activeButtonIndex > 0) {
+      this.activeButtonIndex--;
+    }
   }
 
   contadorDown() {
-    this.contador--;
-    this.up.emit(this.contador);
+    if (this.activeButtonIndex < 3) {
+      // Ajusta el número según la cantidad de botones
+      this.activeButtonIndex++;
+    }
   }
 }

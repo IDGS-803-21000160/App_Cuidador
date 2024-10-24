@@ -10,3 +10,8 @@ export const environment = {
     measurementId: 'G-1RQR4K4RMZ',
   },
 };
+
+export const environmentAPI = {
+  production: true,
+  endPoint: 'https://cuidadorapi.azurewebsites.net/api/',
+};

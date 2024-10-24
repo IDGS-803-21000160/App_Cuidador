@@ -13,6 +13,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../../environments/environment';
 import { AppComponent } from '../app.component';
 import { FileUploadComponent } from '../global-components/file-upload/file-upload.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,9 @@ import { FileUploadComponent } from '../global-components/file-upload/file-uploa
   exports: [FormCuidadorComponent],
   providers: [EventServiceService],
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     BallInfoComponent,
     FileUploadComponent,
