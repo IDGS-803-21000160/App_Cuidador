@@ -7,10 +7,11 @@ import { registroCuidador, registroFamiliar } from '../interfaces/interfaces';
   providedIn: 'root',
 })
 export class FormsRegisterService {
-  private apiUrl = 'http://10.16.14.88:5003/api/Usuario/registrarUsuarioWeb';
+  private apiUrl =
+    'https://cuidadorapi.azurewebsites.net/api/Usuario/registrarUsuarioWeb';
 
   private apiRegFam =
-    'http://10.16.14.88:5003/api/Usuario/registrarFamiliarWeb';
+    'https://cuidadorapi.azurewebsites.net/api/Usuario/registrarFamiliarWeb';
 
   constructor(private http: HttpClient) {}
 
