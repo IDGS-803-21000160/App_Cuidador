@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class PagePrincipalComponent {
   menuItems = [
     {
-      routerLink: ['/cuidador/home'],
+      routerLink: ['/cuidador/profile'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -20,7 +20,7 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/'],
+      routerLink: ['/cuidador/profile'],
       svgViewBox: '0 0 22 21',
       svgFill: 'currentColor',
       svgPaths: [
@@ -43,13 +43,24 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/'],
+      routerLink: ['/cuidador/profile'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
         'M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z',
       ],
       text: 'Configuración',
+      fillRule: 'evenodd',
+      clipRule: 'evenodd',
+    },
+    {
+      routerLink: ['/cuidador/profile'],
+      svgViewBox: '0 0 24 24',
+      svgFill: 'currentColor',
+      svgPaths: [
+        'M3.559 4.544c.355-.35.834-.544 1.33-.544H19.11c.496 0 .975.194 1.33.544.356.35.559.829.559 1.331v9.25c0 .502-.203.981-.559 1.331-.355.35-.834.544-1.33.544H15.5l-2.7 3.6a1 1 0 0 1-1.6 0L8.5 17H4.889c-.496 0-.975-.194-1.33-.544A1.868 1.868 0 0 1 3 15.125v-9.25c0-.502.203-.981.559-1.331ZM7.556 7.5a1 1 0 1 0 0 2h8a1 1 0 0 0 0-2h-8Zm0 3.5a1 1 0 1 0 0 2H12a1 1 0 1 0 0-2H7.556Z',
+      ],
+      text: 'Solicitudes',
       fillRule: 'evenodd',
       clipRule: 'evenodd',
     },

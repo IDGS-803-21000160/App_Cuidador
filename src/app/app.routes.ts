@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import { PagePrincipalComponent } from './module-cuidador/page-principal/page-principal.component';
+import { PagePrincipalComponent } from './modules/module-cliente-cuidador/module-cuidador/page-principal/page-principal.component';
 import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
   {
     path: 'cuidador',
     loadChildren: () =>
-      import('./module-cuidador/module-cuidador.module').then(
-        (m) => m.ModuleCuidadorModule
-      ),
+      import(
+        './modules/module-cliente-cuidador/module-cuidador/module-cuidador.module'
+      ).then((m) => m.ModuleCuidadorModule),
     //canActivate: [AuthGuard],
   },
   {
@@ -24,9 +24,9 @@ export const routes: Routes = [
   {
     path: 'familiar',
     loadChildren: () =>
-      import('./module-familiar/module-familiar.module').then(
-        (m) => m.ModuleFamiliarModule
-      ),
+      import(
+        './modules/module-cliente-familiar/module-familiar/module-familiar.module'
+      ).then((m) => m.ModuleFamiliarModule),
     canActivate: [AuthGuard],
   },
   {

@@ -6,11 +6,11 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EventServiceService } from '../../../services/event-service.service';
+import { EventServiceService } from '../../../../../services/event-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Modal, ModalOptions, ModalInterface } from 'flowbite';
-import { ItDocumentacion } from '../../../interfaces/documentacion';
-import { AdminUsersService } from '../../../services/admin-users.service';
+import { ItDocumentacion } from '../../../../../interfaces/documentacion';
+import { AdminUsersService } from '../../../../../services/admin-users.service';
 import Swal from 'sweetalert2';
 
 @Component({

@@ -5,7 +5,7 @@ import { InfoRolsComponent } from './global-components/info-rols/info-rols.compo
 import { CuidadorModule } from './cuidador/cuidador.module';
 import { LoginModule } from './login/login.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModuleCuidadorModule } from './module-cuidador/module-cuidador.module';
+import { ModuleCuidadorModule } from './modules/module-cliente-cuidador/module-cuidador/module-cuidador.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { Persona } from './interfaces/interfaceCuidador';

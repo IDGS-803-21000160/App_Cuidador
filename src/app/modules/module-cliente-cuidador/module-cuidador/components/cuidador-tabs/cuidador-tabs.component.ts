@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { EventServiceService } from '../../../services/event-service.service';
+import { EventServiceService } from '../../../../../services/event-service.service';
 import {
   DatosMedicos,
   Documentacion,
   Padecimiento,
   Persona,
-} from '../../../interfaces/interfaceCuidador';
-import { ItPersonaFisica } from '../../../interfaces/personaFisica';
-import { ItDatosMedicos } from '../../../interfaces/datos_medicos';
-import { ItPadecimiento } from '../../../interfaces/padecimientos';
-import { ItDocumentacion } from '../../../interfaces/documentacion';
-import { AuthService } from '../../../auth/auth.service';
+} from '../../../../../interfaces/interfaceCuidador';
+import { ItPersonaFisica } from '../../../../../interfaces/personaFisica';
+import { ItDatosMedicos } from '../../../../../interfaces/datos_medicos';
+import { ItPadecimiento } from '../../../../../interfaces/padecimientos';
+import { ItDocumentacion } from '../../../../../interfaces/documentacion';
+import { AuthService } from '../../../../../auth/auth.service';
 
 @Component({
   selector: 'app-cuidador-tabs',
