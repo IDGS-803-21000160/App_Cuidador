@@ -17,6 +17,10 @@ import { ListApplicationsComponent } from './components/list-applications/list-a
 import { NavbarFinanceComponent } from './components/navbar-finance/navbar-finance.component';
 import { AccountComponent } from './components/finance/account/account.component';
 import { SpinnerNotShadowComponent } from '../../../global-components/spinner-not-shadow/spinner-not-shadow.component';
+import { AvailabilityComponent } from './components/services/availability/availability.component';
+import { CommentsComponent } from './components/services/comments/comments.component';
+import { HistoricalComponent } from './components/services/historical/historical.component';
+import { NavbarServicesComponent } from './components/services/navbar-services/navbar-services.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { SpinnerNotShadowComponent } from '../../../global-components/spinner-no
     ListApplicationsComponent,
     NavbarFinanceComponent,
     AccountComponent,
+    AvailabilityComponent,
+    CommentsComponent,
+    HistoricalComponent,
+    NavbarServicesComponent,
   ],
   imports: [
     CommonModule,

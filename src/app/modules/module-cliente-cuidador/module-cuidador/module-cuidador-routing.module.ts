@@ -42,6 +42,13 @@ const routes: Routes = [
             (m) => m.FinanceModule
           ),
       },
+      {
+        path: 'services',
+        loadChildren: () =>
+          import('./modules/services/services.module').then(
+            (m) => m.ServicesModule
+          ),
+      },
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

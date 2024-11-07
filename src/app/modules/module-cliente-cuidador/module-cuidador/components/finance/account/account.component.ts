@@ -11,6 +11,14 @@ import { SidebarCuidadorComponent } from '../../../../../../cuidador/sidebar-cui
 export class AccountComponent implements OnInit {
   isModalOpen = false;
   isLoading = false; // Variable para controlar el estado de carga
+  activeTab = 'stats';
+
+  saldoActual: string = '';
+
+  constructor(
+    private currentUser: AuthService,
+    private finanzasService: FinanceServicesService
+  ) {}
 
   openModal() {
     this.isModalOpen = true;
@@ -20,10 +28,20 @@ export class AccountComponent implements OnInit {
     this.isModalOpen = false;
   }
 
-  constructor(
-    private currentUser: AuthService,
-    private finanzasService: FinanceServicesService
-  ) {}
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
+  }
+
+  formatSaldo(saldo: string): string {
+    const number = parseFloat(saldo);
+    if (isNaN(number)) {
+      return saldo;
+    }
+    return number.toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
 
   ngOnInit() {
     this.isLoading = true;
@@ -33,7 +51,13 @@ export class AccountComponent implements OnInit {
       )
       .subscribe(
         (data) => {
-          console.log(data);
+          console.log(data.saldoActual);
+
+          this.saldoActual = data.saldoActual;
+          console.log(this.formatSaldo(this.saldoActual));
+
+          console.log(this.saldoActual);
+
           this.isLoading = false;
         },
         (error) => {
