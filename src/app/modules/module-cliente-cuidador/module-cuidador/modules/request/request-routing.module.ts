@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardModule } from './dashboard.module';
-import { CuidadorDashboardComponent } from '../../components/cuidador-dashboard/cuidador-dashboard.component';
+import { ListApplicationsComponent } from '../../components/list-applications/list-applications.component';
 
 const routes: Routes = [
-  { path: '', component: CuidadorDashboardComponent },
-
+  {
+    path: '',
+    component: ListApplicationsComponent,
+  },
   { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 
@@ -13,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class RequestRoutingModule {}

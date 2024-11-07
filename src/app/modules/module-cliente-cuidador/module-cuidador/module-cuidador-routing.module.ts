@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: PagePrincipalComponent,
     children: [
-      { path: '', redirectTo: 'profile', pathMatch: 'full' },
+      { path: '', redirectTo: 'request', pathMatch: 'full' },
       {
         path: 'home',
         loadChildren: () =>
@@ -26,6 +26,20 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/profile/profile.module').then(
             (m) => m.ProfileModule
+          ),
+      },
+      {
+        path: 'request',
+        loadChildren: () =>
+          import('./modules/request/request.module').then(
+            (m) => m.RequestModule
+          ),
+      },
+      {
+        path: 'finance',
+        loadChildren: () =>
+          import('./modules/finance/finance.module').then(
+            (m) => m.FinanceModule
           ),
       },
     ],

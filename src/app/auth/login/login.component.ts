@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,13 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  loading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   async onSubmit() {
+    this.loading = true;
+
     const user = { usuario: this.email, contrasenia: this.password };
     const validacion = await this.authService.login(user);
     console.log('Validacion:', validacion);
@@ -22,7 +26,9 @@ export class LoginComponent {
       const redirectUrl = this.authService.redirectUrl();
       console.log('Redirecting to:', redirectUrl);
       this.router.navigate([redirectUrl]);
+      this.loading = false;
     } else {
+      this.loading = false;
       alert('Invalid credentials');
     }
   }

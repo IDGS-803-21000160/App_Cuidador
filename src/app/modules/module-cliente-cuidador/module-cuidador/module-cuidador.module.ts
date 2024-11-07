@@ -14,6 +14,9 @@ import { environment } from '../../../../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { HomeCuidadorComponent } from './components/home-cuidador/home-cuidador.component';
 import { ListApplicationsComponent } from './components/list-applications/list-applications.component';
+import { NavbarFinanceComponent } from './components/navbar-finance/navbar-finance.component';
+import { AccountComponent } from './components/finance/account/account.component';
+import { SpinnerNotShadowComponent } from '../../../global-components/spinner-not-shadow/spinner-not-shadow.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { ListApplicationsComponent } from './components/list-applications/list-a
     TablaDocsComponent,
     HomeCuidadorComponent,
     ListApplicationsComponent,
+    NavbarFinanceComponent,
+    AccountComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +37,7 @@ import { ListApplicationsComponent } from './components/list-applications/list-a
     FileUploadComponent,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    SpinnerNotShadowComponent,
   ],
   exports: [PagePrincipalComponent],
 })
