@@ -31,7 +31,11 @@ export class FormComponent {
   objDocuments: ItDocumentacion[] = [];
   alergia: string = '';
   alergias: string[] = [];
+  captchaChecked: boolean = false;
 
+  onCheckboxChange() {
+    // Aquí puedes agregar lógica adicional si lo necesitas
+  }
   //Propiedades para Padecimientos
   objPadecimientos: ItPadecimiento[] = [];
   nombrePadecimiento: string = '';

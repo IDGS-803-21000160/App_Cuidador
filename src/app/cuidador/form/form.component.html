@@ -918,6 +918,56 @@
         />
       </div>
     </div>
+    <!--CAPCHAT-->
+    <div class="bg-gray-50 shadow-md rounded-lg p-4 max-w-xs w-full">
+      <div class="flex items-center justify-center mb-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 text-green-600"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 11V3m0 0L9.5 5.5M12 3l2.5 2.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <h2 class="text-lg font-semibold text-gray-800 ml-2">Verificación</h2>
+      </div>
+
+      <form>
+        <div
+          class="flex items-center justify-between bg-white shadow p-2 rounded mb-3"
+        >
+          <label class="flex items-center">
+            <input
+              type="checkbox"
+              [(ngModel)]="captchaChecked"
+              class="form-checkbox h-4 w-4 text-blue-600 rounded transition duration-150 ease-in-out"
+              (change)="onCheckboxChange()"
+            />
+            <span class="ml-2 text-gray-700 text-sm">No soy un robot</span>
+          </label>
+          <img
+            src="https://img.icons8.com/emoji/24/000000/robot-emoji.png"
+            alt="Robot emoji"
+            class="h-4 w-4"
+          />
+        </div>
+
+        <button
+          [disabled]="!captchaChecked"
+          class="w-full bg-blue-600 text-white font-medium py-1 rounded hover:bg-blue-700 transition duration-200 disabled:opacity-50 text-sm"
+        >
+          Verificar
+        </button>
+      </form>
+    </div>
+
+    <!---->
     <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
       <div class="flex pt-10 w-full">
         <button

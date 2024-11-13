@@ -5,11 +5,14 @@ import { InfoRolsComponent } from './global-components/info-rols/info-rols.compo
 import { CuidadorModule } from './cuidador/cuidador.module';
 import { LoginModule } from './login/login.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModuleCuidadorModule } from './module-cuidador/module-cuidador.module';
+import { ModuleCuidadorModule } from './modules/module-cliente-cuidador/module-cuidador/module-cuidador.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { Persona } from './interfaces/interfaceCuidador';
 import { ItPersonaFisica } from './interfaces/personaFisica';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +29,9 @@ import { ItPersonaFisica } from './interfaces/personaFisica';
     LoginModule,
     ModuleCuidadorModule,
     AuthModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
 })
 export class AppComponent {
