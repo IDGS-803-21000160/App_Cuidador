@@ -12,4 +12,12 @@ export class FinanceServicesService {
     const url = `https://cuidadorapi.azurewebsites.net/api/Finanzas/finanzasUsuarioCuidador/${id}`;
     return this.http.get<any>(url);
   }
+
+  getFinanzasListaContratos(
+    idUser: string,
+    tipousuario: string
+  ): Observable<any> {
+    const url = `https://cuidadorapi.azurewebsites.net/api/ContratoItem/listarContrato/${idUser}/${tipousuario}`;
+    return this.http.get<any>(url);
+  }
 }

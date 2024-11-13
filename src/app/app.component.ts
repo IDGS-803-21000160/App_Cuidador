@@ -10,6 +10,9 @@ import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { Persona } from './interfaces/interfaceCuidador';
 import { ItPersonaFisica } from './interfaces/personaFisica';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +29,9 @@ import { ItPersonaFisica } from './interfaces/personaFisica';
     LoginModule,
     ModuleCuidadorModule,
     AuthModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
 })
 export class AppComponent {

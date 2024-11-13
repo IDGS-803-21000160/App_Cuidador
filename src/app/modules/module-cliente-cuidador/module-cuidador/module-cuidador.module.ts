@@ -21,6 +21,11 @@ import { AvailabilityComponent } from './components/services/availability/availa
 import { CommentsComponent } from './components/services/comments/comments.component';
 import { HistoricalComponent } from './components/services/historical/historical.component';
 import { NavbarServicesComponent } from './components/services/navbar-services/navbar-services.component';
+import { CareHistoryComponent } from './components/finance/care-history/care-history.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,7 @@ import { NavbarServicesComponent } from './components/services/navbar-services/n
     CommentsComponent,
     HistoricalComponent,
     NavbarServicesComponent,
+    CareHistoryComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +52,10 @@ import { NavbarServicesComponent } from './components/services/navbar-services/n
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     SpinnerNotShadowComponent,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    FormsModule,
   ],
   exports: [PagePrincipalComponent],
 })
