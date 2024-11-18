@@ -4,7 +4,7 @@ import { InformativeHomepageComponent } from './informative-homepage/informative
 import { LoginComponent } from '../auth/login/login.component';
 import { InfoRolsComponent } from '../global-components/info-rols/info-rols.component';
 import { PageInitialComponent } from './components/page-initial/page-initial.component';
-import { FormCuidadorComponent } from '../cuidador/form-cuidador/form-cuidador.component';
+import { FormCuidadorComponent } from '../registration-page/cuidador/form-cuidador/form-cuidador.component';
 import { PerfilesRegistroComponent } from './components/perfiles-registro/perfiles-registro.component';
 
 const routes: Routes = [
@@ -19,8 +19,8 @@ const routes: Routes = [
       {
         path: 'formFamiliar',
         loadChildren: () =>
-          import('../adultomayor/adultomayor.module').then(
-            (m) => m.AdultomayorModule
+          import('../registration-page/familiar/familiar-routing.module').then(
+            (m) => m.FamiliarRoutingModule
           ),
       },
       { path: 'formCuidador', component: FormCuidadorComponent },

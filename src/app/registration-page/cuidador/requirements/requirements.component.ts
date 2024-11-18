@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { EventServiceService } from '../../services/event-service.service';
-import { BodyStep } from '../../interfaces/interfaces';
+import { EventServiceService } from '../../../services/event-service.service';
+import { BodyStep } from '../../../interfaces/interfaces';
 
 @Component({
   selector: 'app-requirements',

@@ -123,7 +123,11 @@ export class AuthService {
               this.flag = true;
               break;
             case 2:
-              this.currentUser = { user: response.usuario, role: 'cliente' };
+              this.currentUser = {
+                user: response.usuario,
+                persona: response.personaFisica,
+                role: 'cliente',
+              };
               localStorage.setItem(
                 'currentUser',
                 JSON.stringify(this.currentUser)

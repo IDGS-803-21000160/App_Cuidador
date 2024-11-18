@@ -1,0 +1,784 @@
+<div class="content w-screen pl-10">
+  <!-- Sección: Encabezado del Formulario -->
+  <p class="text-4xl font-bold">Formulario de registro</p>
+  <br />
+  <p class="subtitle font-bold">Información Personal</p>
+  <br />
+
+  <form class="max-w-sm">
+    <!-- Sección: Información Personal -->
+    <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
+      <div class="mb-2">
+        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900"
+          >Nombre(s)</label
+        >
+        <input
+          type="text"
+          name="nombre"
+          id="nombre"
+          [(ngModel)]="nombre"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="apPaterno"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Apellido Paterno</label
+        >
+        <input
+          type="text"
+          id="apPaterno"
+          name="apellido_paterno"
+          [(ngModel)]="apellido_paterno"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="apMaterno"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Apellido Materno</label
+        >
+        <input
+          type="text"
+          id="apMaterno"
+          name="apellido_materno"
+          [(ngModel)]="apellido_materno"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="correoElectronico"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Correo Electrónico</label
+        >
+        <input
+          type="email"
+          id="correoElectronico"
+          name="correo_electronico"
+          [(ngModel)]="correo_electronico"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="name@cuidador.com"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="fechaNac"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Fecha Nacimiento</label
+        >
+        <input
+          type="date"
+          id="fechaNac"
+          name="fecha_nacimiento"
+          [(ngModel)]="fecha_nacimiento"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="genero" class="block mb-2 text-sm font-medium text-gray-900"
+          >Género</label
+        >
+        <select
+          id="genero"
+          name="genero"
+          [(ngModel)]="genero"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="mb-2">
+        <label
+          for="estadoCivil"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Estado Civil</label
+        >
+        <select
+          id="estadoCivil"
+          name="estado_civil"
+          [(ngModel)]="estado_civil"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          <option value="Soltero/a">Soltero/a</option>
+          <option value="Casado/a">Casado/a</option>
+          <option value="Unión libre">Unión libre</option>
+          <option value="Separado/a">Separado/a</option>
+          <option value="Divorciado/a">Divorciado/a</option>
+          <option value="Viudo/a">Viudo/a</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="rfc" class="block mb-2 text-sm font-medium text-gray-900"
+          >RFC</label
+        >
+        <input
+          type="text"
+          id="rfc"
+          name="rfc"
+          [(ngModel)]="rfc"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900"
+          >CURP</label
+        >
+        <input
+          type="text"
+          id="curp"
+          name="curp"
+          [(ngModel)]="curp"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="telParticular"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Teléfono particular</label
+        >
+        <input
+          type="text"
+          id="telParticular"
+          name="telefono_particular"
+          [(ngModel)]="telefono_particular"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="telMovil"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Teléfono móvil</label
+        >
+        <input
+          type="text"
+          id="telMovil"
+          name="telefono_movil"
+          [(ngModel)]="telefono_movil"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="telEmergencia"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Teléfono de emergencia</label
+        >
+        <input
+          type="text"
+          id="telEmergencia"
+          name="telefono_emergencia"
+          [(ngModel)]="telefono_emergencia"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Sección: Fotografía e Identificación -->
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_input"
+            >Fotografía reciente</label
+          >
+          <app-ball-info class="pl-2" [textInfo]="textInfoFoto"></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Información Personal'"
+          [nombreDoc]="'Fotografía reciente'"
+        ></app-file-upload>
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_input"
+            >Fotografía de identificación oficial</label
+          >
+          <app-ball-info class="pl-2" [textInfo]="textINE"></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Información Personal'"
+          [nombreDoc]="'Fotografía de identificación oficial'"
+        ></app-file-upload>
+      </div>
+    </div>
+
+    <br />
+    <p class="subtitle font-bold">Información de Residencia</p>
+    <br />
+
+    <!-- Sección: Información de Residencia -->
+    <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
+      <div class="mb-2">
+        <label for="pais" class="block mb-2 text-sm font-medium text-gray-900"
+          >País</label
+        >
+        <select
+          id="pais"
+          name="pais"
+          [(ngModel)]="pais"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          <option value="México">México</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="estado" class="block mb-2 text-sm font-medium text-gray-900"
+          >Estado</label
+        >
+        <select
+          id="estado"
+          name="estado"
+          [(ngModel)]="estado"
+          (change)="onEstadoChange($event)"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          @for (estado of estados; track $index) {
+          <option [value]="estado">{{ estado }}</option>
+          }
+        </select>
+      </div>
+      <div class="mb-2">
+        <label
+          for="municipio"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Municipio</label
+        >
+        <select
+          id="municipio"
+          name="municipio"
+          [(ngModel)]="municipio"
+          [disabled]="municipios.length === 0"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          @for (municipio of municipios; track $index) {
+          <option [value]="municipio">{{ municipio }}</option>
+          }
+        </select>
+      </div>
+      <div class="mb-2">
+        <label
+          for="colonia"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Colonia</label
+        >
+        <input
+          id="colonia"
+          name="colonia"
+          [(ngModel)]="colonia"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="calle" class="block mb-2 text-sm font-medium text-gray-900"
+          >Calle</label
+        >
+        <input
+          id="calle"
+          name="calle"
+          [(ngModel)]="calle"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="numInterior"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Número interior</label
+        >
+        <input
+          id="numInterior"
+          name="numInterior"
+          [(ngModel)]="numInterior"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <label
+          for="numExterior"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Número Exterior</label
+        >
+        <input
+          id="numExterior"
+          type="text"
+          name="numExterior"
+          [(ngModel)]="numExterior"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="referencias"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Referencias</label
+        >
+        <input
+          id="referencias"
+          type="text"
+          name="referencias"
+          [(ngModel)]="referencias"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Ej. Casa verde de dos pisos con ventanales negros."
+          required
+        />
+      </div>
+    </div>
+
+    <br />
+    <p class="subtitle font-bold">Verificaciones Legales</p>
+    <br />
+
+    <!-- Sección: Verificaciones Legales -->
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_cerAntecedentes"
+            >Certificado de Antecedentes Penales</label
+          >
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="txtCeAntecedentes"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Verificaciones Legales'"
+          [nombreDoc]="'Certificado de Antecedentes Penales'"
+        ></app-file-upload>
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_VeriAntecedentes"
+            >Autorización para Verificación de Antecedentes</label
+          >
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="txtVerAntecedentes"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Verificaciones Legales'"
+          [nombreDoc]="'Autorización para Verificación de Antecedentes'"
+        ></app-file-upload>
+      </div>
+    </div>
+
+    <br />
+    <p class="subtitle font-bold">Información de Contacto</p>
+    <br />
+
+    <!-- Sección: Información de Contacto -->
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_refProfesional"
+            >Referencias Profesionales</label
+          >
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="referenciasProfesionales"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'refProfesionales'"
+          [nombreDoc]="'Referencias Profesionales'"
+        ></app-file-upload>
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_refPersonales"
+            >Referencias Personales</label
+          >
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="referenciasPersonales"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'refPersonales'"
+          [nombreDoc]="'Referencias Personales'"
+        ></app-file-upload>
+      </div>
+    </div>
+
+    <br />
+    <p class="subtitle font-bold">Información Médica y de Salud</p>
+    <br />
+
+    <!-- Sección: Información Médica y de Salud -->
+    <div class="w-screen max-w-5xl grid grid-cols-3 gap-4">
+      <div class="mb-2">
+        <label
+          for="tipo-sanguineo"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Tipo sanguíneo</label
+        >
+        <select
+          id="tipo-sanguineo"
+          name="tipo-sanguineo"
+          [(ngModel)]="tipoSanguineo"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label
+          for="nameMedicoFamiliar"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Nombre del médico familiar</label
+        >
+        <input
+          id="nameMedicoFamiliar"
+          type="text"
+          name="nameMedicoFamiliar"
+          [(ngModel)]="nombreMedicoFam"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="numMedicoFamiliar"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Número telefónico del médico familiar</label
+        >
+        <input
+          id="numMedicoFamiliar"
+          type="text"
+          name="numMedicoFamiliar"
+          [(ngModel)]="numMedicoFam"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
+        />
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_certMedico"
+            >Certificado Médico de Buena Salud</label
+          >
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="datosCertificadoMedico"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Información Médica y de Salud'"
+          [nombreDoc]="'Certificado Médico de Buena Salud'"
+        ></app-file-upload>
+      </div>
+      <div class="mb-2">
+        <div class="flex">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="file_pruebasDrogas"
+            >Pruebas de Drogas y Alcohol</label
+          >
+          <app-ball-info
+            class="pl-2"
+            [textInfo]="datosPruebasDrogasAlcohol"
+          ></app-ball-info>
+        </div>
+        <app-file-upload
+          [tipoDocumento]="'Información Médica y de Salud'"
+          [nombreDoc]="'Pruebas de Drogas y Alcohol'"
+        ></app-file-upload>
+      </div>
+    </div>
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <div
+          class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
+          style="background-color: #fafafa"
+        >
+          <label
+            for="alergia"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Alergias</label
+          >
+          <div class="flex">
+            <input
+              id="alergia"
+              [(ngModel)]="alergia"
+              name="alergia"
+              type="text"
+              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              required
+            />
+            <button
+              (click)="agregarAlergia()"
+              type="button"
+              style="background-color: #6096ba"
+              class="w-48 mt-3 ml-5 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5"
+            >
+              Agregar Alergia
+            </button>
+          </div>
+          <ul class="my-4 space-y-3">
+            @for (alergia of alergias; track $index) {
+            <span
+              id="badge-dismiss-default"
+              class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-800 rounded"
+            >
+              {{ alergia }}
+              <button
+                (click)="eliminarAlergia($index)"
+                type="button"
+                class="inline-flex items-center p-1 ms-2 text-sm text-blue-900 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900"
+                data-dismiss-target="#badge-dismiss-default"
+                aria-label="Remove"
+              >
+                <svg
+                  class="w-2 h-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span class="sr-only">Remove badge</span>
+              </button>
+            </span>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <div
+          class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow"
+          style="background-color: #fafafa"
+        >
+          <p>Padecimientos</p>
+          <br />
+          <div class="flex w-screen max-w-5xl grid grid-cols-2 gap-4">
+            <div>
+              <label
+                for="namePadecimiento"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Nombre del padecimiento:</label
+              >
+              <input
+                id="namePadecimiento"
+                name="padecimiento"
+                [(ngModel)]="nombrePadecimientoFam"
+                type="text"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Ej.: Diabetes."
+                required
+              />
+              <label
+                for="descPadecimiento"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Descripción del padecimiento:</label
+              >
+              <textarea
+                id="descPadecimiento"
+                name="descPadecimiento"
+                [(ngModel)]="descPadecimientoFam"
+                type="text"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Ej.: Sufro de diabetes tipo 2, una condición crónica que afecta la forma en que mi cuerpo metaboliza la glucosa."
+                required
+              ></textarea>
+              <label
+                for="fechaPadecimiento"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Padece desde:</label
+              >
+              <input
+                id="fechaPadecimiento"
+                name="fechaPadecimiento"
+                [(ngModel)]="fechaPadecimientoFam"
+                type="date"
+                class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                required
+              />
+              <button
+                (click)="agregarPadecimiento()"
+                type="button"
+                style="background-color: #6096ba"
+                class="w-full mt-3 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Agregar Padecimiento
+              </button>
+            </div>
+            <div class="padecimientos rounded-lg">
+              @for (pad of objPadecimientos; track $index) {
+              <span
+                id="badge-dismiss-default"
+                class="w-full block mt-3 items-center px-2 py-1 text-sm font-medium text-blue-800 rounded"
+              >
+                <div class="flex justify-between items-center">
+                  <div>{{ pad.nombre }}</div>
+
+                  <button
+                    (click)="eliminarPadecimiento($index)"
+                    type="button"
+                    class="inline-flex items-center p-1 text-sm text-blue-900 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900"
+                    data-dismiss-target="#badge-dismiss-default"
+                    aria-label="Remove"
+                  >
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
+                    </svg>
+                    <span class="sr-only">Remove badge</span>
+                  </button>
+                </div>
+              </span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="mb-2">
+        <label
+          for="observaciones"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Observaciones</label
+        >
+        <textarea
+          id="observaciones"
+          type="text"
+          [(ngModel)]="observaciones"
+          name="observaciones"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder=""
+          required
+        ></textarea>
+      </div>
+    </div>
+
+    <br />
+    <p class="subtitle font-bold">Información Profesional</p>
+    <br />
+
+    <!-- Sección: Información Profesional -->
+
+    <br />
+    <p class="subtitle font-bold">Configuración de usuario</p>
+    <br />
+
+    <!-- Sección: Configuración de usuario -->
+    <div class="w-screen max-w-5xl grid grid-cols-2 gap-4">
+      <div class="mb-2">
+        <label
+          for="nameUsuario"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Usuario</label
+        >
+        <input
+          id="nameUsuario"
+          name="nameUsuario"
+          [(ngModel)]="usuario"
+          type="text"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder=""
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label
+          for="contrasenia"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Contraseña</label
+        >
+        <input
+          id="contrasenia"
+          name="contrasenia"
+          [(ngModel)]="contrasenia"
+          type="password"
+          class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="* * * * * * *"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="w-screen max-w-5xl grid grid-cols-1 gap-4">
+      <div class="flex pt-10 w-full">
+        <button
+          (click)="registroCuidador()"
+          type="button"
+          class="buttonConfirm w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        >
+          Registrar
+        </button>
+      </div>
+    </div>
+    <br />
+  </form>
+</div>

@@ -89,6 +89,7 @@ export class FormDocumentosComponent implements AfterViewInit, OnInit {
     this.adminUsersService.updateUsuario(this.user).subscribe(
       (response) => {
         console.log('Usuario actualizado correctamente', response);
+
         Swal.fire({
           title: '¡Operación exitosa!',
           text: 'Todo se completó correctamente.',

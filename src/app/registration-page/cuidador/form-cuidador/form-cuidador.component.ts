@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EventServiceService } from '../../services/event-service.service';
+import { EventServiceService } from '../../../services/event-service.service';
 
 @Component({
   selector: 'app-form-cuidador',

@@ -1,12 +1,12 @@
 import { Component, NgModule, ViewChild } from '@angular/core';
-import { estadosYMunicipios } from '../../interfaces/estadosMX';
-import { EventServiceService } from '../../services/event-service.service';
-import { ItDocumentacion } from '../../interfaces/documentacion';
-import { ItPadecimiento } from '../../interfaces/padecimientos';
-import { ItCertificacion } from '../../interfaces/certificaciones';
-import { FileUploadComponent } from '../../global-components/file-upload/file-upload.component';
-import { registroCuidador } from '../../interfaces/interfaces';
-import { FormsRegisterService } from '../../services/forms-register.service';
+import { estadosYMunicipios } from '../../../interfaces/estadosMX';
+import { EventServiceService } from '../../../services/event-service.service';
+import { ItDocumentacion } from '../../../interfaces/documentacion';
+import { ItPadecimiento } from '../../../interfaces/padecimientos';
+import { ItCertificacion } from '../../../interfaces/certificaciones';
+import { FileUploadComponent } from '../../../global-components/file-upload/file-upload.component';
+import { registroCuidador } from '../../../interfaces/interfaces';
+import { FormsRegisterService } from '../../../services/forms-register.service';
 import Swal from 'sweetalert2';
 import {
   textInfoFoto,
@@ -17,7 +17,7 @@ import {
   referenciasPersonales,
   datosPruebasDrogasAlcohol,
   datosCertificadoMedico,
-} from '../../interfaces/locales';
+} from '../../../interfaces/locales';
 
 @Component({
   selector: 'app-form',

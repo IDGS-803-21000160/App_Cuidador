@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../../auth/auth.service';
 import { FinanceServicesService } from '../../../../../../services/services-cliente-cuidador/finance-services/finance-services.service';
-import { SidebarCuidadorComponent } from '../../../../../../cuidador/sidebar-cuidador/sidebar-cuidador.component';
+import { SidebarCuidadorComponent } from '../../../../../../registration-page/cuidador/sidebar-cuidador/sidebar-cuidador.component';
 
 @Component({
   selector: 'app-account',

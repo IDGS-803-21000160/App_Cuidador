@@ -24,4 +24,15 @@ export class ListApplicationsComponent implements OnInit {
       }));
     });
   }
+
+  cambiarEstatusFeedback(id: number, idEstatus: number) {
+    this.requestsService.aceptarFeedback(id, idEstatus).subscribe(
+      (response) => {
+        console.log('Respuesta del servidor:', response);
+      },
+      (error) => {
+        console.error('Error al cambiar el estatus del feedback:', error);
+      }
+    );
+  }
 }
