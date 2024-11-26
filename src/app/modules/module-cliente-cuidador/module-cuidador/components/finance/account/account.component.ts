@@ -14,11 +14,43 @@ export class AccountComponent implements OnInit {
   activeTab = 'stats';
 
   saldoActual: string = '';
+  saldoTotal: string = '';
+
+  // Variable para guardar la cuenta bancaria
+  cuentaBancaria: any = {};
+  numCuenta: number = 0;
+  numClaveInterbancaria: number = 0;
+
+  //Variables Modal Edit
+  isEditModalOpen = false;
+
+  //Modal Retiro de Saldo
+  isRetiroModalOpen = false;
+
+  //Transacciones
+  transacciones: any = [];
+  recentTransactions: any = [];
 
   constructor(
     private currentUser: AuthService,
     private finanzasService: FinanceServicesService
   ) {}
+
+  openModalRetiro() {
+    this.isRetiroModalOpen = true;
+  }
+
+  closeModalRetiro() {
+    this.isRetiroModalOpen = false;
+  }
+
+  openModalEdit() {
+    this.isEditModalOpen = true;
+  }
+
+  closeModalEdit() {
+    this.isEditModalOpen = false;
+  }
 
   openModal() {
     this.isModalOpen = true;
@@ -33,6 +65,8 @@ export class AccountComponent implements OnInit {
   }
 
   formatSaldo(saldo: string): string {
+    console.log('Yo soy el saldo que entra', typeof saldo);
+
     const number = parseFloat(saldo);
     if (isNaN(number)) {
       return saldo;
@@ -41,6 +75,16 @@ export class AccountComponent implements OnInit {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
+  }
+
+  obtenerTransaccionesRecientes(transacciones: any[]): any[] {
+    return transacciones
+      .sort(
+        (a, b) =>
+          new Date(b.fechaMovimiento).getTime() -
+          new Date(a.fechaMovimiento).getTime()
+      )
+      .slice(0, 4);
   }
 
   ngOnInit() {
@@ -54,9 +98,14 @@ export class AccountComponent implements OnInit {
           console.log(data.saldoActual);
 
           this.saldoActual = data.saldoActual;
-          console.log(this.formatSaldo(this.saldoActual));
+          this.saldoTotal = data.saldoRetirado;
+          this.cuentaBancaria = data.cuentaBancaria;
+          this.transacciones = data.movimientoCuenta;
+          this.recentTransactions = this.obtenerTransaccionesRecientes(
+            this.transacciones
+          );
 
-          console.log(this.saldoActual);
+          console.log('Transacciones:', this.recentTransactions);
 
           this.isLoading = false;
         },

@@ -26,6 +26,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { WarningAlertComponent } from '../../../global-components/alertsLabels/warning-alert/warning-alert.component';
+import { TableReportingComponent } from '../../../global-components/table-reporting/table-reporting.component';
+import { TransactionsComponent } from './components/finance/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     HistoricalComponent,
     NavbarServicesComponent,
     CareHistoryComponent,
+    TransactionsComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +60,8 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     MatInputModule,
     FormsModule,
+    WarningAlertComponent,
+    TableReportingComponent,
   ],
   exports: [PagePrincipalComponent],
 })

@@ -1,0 +1,304 @@
+<div *ngIf="spinerState">
+  <app-spinner-not-shadow></app-spinner-not-shadow>
+</div>
+
+<div class="grid grid-cols-1 gap-4 mb-4">
+  <form>
+    <div class="flex p-2 mb-4">
+      <p
+        class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500"
+      >
+        Información Personal
+      </p>
+    </div>
+    <hr />
+    <br />
+    <section>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Nombre</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="first_name"
+              name="nombre"
+              [(ngModel)]="persona.nombre"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="John"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="last_name"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Apellido Paterno</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              [(ngModel)]="persona.apellidoPaterno"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Doe"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="apMaterno"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Apellido Materno</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="apMaterno"
+              name="apMaterno"
+              [(ngModel)]="persona.apellidoMaterno"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Flowbite"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="mail"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Correo Electronico</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="mail"
+              id="email"
+              name="email"
+              [(ngModel)]="persona.correoElectronico"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="userCuidador@cuidador.com"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="fechaNac"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Fecha Nacimiento</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="date"
+              id="fechaNac"
+              name="fechaNac"
+              [(ngModel)]="persona.fechaNacimiento"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="txtGenero"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Genero</label
+            >
+          </div>
+          <div class="w-full">
+            <select
+              id="genero"
+              name="genero"
+              [(ngModel)]="persona.genero"
+              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              disabled
+            >
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="txtEstadoCivil"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Estado Civil</label
+            >
+          </div>
+          <div class="w-full">
+            <select
+              id="estadoCivil"
+              name="estado_civil"
+              [(ngModel)]="persona.estadoCivil"
+              class="inputColor bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              disabled
+            >
+              <option value="Soltero">Soltero</option>
+              <option value="Casado">Casado</option>
+              <option value="Unión libre">Unión libre</option>
+              <option value="Separado">Separado</option>
+              <option value="Divorciado">Divorciado</option>
+              <option value="Viudo">Viudo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="rfc"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >RFC</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="rfc"
+              name="rfc"
+              [(ngModel)]="persona.rfc"
+              class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="curp"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >CURP</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="curp"
+              name="curp"
+              [(ngModel)]="persona.curp"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="curp"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Telefono Particular</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="number"
+              id="telPar"
+              name="telPar"
+              [(ngModel)]="persona.telefonoParticular"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="curp"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Telefono Movil</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="number"
+              id="telMovil"
+              name="telMovil"
+              [(ngModel)]="persona.telefonoMovil"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="curp"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Telefono Emergencias</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="number"
+              id="telPar"
+              name="telEmergencia"
+              [(ngModel)]="persona.telefonoEmergencia"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+    <br />
+  </form>
+</div>

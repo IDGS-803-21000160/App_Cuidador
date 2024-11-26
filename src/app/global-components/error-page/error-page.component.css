@@ -1,0 +1,17 @@
+h1 {
+  position: relative;
+  font-size: 15rem; /* Ajusta el tamaño según sea necesario */
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(0, 157, 255); /* Contorno rojo */
+}
+
+h1::before {
+  content: "500";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: rgba(0, 123, 255, 0.247); /* Rojo transparente */
+  z-index: -1;
+}

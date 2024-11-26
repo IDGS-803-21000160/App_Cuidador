@@ -6,6 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: PagePrincipalComponent,
+    children: [
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./modules/profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
+      },
+    ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },
   {

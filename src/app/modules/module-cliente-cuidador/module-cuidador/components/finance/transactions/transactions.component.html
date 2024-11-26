@@ -1,0 +1,9 @@
+<div *ngIf="isLoading">
+  <app-spinner-not-shadow></app-spinner-not-shadow>
+</div>
+<div *ngIf="!isLoading">
+  <app-table-reporting
+    [data]="transacciones"
+    [cuentaBancaria]="cuentaBancaria"
+  ></app-table-reporting>
+</div>

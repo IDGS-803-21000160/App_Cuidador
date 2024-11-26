@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class PagePrincipalComponent {
   menuItems = [
     {
-      routerLink: ['/cuidador/profile'],
+      routerLink: ['/familiar/profile'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -20,7 +20,7 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/cuidador/dashboard'],
+      routerLink: ['/familiar/dashboard'],
       svgViewBox: '0 0 22 21',
       svgFill: 'currentColor',
       svgPaths: [
@@ -31,7 +31,7 @@ export class PagePrincipalComponent {
       notification: false,
     },
     {
-      routerLink: ['/cuidador/profile'],
+      routerLink: ['/familiar/profile'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -43,7 +43,7 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/cuidador/finance'],
+      routerLink: ['/familiar/finance'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -54,7 +54,7 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/cuidador/services'],
+      routerLink: ['/familiar/services'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -65,7 +65,7 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/cuidador/profile'],
+      routerLink: ['/familiar/profile'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
@@ -76,7 +76,7 @@ export class PagePrincipalComponent {
       clipRule: 'evenodd',
     },
     {
-      routerLink: ['/cuidador/request'],
+      routerLink: ['/familiar/request'],
       svgViewBox: '0 0 24 24',
       svgFill: 'currentColor',
       svgPaths: [
