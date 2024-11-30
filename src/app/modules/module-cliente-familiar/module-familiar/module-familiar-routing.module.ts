@@ -7,6 +7,8 @@ const routes: Routes = [
     path: '',
     component: PagePrincipalComponent,
     children: [
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
+
       {
         path: 'profile',
         loadChildren: () =>
@@ -14,9 +16,37 @@ const routes: Routes = [
             (m) => m.ProfileModule
           ),
       },
+      {
+        path: 'familiar',
+        loadChildren: () =>
+          import('./modules/familiar/familiar.module').then(
+            (m) => m.FamiliarModule
+          ),
+      },
+      {
+        path: 'finance',
+        loadChildren: () =>
+          import('./modules/finance/finance.module').then(
+            (m) => m.FinanceModule
+          ),
+      },
+      {
+        path: 'services',
+        loadChildren: () =>
+          import('./modules/services/services.module').then(
+            (m) => m.ServicesModule
+          ),
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
     ],
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: ' ', pathMatch: 'full' },
   {
     path: '**',
     redirectTo: '',

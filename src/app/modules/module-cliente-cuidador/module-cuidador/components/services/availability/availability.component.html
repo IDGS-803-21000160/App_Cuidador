@@ -1,1 +1,237 @@
-<p>availability works!</p>
+<div *ngIf="isLoading">
+  <app-spinner-not-shadow></app-spinner-not-shadow>
+</div>
+
+<div class="flex space-x-4" *ngIf="!isLoading">
+  <div class="max-w-lg bg-white shadow-md rounded-lg p-6">
+    <p class="text-lg font-semibold text-gray-800 mb-6">Registrar Horario</p>
+    <form class="space-y-4">
+      <!-- Campo Día -->
+      <div class="flex items-center justify-between">
+        <label
+          for="diaSemana"
+          class="text-sm font-medium text-gray-700 w-1/3 text-right"
+        >
+          Día:
+        </label>
+        <select
+          id="diaSemana"
+          name="diaSemana"
+          class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option *ngFor="let dia of validarDiasDisponibles()">
+            {{ dia }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Campo Precio por Hora -->
+      <div class="flex items-center justify-between">
+        <label
+          for="precioPorHora"
+          class="text-sm font-medium text-gray-700 w-1/3 text-right"
+        >
+          Precio por Hora:
+        </label>
+        <input
+          type="number"
+          id="precioPorHora"
+          name="precioPorHora"
+          placeholder="700.00"
+          class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+
+      <!-- Campo Horario Inicio -->
+      <div class="flex items-center justify-between">
+        <label
+          for="horaInicio"
+          class="text-sm font-medium text-gray-700 w-1/3 text-right"
+        >
+          Inicio:
+        </label>
+        <input
+          type="time"
+          id="horaInicio"
+          name="horaInicio"
+          class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+
+      <!-- Campo Horario Fin -->
+      <div class="flex items-center justify-between">
+        <label
+          for="horaFin"
+          class="text-sm font-medium text-gray-700 w-1/3 text-right"
+        >
+          Fin:
+        </label>
+        <input
+          type="time"
+          id="horaFin"
+          name="horaFin"
+          class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-end space-x-4 mt-6">
+        <button
+          type="reset"
+          class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md shadow hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
+    <br />
+    <br />
+    <div
+      class="flex p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Información</span>
+      <div>
+        <span class="font-medium"
+          >Puntos a considerar al elegir días y horarios de trabajo:</span
+        >
+        <ul class="mt-1.5 list-disc list-inside">
+          <li>
+            Asegúrate de que tu disponibilidad coincida con la demanda de
+            clientes en tu zona.
+          </li>
+          <li>
+            Establece límites para tu tiempo personal y días de descanso para
+            evitar agotamiento.
+          </li>
+          <li>
+            Planifica horarios que permitan suficiente tiempo para traslados y
+            preparación.
+          </li>
+          <li>
+            Considera las horas de mayor demanda (por ejemplo, mañanas o
+            tardes).
+          </li>
+          <li>
+            Sé flexible para atender necesidades urgentes o de último minuto, si
+            es posible.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-1 rounded-lg p-6 overflow-auto" style="max-height: 80vh">
+    <div
+      *ngIf="horarios.length === 0"
+      class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Info</span>
+      <div>
+        <span class="font-medium">Importante</span> Comienza registrando tu
+        disponibilidad para recibir solicitudes de servicios.
+      </div>
+    </div>
+    <div *ngFor="let horarios of horarios">
+      <div class="flex-1 bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center space-x-4">
+            <div
+              class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full"
+              style="background-color: #6096ba"
+            >
+              <img src="/assets/isotipo.jpg" class="w-5 h-5 rounded-full" />
+            </div>
+            <div>
+              <p class="text-lg font-medium text-gray-800">
+                {{ horarios.diaSemana }}
+              </p>
+              <span
+                class="px-2 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full"
+              >
+                Detalle Cuidador Disponibilidad
+              </span>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="px-3 py-1 text-sm text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300"
+          >
+            Editar
+          </button>
+        </div>
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">Precio por hora:</th>
+                <th scope="col" class="px-6 py-3">
+                  ${{ horarios.precioPorHora }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Horario Inicio
+                </th>
+                <td class="px-6 py-4">{{ horarios.horaInicio }}</td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Horario Final
+                </th>
+                <td class="px-6 py-4">{{ horarios.horaFin }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>

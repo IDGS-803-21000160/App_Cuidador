@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: PagePrincipalComponent,
     children: [
-      { path: '', redirectTo: 'request', pathMatch: 'full' },
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
       {
         path: 'home',
         loadChildren: () =>

@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: MainFormComponent,
     children: [
-      { path: '', redirectTo: 'form', pathMatch: 'full' },
+      { path: '', redirectTo: 'InfoPrivacy', pathMatch: 'full' },
       {
         path: 'InfoPrivacy',
         component: PrivacyNoticeComponent,

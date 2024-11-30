@@ -558,11 +558,7 @@
           >Detalle del retiro</label
         >
         <input
-          type="text"
-          placeholder="Concepto del retiro"
-          class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
-        />
-        <input
+          [(ngModel)]="montoRetiro"
           type="number"
           placeholder="Monto a retirar"
           class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
@@ -580,6 +576,7 @@
             Cancelar
           </button>
           <button
+            (click)="retirarSaldo()"
             class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
           >
             Realizar Retiro

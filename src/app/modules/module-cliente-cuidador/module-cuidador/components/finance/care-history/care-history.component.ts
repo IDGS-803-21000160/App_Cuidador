@@ -15,6 +15,19 @@ export class CareHistoryComponent implements OnInit {
   tipoUsuario: string = this.currentUser.getCurrentUser().user.tipoUsuarioid;
   contratos: any[] = [];
 
+  isModalOpen = false;
+  selectedContrato: any = null;
+
+  openModal(contrato: any) {
+    this.selectedContrato = contrato;
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.selectedContrato = null;
+  }
+
   constructor(
     private fincanceService: FinanceServicesService,
     private currentUser: AuthService

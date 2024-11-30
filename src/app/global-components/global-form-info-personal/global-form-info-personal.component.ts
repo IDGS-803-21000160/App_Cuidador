@@ -21,6 +21,7 @@ import { ErrorPageComponent } from '../error-page/error-page.component';
 })
 export class GlobalFormInfoPersonalComponent implements OnInit {
   persona: any;
+  domicilio: any;
   spinerState: boolean = true;
 
   constructor(
@@ -50,6 +51,16 @@ export class GlobalFormInfoPersonalComponent implements OnInit {
       (error) => {
         console.error('Error fetching persona:', error);
         this.spinerState = false;
+      }
+    );
+
+    this.servicePerson.getDomicilio(idUsuario).subscribe(
+      (response) => {
+        console.log('Your address is: ', response);
+        this.domicilio = response;
+      },
+      (error) => {
+        console.error('Error fetching address:', error);
       }
     );
   }

@@ -1,0 +1,38 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.calendar-day.selected {
+  background-color: #007bff;
+  color: white;
+}

@@ -14,6 +14,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { FamiliarModule } from './registration-page/familiar/familiar.module';
+import { FamAdultoComponent } from './modules/module-cliente-familiar/module-familiar/components/fam-adulto/fam-adulto.component';
+import { ModuleFamiliarModule } from './modules/module-cliente-familiar/module-familiar/module-familiar.module';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +35,7 @@ import { FamiliarModule } from './registration-page/familiar/familiar.module';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    FamiliarModule,
+    ModuleFamiliarModule,
   ],
 })
 export class AppComponent {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavbarFinanceComponent } from '../../components/navbar-finance/navbar-finance.component';
+import { NavbarFinanceComponent } from '../../components/finance/navbar-finance/navbar-finance.component';
 import { AccountComponent } from '../../components/finance/account/account.component';
 import { CareHistoryComponent } from '../../components/finance/care-history/care-history.component';
 import { TransactionsComponent } from '../../components/finance/transactions/transactions.component';

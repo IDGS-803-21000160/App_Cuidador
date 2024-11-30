@@ -15,6 +15,7 @@ import {
 import { ItDocumentacion } from '../../../../interfaces/documentacion';
 import { EventServiceService } from '../../../../services/event-service.service';
 import { FormsRegisterService } from '../../../../services/forms-register.service';
+import { FamiliarServicesService } from '../../../../services/services-cliente-familiar/familiar-services.service';
 
 @Component({
   selector: 'app-form',
@@ -80,7 +81,7 @@ export class FormComponent {
 
   constructor(
     private eventServices: EventServiceService,
-    private formsRegister: FormsRegisterService
+    private familiarServices: FamiliarServicesService
   ) {}
 
   onEstadoChange(event: Event) {
@@ -114,8 +115,6 @@ export class FormComponent {
         nombre: this.nombrePadecimientoFam,
         descripcion: this.descPadecimientoFam,
         padeceDesde: this.fechaPadecimientoFam,
-        fechaRegistro: new Date(),
-        usuarioRegistro: 0,
       };
 
       this.objPadecimientos.push(newPadecimiento);
@@ -151,7 +150,7 @@ export class FormComponent {
     );
   }
 
-  registroCuidador() {
+  registroTutor() {
     if (true) {
       //Objeto de Información de residencia
       const residencia = {
@@ -164,7 +163,6 @@ export class FormComponent {
         pais: this.pais,
         referencias: this.referencias,
         estatusId: 2,
-        fechaRegistro: new Date(),
         usuarioRegistro: 0,
       };
       const datosMedicos = {
@@ -174,18 +172,15 @@ export class FormComponent {
         nombreMedicoFamiliar: this.nombreMedicoFam,
         telefonoMedicoFamiliar: this.numMedicoFam,
         observaciones: this.observaciones,
-        usuarioRegistro: 0,
       };
 
       const padecimientos = this.objPadecimientos;
 
       const usuario = {
-        usuarioNivelId: 6,
         tipoUsuarioId: 2,
         estatusId: 18,
         usuario: this.usuario,
         contrasenia: this.contrasenia,
-        fechaRegistro: new Date(),
       };
 
       const persona = {
@@ -204,8 +199,6 @@ export class FormComponent {
         nombreCompletoFamiliar: '',
         avatarImage: this.fotoAvatar?.urlDocumento,
         estatusId: 18,
-        fechaRegistro: new Date(),
-        usuarioRegistro: 0,
       };
 
       const documentacion = this.objDocuments;
@@ -218,6 +211,25 @@ export class FormComponent {
         persona: persona,
         documentacion: documentacion,
       };
+
+      this.familiarServices.registerFamiliar(reg).subscribe(
+        (data) => {
+          console.log('Registro Exitoso:', data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro Exitoso',
+            text: 'Tu registro ha sido exitoso',
+          });
+        },
+        (error) => {
+          console.error('Error:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar',
+            text: 'Ocurrió un error al registrar tus datos',
+          });
+        }
+      );
 
       alert(JSON.stringify(reg));
       console.log('Objeto Padre', reg);

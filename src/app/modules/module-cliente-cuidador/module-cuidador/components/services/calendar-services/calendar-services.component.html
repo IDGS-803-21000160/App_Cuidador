@@ -1,0 +1,66 @@
+<div
+  class="pt-5 border-t border-gray-200 dark:border-gray-800 flex sm:flex-row flex-col sm:space-x-5 rtl:space-x-reverse"
+>
+  <div class="max-w-md">
+    <div class="flex justify-between items-center mb-4">
+      <button
+        class="px-3 mr-6 bg-blue-500 text-white rounded hover:bg-blue-600"
+        (click)="changeMonth(-1)"
+      >
+        &#8592;
+      </button>
+
+      <p class="text-xl font-bold ml-5">
+        {{ months[currentMonth] }} {{ currentYear }}
+      </p>
+      <button
+        class="ml-6 px-3 bg-blue-500 text-white rounded hover:bg-blue-600"
+        (click)="changeMonth(1)"
+      >
+        &#8594;
+      </button>
+    </div>
+    <div class="grid grid-cols-7 gap-2">
+      <div *ngFor="let day of daysOfWeek" class="text-center font-semibold">
+        {{ day }}
+      </div>
+      <div
+        *ngFor="let day of calendarDays"
+        [ngClass]="{
+          'bg-blue-200 text-blue-800': isHighlighted(day.date),
+          'bg-gray-200': !day.date,
+          'hover:bg-gray-300': day.date
+        }"
+        class="h-10 w-full text-center rounded flex items-center justify-center cursor-pointer"
+        (click)="showDetails(day.date)"
+      >
+        {{ day.label || "" }}
+      </div>
+    </div>
+  </div>
+  <div
+    class="sm:ms-7 sm:ps-5 sm:border-s border-gray-200 dark:border-gray-800 w-full sm:max-w-[15rem] mt-5 sm:mt-0"
+  >
+    <!-- Información del contrato seleccionado -->
+    <div *ngIf="selectedContract" class="mt-6 bg-gray-100 p-4 rounded shadow">
+      <h3 class="text-lg font-semibold">Detalles del contrato</h3>
+      <p><strong>ID Contrato:</strong> {{ selectedContract.idContrato }}</p>
+      <p>
+        <strong>Persona Cuidador:</strong>
+        {{ selectedContract.personaCuidador.nombre }}
+      </p>
+      <p>
+        <strong>Persona Cliente:</strong>
+        {{ selectedContract.personaCliente.nombre }}
+      </p>
+      <p>
+        <strong>Horario Inicio:</strong> {{ selectedContract.horarioInicio }}
+      </p>
+      <p><strong>Horario Fin:</strong> {{ selectedContract.horarioFin }}</p>
+      <p>
+        <strong>Importe:</strong>
+        {{ selectedContract.importeCuidado | currency }}
+      </p>
+    </div>
+  </div>
+</div>

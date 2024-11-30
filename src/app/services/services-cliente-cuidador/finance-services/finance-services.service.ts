@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -19,5 +19,22 @@ export class FinanceServicesService {
   ): Observable<any> {
     const url = `https://cuidadorapi.azurewebsites.net/api/ContratoItem/listarContrato/${idUser}/${tipousuario}`;
     return this.http.get<any>(url);
+  }
+
+  retirarSaldoCuidador(data: {
+    idCuentaBancaria: number;
+    importe: number;
+    idSaldo: number;
+    usuarioId: number;
+  }): Observable<string> {
+    const url =
+      'https://cuidadorapi.azurewebsites.net/api/Finanzas/retirarSaldo';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<string>(url, data, {
+      headers,
+      responseType: 'text' as 'json',
+    });
   }
 }

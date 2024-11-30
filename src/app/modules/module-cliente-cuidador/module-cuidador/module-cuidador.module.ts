@@ -14,7 +14,7 @@ import { environment } from '../../../../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { HomeCuidadorComponent } from './components/home-cuidador/home-cuidador.component';
 import { ListApplicationsComponent } from './components/list-applications/list-applications.component';
-import { NavbarFinanceComponent } from './components/navbar-finance/navbar-finance.component';
+import { NavbarFinanceComponent } from './components/finance/navbar-finance/navbar-finance.component';
 import { AccountComponent } from './components/finance/account/account.component';
 import { SpinnerNotShadowComponent } from '../../../global-components/spinner-not-shadow/spinner-not-shadow.component';
 import { AvailabilityComponent } from './components/services/availability/availability.component';
@@ -29,6 +29,10 @@ import { FormsModule } from '@angular/forms';
 import { WarningAlertComponent } from '../../../global-components/alertsLabels/warning-alert/warning-alert.component';
 import { TableReportingComponent } from '../../../global-components/table-reporting/table-reporting.component';
 import { TransactionsComponent } from './components/finance/transactions/transactions.component';
+
+import { RouterModule } from '@angular/router';
+import { ServicesManaementComponent } from './components/services/services-manaement/services-manaement.component';
+import { CalendarServicesComponent } from './components/services/calendar-services/calendar-services.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,8 @@ import { TransactionsComponent } from './components/finance/transactions/transac
     NavbarServicesComponent,
     CareHistoryComponent,
     TransactionsComponent,
+    ServicesManaementComponent,
+    CalendarServicesComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +68,7 @@ import { TransactionsComponent } from './components/finance/transactions/transac
     FormsModule,
     WarningAlertComponent,
     TableReportingComponent,
+    RouterModule,
   ],
   exports: [PagePrincipalComponent],
 })

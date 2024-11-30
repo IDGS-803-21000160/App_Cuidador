@@ -36,6 +36,7 @@ export const routes: Routes = [
         (m) => m.HomepageCuidadorModule
       ),
   },
+
   { path: '', redirectTo: '/homePageCuidador', pathMatch: 'full' },
   {
     path: '**',

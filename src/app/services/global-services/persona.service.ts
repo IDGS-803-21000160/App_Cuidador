@@ -18,4 +18,20 @@ export class PersonaService {
     });
     return this.http.get<any>(url, { headers });
   }
+
+  getDomicilio(idUsuario: number): Observable<any> {
+    const url = `${this._endPoint}/crm/Persona/getDomicilio/${idUsuario}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<any>(url, { headers });
+  }
+
+  getInformacionMedica(idUsuario: number): Observable<any> {
+    const url = `${this._endPoint}/crm/Persona/getDatoMedico/${idUsuario}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<any>(url, { headers });
+  }
 }

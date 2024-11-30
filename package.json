@@ -31,6 +31,7 @@
     "ngx-extended-pdf-viewer": "^21.0.0-beta.3",
     "pdfjs-dist": "^4.5.136",
     "pdfmake": "^0.2.15",
+    "primeng": "^17.18.12",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.12.4",
     "tslib": "^2.3.0",

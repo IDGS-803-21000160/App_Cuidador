@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../../auth/auth.service';
 import { FinanceServicesService } from '../../../../../../services/services-cliente-cuidador/finance-services/finance-services.service';
 import { SidebarCuidadorComponent } from '../../../../../../registration-page/cuidador/sidebar-cuidador/sidebar-cuidador.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-account',
@@ -30,6 +31,11 @@ export class AccountComponent implements OnInit {
   //Transacciones
   transacciones: any = [];
   recentTransactions: any = [];
+
+  //Realizar un retiro
+  montoRetiro: number = 0;
+  saldoTotalRetirado: number = 0;
+  idSaldo: number = 0;
 
   constructor(
     private currentUser: AuthService,
@@ -104,8 +110,10 @@ export class AccountComponent implements OnInit {
           this.recentTransactions = this.obtenerTransaccionesRecientes(
             this.transacciones
           );
+          this.saldoTotalRetirado = data.saldoActual;
+          this.idSaldo = data.saldoId;
 
-          console.log('Transacciones:', this.recentTransactions);
+          console.log('Esta es la cuenta bancaria', data);
 
           this.isLoading = false;
         },
@@ -114,5 +122,53 @@ export class AccountComponent implements OnInit {
           this.isLoading = false;
         }
       );
+  }
+
+  retirarSaldo() {
+    const data = {
+      idCuentaBancaria: this.cuentaBancaria.idCuentabancaria,
+      importe: this.montoRetiro,
+      idSaldo: this.idSaldo,
+      usuarioId: this.currentUser.getCurrentUser().user.idUsuario,
+    };
+
+    if (this.validarSaldo()) {
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo realizar el retiro. Por favor, inténtelo de nuevo más tarde.',
+        icon: 'error',
+        timer: 3000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+    } else {
+      console.log('Se puede retirar el saldo');
+      this.finanzasService.retirarSaldoCuidador(data).subscribe(
+        (response: string) => {
+          this.closeModalRetiro();
+          Swal.fire({
+            title: 'Retiro exitoso',
+            text: response,
+            icon: 'success',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+          });
+          this.ngOnInit();
+        },
+        (error) => {
+          alert('Error al retirar saldo');
+          console.error('Error al retirar saldo:', error);
+        }
+      );
+    }
+  }
+
+  validarSaldo() {
+    if (this.montoRetiro > this.saldoTotalRetirado) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

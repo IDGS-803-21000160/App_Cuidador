@@ -5,15 +5,19 @@ import { FormInfopersonalComponent } from '../../../../../global-components/form
 import { FormInfomedicaComponent } from '../../../../../global-components/form-infomedica/form-infomedica.component';
 import { FormDocumentosComponent } from '../../../../../global-components/form-documentos/form-documentos.component';
 import { TablaDocsComponent } from '../../components/tabla-docs/tabla-docs.component';
+import { GlobalFormInfoPersonalComponent } from '../../../../../global-components/global-form-info-personal/global-form-info-personal.component';
+import { GlobalFormInfoMedicaComponent } from '../../../../../global-components/global-form-info-medica/global-form-info-medica.component';
+import { GlobalFormDocumentosComponent } from '../../../../../global-components/global-form-documentos/global-form-documentos.component';
 
 const routes: Routes = [
   {
     path: '',
     component: CuidadorTabsComponent,
     children: [
-      { path: 'infoPersonal', component: FormInfopersonalComponent },
-      { path: 'infoMedica', component: FormInfomedicaComponent },
-      { path: 'documentos', component: TablaDocsComponent },
+      { path: '', redirectTo: 'infoPersonal', pathMatch: 'full' },
+      { path: 'infoPersonal', component: GlobalFormInfoPersonalComponent },
+      { path: 'infoMedica', component: GlobalFormInfoMedicaComponent },
+      { path: 'documentos', component: GlobalFormDocumentosComponent },
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

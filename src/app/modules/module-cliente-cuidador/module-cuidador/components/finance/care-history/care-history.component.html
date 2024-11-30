@@ -7,9 +7,9 @@
     <!-- Encabezado con el Datepicker para seleccionar una nueva fecha -->
     <div class="flex justify-start mb-6">
       <div class="mr-4">
-        <h2 class="text-xl font-semibold text-gray-700">
+        <p class="text-xl font-semibold text-gray-700">
           {{ selectedDate | date : "MMMM d, yyyy" }}
-        </h2>
+        </p>
       </div>
       <div>
         <input
@@ -54,6 +54,28 @@
     </div>
   </div>
 
+  <div *ngIf="contratos.length === 0"></div>
+  <div
+    class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+    role="alert"
+  >
+    <svg
+      class="flex-shrink-0 inline w-4 h-4 me-3"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path
+        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+      />
+    </svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Importante</span> Aun no tienes contratos para
+      esta semana.
+    </div>
+  </div>
   <div
     *ngFor="let contrato of contratos"
     class="mt-5 border rounded-lg p-4 mx-auto"
@@ -77,6 +99,7 @@
         </div>
       </div>
       <button
+        (click)="openModal(contrato)"
         class="bg-gray-100 ml-auto text-gray-600 font-medium py-1 px-4 rounded-md border border-gray-300 hover:bg-gray-200"
       >
         Ver Detalle
@@ -120,6 +143,92 @@
           alt="Attendee 3"
         />
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  *ngIf="isModalOpen"
+  class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+>
+  <div class="bg-white rounded-lg shadow-lg w-11/12 md:w-1/2 lg:w-1/3 p-6">
+    <div class="flex justify-between items-center mb-4">
+      <p class="text-2xl font-semibold text-gray-800">Detalles del Contrato</p>
+      <button (click)="closeModal()" class="text-gray-500 hover:text-gray-700">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="mb-4 space-y-4">
+      <!-- Aquí puedes mostrar los detalles del contrato -->
+      <div class="flex items-center space-x-4">
+        <img
+          [src]="selectedContrato?.personaCuidador?.avatarImage"
+          alt="Avatar Cuidador"
+          class="w-16 h-16 rounded-full"
+        />
+        <div>
+          <p class="text-lg font-medium text-gray-700">
+            {{ selectedContrato?.personaCuidador?.nombre }}
+            {{ selectedContrato?.personaCuidador?.apellidoPaterno }}
+            {{ selectedContrato?.personaCuidador?.apellidoMaterno }}
+          </p>
+          <p class="text-sm text-gray-500">
+            {{ selectedContrato?.personaCuidador?.correoElectronico }}
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <img
+          [src]="selectedContrato?.personaCliente?.avatarImage"
+          alt="Avatar Cliente"
+          class="w-16 h-16 rounded-full"
+        />
+        <div>
+          <p class="text-lg font-medium text-gray-700">
+            {{ selectedContrato?.personaCliente?.nombre }}
+            {{ selectedContrato?.personaCliente?.apellidoPaterno }}
+            {{ selectedContrato?.personaCliente?.apellidoMaterno }}
+          </p>
+          <p class="text-sm text-gray-500">
+            {{ selectedContrato?.personaCliente?.correoElectronico }}
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-4">
+        <p class="text-lg font-medium text-gray-700">
+          <strong>Importe Cuidado:</strong> ${{
+            selectedContrato?.importeCuidado
+          }}
+        </p>
+        <p class="text-lg font-medium text-gray-700">
+          <strong>Horario Inicio:</strong> {{ selectedContrato?.horarioInicio }}
+        </p>
+        <p class="text-lg font-medium text-gray-700">
+          <strong>Horario Fin:</strong> {{ selectedContrato?.horarioFin }}
+        </p>
+      </div>
+    </div>
+    <div class="flex justify-end mt-4">
+      <button
+        (click)="closeModal()"
+        class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        Cerrar
+      </button>
     </div>
   </div>
 </div>

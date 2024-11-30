@@ -2,14 +2,36 @@
   <app-spinner-not-shadow></app-spinner-not-shadow>
 </div>
 
-<div class="grid grid-cols-1 gap-4 mb-4">
+<div *ngIf="!spinerState" class="grid grid-cols-1 gap-4 mb-4">
   <form>
-    <div class="flex p-2 mb-4">
+    <div class="flex p-2">
       <p
         class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500"
       >
         Información Personal
       </p>
+    </div>
+    <div
+      class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Info</span>
+      <div>
+        <span class="font-medium">Importante!</span>
+        Si deseas modificar tu información personal, por favor contacta a tu
+        administrador.
+      </div>
     </div>
     <hr />
     <br />
@@ -300,5 +322,200 @@
 
     <hr />
     <br />
+
+    <section>
+      <div class="flex p-2 mb-4">
+        <p
+          class="subtitle text-2xl text-gray-400 font-semibold dark:text-gray-500"
+        >
+          Información Residencial
+        </p>
+      </div>
+      <hr />
+      <br />
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="calle"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Calle</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="calle"
+              name="calle"
+              [(ngModel)]="domicilio.calle"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Constelaciones"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="colonia"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Colonia</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="colonia"
+              name="colonia"
+              [(ngModel)]="domicilio.colonia"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Villas de San Juan"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="numeroExterior"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Número Exterior</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="numeroExterior"
+              name="numeroExterior"
+              [(ngModel)]="domicilio.numeroExterior"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="1111"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="numeroInterior"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Número Interior</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="numeroInterior"
+              name="numeroInterior"
+              [(ngModel)]="domicilio.numeroInterior"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="ciudad"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Ciudad</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="ciudad"
+              name="ciudad"
+              [(ngModel)]="domicilio.ciudad"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="León"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="estado"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Estado</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="estado"
+              name="estado"
+              [(ngModel)]="domicilio.estado"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Guanajuato"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="pais"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >País</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="pais"
+              name="pais"
+              [(ngModel)]="domicilio.pais"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="México"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <div class="flex">
+          <div class="w-40">
+            <label
+              for="referencias"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Referencias</label
+            >
+          </div>
+          <div class="w-full">
+            <input
+              type="text"
+              id="referencias"
+              name="referencias"
+              [(ngModel)]="domicilio.referencias"
+              class="inputColor bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-100 block w-full p-2.5 dark:border-gray-200 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Casa de la esquina"
+              required
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   </form>
 </div>
