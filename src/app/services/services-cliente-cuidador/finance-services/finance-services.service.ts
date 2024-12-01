@@ -13,6 +13,11 @@ export class FinanceServicesService {
     return this.http.get<any>(url);
   }
 
+  getFinanzasUsuarioFamiliar(id: string): Observable<any> {
+    const url = `https://cuidadorapi.azurewebsites.net/api/Finanzas/finanzasUsuarioCliente/${id}`;
+    return this.http.get<any>(url);
+  }
+
   getFinanzasListaContratos(
     idUser: string,
     tipousuario: string
@@ -29,6 +34,23 @@ export class FinanceServicesService {
   }): Observable<string> {
     const url =
       'https://cuidadorapi.azurewebsites.net/api/Finanzas/retirarSaldo';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<string>(url, data, {
+      headers,
+      responseType: 'text' as 'json',
+    });
+  }
+
+  registrarCuentaBancaria(data: {
+    usuarioId: number;
+    numeroCuenta: number;
+    clabeInterbancaria: number;
+    nombreBanco: string;
+  }): Observable<string> {
+    const url =
+      'https://cuidadorapi.azurewebsites.net/api/Finanzas/registrarCuentaBancaria';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });

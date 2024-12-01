@@ -17,6 +17,7 @@
         <select
           id="diaSemana"
           name="diaSemana"
+          [(ngModel)]="diaSemana"
           class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         >
           <option *ngFor="let dia of validarDiasDisponibles()">
@@ -36,7 +37,8 @@
         <input
           type="number"
           id="precioPorHora"
-          name="precioPorHora"
+          name="precioHora"
+          [(ngModel)]="precioHora"
           placeholder="700.00"
           class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         />
@@ -54,6 +56,7 @@
           type="time"
           id="horaInicio"
           name="horaInicio"
+          [(ngModel)]="horaInicio"
           class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         />
       </div>
@@ -70,6 +73,7 @@
           type="time"
           id="horaFin"
           name="horaFin"
+          [(ngModel)]="horaFin"
           class="w-2/3 mt-0 ml-4 block rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         />
       </div>
@@ -83,6 +87,7 @@
           Cancelar
         </button>
         <button
+          (click)="regHorarioCuidador()"
           type="submit"
           class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
         >

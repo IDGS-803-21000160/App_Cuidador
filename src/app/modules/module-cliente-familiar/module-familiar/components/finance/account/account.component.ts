@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../../../../auth/auth.service';
 import { FinanceServicesService } from '../../../../../../services/services-cliente-cuidador/finance-services/finance-services.service';
-import { SidebarCuidadorComponent } from '../../../../../../registration-page/cuidador/sidebar-cuidador/sidebar-cuidador.component';
 import Swal from 'sweetalert2';
+import {
+  formatDate,
+  formatSaldo,
+} from '../../../../../../globalfunctions/dates';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css'],
+  styleUrl: './account.component.css',
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent {
   isModalOpen = false;
   isLoading = false; // Variable para controlar el estado de carga
   activeTab = 'stats';
+  formatDate = formatDate;
 
   saldoActual: string = '';
   saldoTotal: string = '';
+  metodoPagoUsuario: any[] = [];
+  transaccionSaldo: any[] = [];
+  dataFormateada: any[] = [];
 
   // Variable para guardar la cuenta bancaria
   cuentaBancaria: any = {};
@@ -24,6 +31,7 @@ export class AccountComponent implements OnInit {
 
   //Variables Modal Edit
   isEditModalOpen = false;
+  selectedCard: any = null;
 
   //Modal Retiro de Saldo
   isRetiroModalOpen = false;
@@ -55,12 +63,14 @@ export class AccountComponent implements OnInit {
     this.isRetiroModalOpen = false;
   }
 
-  openModalEdit() {
+  openModalEdit(card: any) {
+    this.selectedCard = card;
     this.isEditModalOpen = true;
   }
 
   closeModalEdit() {
     this.isEditModalOpen = false;
+    this.selectedCard = null;
   }
 
   openModal() {
@@ -101,7 +111,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.finanzasService
-      .getFinanzasUsuarioCuidador(
+      .getFinanzasUsuarioFamiliar(
         this.currentUser.getCurrentUser().user.idUsuario
       )
       .subscribe(
@@ -109,16 +119,19 @@ export class AccountComponent implements OnInit {
           console.log(data.saldoActual);
 
           this.saldoActual = data.saldoActual;
-          this.saldoTotal = data.saldoRetirado;
-          this.cuentaBancaria = data.cuentaBancaria;
-          this.transacciones = data.movimientoCuenta;
+          this.metodoPagoUsuario = data.metodoPagoUsuario;
+          this.transaccionSaldo = data.transaccionSaldo;
+
+          //this.cuentaBancaria = data.cuentaBancaria;
+          //this.transacciones = data.movimientoCuenta;
           this.recentTransactions = this.obtenerTransaccionesRecientes(
             this.transacciones
           );
           this.saldoTotalRetirado = data.saldoActual;
           this.idSaldo = data.saldoId;
 
-          console.log('Esta es la cuenta bancaria', data);
+          console.log('saldoActual', this.saldoActual);
+          console.log('metodoPagoUsuario', this.metodoPagoUsuario);
 
           this.isLoading = false;
         },

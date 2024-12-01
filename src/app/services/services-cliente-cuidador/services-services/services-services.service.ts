@@ -17,4 +17,9 @@ export class ServicesServicesService {
     const url = `https://cuidadorapi.azurewebsites.net/api/horariosCuidador/${id}`;
     return this.http.get<any>(url);
   }
+
+  regHorarioCuidador(horario: any): Observable<any> {
+    const url = `https://cuidadorapi.azurewebsites.net/api/horariosCuidador/nuevoHorario`;
+    return this.http.post<any>(url, horario);
+  }
 }

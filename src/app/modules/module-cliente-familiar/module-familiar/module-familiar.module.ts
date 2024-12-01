@@ -15,6 +15,13 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../../../../environments/environment';
 
 import { FormsModule } from '@angular/forms';
+import { AdultoMayorTabsComponent } from './components/adulto-mayor-tabs/adulto-mayor-tabs.component';
+import { AccountComponent } from './components/finance/account/account.component';
+import { NavbarFinanceComponent } from './components/finance/navbar-finance/navbar-finance.component';
+import { TransactionsComponent } from './components/finance/transactions/transactions.component';
+import { SpinnerNotShadowComponent } from '../../../global-components/spinner-not-shadow/spinner-not-shadow.component';
+import { WarningAlertComponent } from '../../../global-components/alertsLabels/warning-alert/warning-alert.component';
+import { TableReportingComponent } from '../../../global-components/table-reporting/table-reporting.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,10 @@ import { FormsModule } from '@angular/forms';
     FamiliarTabsComponent,
     FamiliarDashboardComponent,
     FamAdultoComponent,
+    AdultoMayorTabsComponent,
+    AccountComponent,
+    NavbarFinanceComponent,
+    TransactionsComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +44,9 @@ import { FormsModule } from '@angular/forms';
     FileUploadComponent,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    SpinnerNotShadowComponent,
+    WarningAlertComponent,
+    TableReportingComponent,
   ],
   exports: [PagePrincipalComponent, FamAdultoComponent],
 })

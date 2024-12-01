@@ -198,6 +198,34 @@ export class FamAdultoComponent implements AfterViewInit, OnInit {
         console.error('Error:', error);
       }
     );
+
+    this.userItems = [
+      {
+        routerLink: '/familiar/familiar/adultos/adultProfile',
+        users: [
+          {
+            usuario: {
+              id_usuario: 1,
+            },
+            persona: {
+              nombre: 'Juan Pérez',
+              correoElectronico: 'juan.perez@example.com',
+              avatarImage: 'https://example.com/avatar1.jpg',
+            },
+          },
+          {
+            usuario: {
+              id_usuario: 1,
+            },
+            persona: {
+              nombre: 'Juan Pérez',
+              correoElectronico: 'juan.perez@example.com',
+              avatarImage: 'https://example.com/avatar1.jpg',
+            },
+          },
+        ],
+      },
+    ];
   }
 
   registroAdultoMAyor() {
@@ -230,12 +258,16 @@ export class FamAdultoComponent implements AfterViewInit, OnInit {
         nombre: this.nombre,
         apellidoPaterno: this.apellido_paterno,
         apellidoMaterno: this.apellido_materno,
+        correoElectronico: '',
         fechaNacimiento: this.fecha_nacimiento,
         genero: this.genero,
         estadoCivil: this.estado_civil,
         rfc: this.rfc,
         curp: this.curp,
+        telefonoParticular: '',
+        telefonoMovil: '',
         telefonoEmergencia: this.telefono_emergencia,
+        nombreCompletoFamiliar: '',
         avatarImage: this.fotoAvatar?.urlDocumento,
         estatusId: 18,
         usuarioId: this.currentUser.getCurrentUser().user.idUsuario,
@@ -246,11 +278,23 @@ export class FamAdultoComponent implements AfterViewInit, OnInit {
 
       const reg = {
         domicilio: residencia,
-        datos_medicos: datosMedicos,
+        datosMedicos: datosMedicos,
         padecimientos: padecimientos,
         persona: persona,
         documentacion: documentacion,
+        idUsuario: this.currentUser.getCurrentUser().user.idUsuario,
       };
+
+      this.familiarServices.registerAdultoMayor(reg).subscribe(
+        (data) => {
+          console.log('Registro Adulto Mayor', data);
+          alert('Registro Exitoso');
+        },
+        (error) => {
+          console.error('Error:', error);
+          alert(error.error);
+        }
+      );
 
       alert(JSON.stringify(reg));
       console.log('Objeto Padre', reg);

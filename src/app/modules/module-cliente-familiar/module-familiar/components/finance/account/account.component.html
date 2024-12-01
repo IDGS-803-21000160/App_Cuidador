@@ -66,9 +66,7 @@
           ></app-warning-alert>
 
           <div class="flex flex-col items-center justify-center mt-20 mb-20">
-            <dt class="mb-2 text-6xl font-extrabold">
-              ${{ formatSaldo(saldoActual) }}
-            </dt>
+            <dt class="mb-2 text-6xl font-extrabold">${{ saldoActual }}</dt>
             <dd class="text-gray-500 dark:text-gray-400">Disponibles</dd>
           </div>
           <ul role="list" class="space-y-4 text-gray-500 dark:text-gray-400">
@@ -117,37 +115,11 @@
                   />
                 </svg>
                 <span
-                  >Este es tu saldo total disponible, realiza retiros a tu
-                  cuenta bancaria</span
+                  >Este es tu saldo total disponible para realizar la
+                  contratación de servicios de cuidados</span
                 >
               </li>
             </ul>
-
-            <!-- Botón a la derecha -->
-            <button
-              (click)="openModalRetiro()"
-              type="button"
-              class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              <svg
-                class="w-6 h-6 mr-2 text-withe-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m16 10 3-3m0 0-3-3m3 3H5v3m3 4-3 3m0 0 3 3m-3-3h14v-3"
-                />
-              </svg>
-              Realizar Retiro
-            </button>
           </div>
         </div>
       </div>
@@ -215,10 +187,53 @@
         *ngIf="activeTab === 'faq'"
         class="p-4 bg-white rounded-lg dark:bg-gray-800"
       >
-        <app-table-reporting
-          [data]="recentTransactions"
-          [cuentaBancaria]="cuentaBancaria"
-        ></app-table-reporting>
+        <div>
+          <div class="overflow-x-auto">
+            <table
+              class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate border-spacing-y-4"
+            >
+              <thead
+                class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
+              >
+                <tr>
+                  <th scope="col" class="px-6 py-3">Transaccion</th>
+                  <th scope="col" class="px-6 py-3">Fecha Transaccion</th>
+                  <th scope="col" class="px-6 py-3">Monto</th>
+                  <th scope="col" class="px-6 py-3">Tipo</th>
+                  <th scope="col" class="px-6 py-3 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of transaccionSaldo">
+                <tr class="bg-white dark:bg-gray-800 shadow">
+                  <td class="px-6 py-4 flex items-center space-x-4">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                      alt="PDF icon"
+                      class="w-6 h-6"
+                    />
+                    <span class="text-gray-900 dark:text-white font-medium"
+                      >CU-00{{ item.idMovimientocuenta }}</span
+                    >
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ formatDate(item.fechaMovimiento) }}
+                  </td>
+                  <td class="px-6 py-4">
+                    ${{ formatSaldo(item.importeMovimiento) }}
+                  </td>
+                  <td class="px-6 py-4">{{ item.tipoMovimiento }}</td>
+                  <td class="px-6 py-4 text-right space-x-2">
+                    <button
+                      class="px-4 py-2 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                    >
+                      Vizualizar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -232,12 +247,7 @@
       seguro.
     </p>
 
-    <div
-      *ngIf="
-        cuentaBancaria.numeroCuenta === 0 ||
-        cuentaBancaria.clabeInterbancaria === 0
-      "
-    >
+    <div *ngIf="metodoPagoUsuario.length === 0">
       <app-warning-alert
         message="Por ahora no cuentas con una tarjeta de crédito o débito registrada, por favor añade una para recibir tus pagos"
       ></app-warning-alert>
@@ -251,13 +261,59 @@
         </button>
       </div>
     </div>
-    <div
-      *ngIf="
-        cuentaBancaria.numeroCuenta !== 0 &&
-        cuentaBancaria.clabeInterbancaria !== 0
-      "
-    >
+    <div *ngIf="metodoPagoUsuario.length > 0">
+      <div *ngFor="let metodoPago of metodoPagoUsuario">
+        <div class="space-y-4">
+          <div
+            class="flex justify-between items-center border border-gray-200 p-4 rounded-lg"
+          >
+            <div class="flex items-center">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+                alt="Visa"
+                class="w-10 h-auto mr-4"
+              />
+              <div>
+                <p class="font-medium">
+                  Visa •••• {{ metodoPago.numeroTarjeta }}
+                </p>
+                <p class="text-gray-500 text-sm">
+                  Debit Expires
+                  {{ metodoPago.fechaVencimiento | date : "MM/yy" }}
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button
+                class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
+              >
+                Default
+              </button>
+              <button
+                (click)="openModalEdit(metodoPago)"
+                class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+      <div class="flex justify-between items-center mt-6">
+        <button class="text-blue-500 font-medium">Administrar Tarjetas</button>
+        <button
+          class="text-blue-500 font-medium flex items-center"
+          (click)="openModal()"
+        >
+          <span class="mr-2">+</span> Añadir nueva tarjeta
+        </button>
+      </div>
+    </div>
+
+    <!-- 
       <div class="space-y-4">
+         ##Visa Card## 
         <div
           class="flex justify-between items-center border border-gray-200 p-4 rounded-lg"
         >
@@ -268,9 +324,7 @@
               class="w-10 h-auto mr-4"
             />
             <div>
-              <p class="font-medium">
-                Visa •••• {{ cuentaBancaria.clabeInterbancaria }}
-              </p>
+              <p class="font-medium">Visa •••• 9016</p>
               <p class="text-gray-500 text-sm">Debit Expires 12/25</p>
             </div>
           </div>
@@ -281,78 +335,43 @@
               Default
             </button>
             <button
-              (click)="openModalEdit()"
               class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
             >
               Edit
             </button>
           </div>
         </div>
-        <button class="text-blue-500 font-medium">Administrar Tarjeta</button>
-      </div>
-    </div>
-
-    <!-- 
-    <div class="space-y-4">
-       ##Visa Card## 
-      <div
-        class="flex justify-between items-center border border-gray-200 p-4 rounded-lg"
-      >
-        <div class="flex items-center">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
-            alt="Visa"
-            class="w-10 h-auto mr-4"
-          />
-          <div>
-            <p class="font-medium">Visa •••• 9016</p>
-            <p class="text-gray-500 text-sm">Debit Expires 12/25</p>
+  
+         ##MasterCard##
+        <div
+          class="flex justify-between items-center border border-gray-200 p-4 rounded-lg"
+        >
+          <div class="flex items-center">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg"
+              alt="MasterCard"
+              class="w-10 h-auto mr-4"
+            />
+            <div>
+              <p class="font-medium">MasterCard •••• 4242</p>
+              <p class="text-gray-500 text-sm">Debit Expires 04/24</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button
+              class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
+            >
+              Set as default
+            </button>
+            <button
+              class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
+            >
+              Edit
+            </button>
           </div>
         </div>
-        <div class="flex items-center space-x-2">
-          <button
-            class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
-          >
-            Default
-          </button>
-          <button
-            class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
-          >
-            Edit
-          </button>
-        </div>
       </div>
-
-       ##MasterCard##
-      <div
-        class="flex justify-between items-center border border-gray-200 p-4 rounded-lg"
-      >
-        <div class="flex items-center">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg"
-            alt="MasterCard"
-            class="w-10 h-auto mr-4"
-          />
-          <div>
-            <p class="font-medium">MasterCard •••• 4242</p>
-            <p class="text-gray-500 text-sm">Debit Expires 04/24</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-2">
-          <button
-            class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
-          >
-            Set as default
-          </button>
-          <button
-            class="bg-gray-200 text-gray-600 text-sm font-medium px-3 py-1 rounded-lg"
-          >
-            Edit
-          </button>
-        </div>
-      </div>
-    </div>
- -->
+   -->
   </div>
 
   <!--Modal Add Tarjeta-->
@@ -495,10 +514,11 @@
         <input
           type="text"
           placeholder="Nombre del titular"
+          value="{{ selectedCard.nombreBeneficiario }}"
           class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
         />
         <input
-          value="{{ cuentaBancaria.clabeInterbancaria }}"
+          value="{{ selectedCard.numeroTarjeta }}"
           type="text"
           placeholder="Número de tarjeta"
           class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
@@ -506,11 +526,13 @@
         <div class="flex space-x-2">
           <input
             type="text"
+            value="{{ selectedCard.fechaVencimiento | date : 'MM/yy' }}"
             placeholder="Vencimiento"
             class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
           />
           <input
             type="text"
+            value="{{ selectedCard.ccv }}"
             placeholder="CVV"
             class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
           />

@@ -13,4 +13,10 @@ export class FamiliarServicesService {
       'https://cuidadorapi.azurewebsites.net/api/Usuario/registrarFamiliarWeb';
     return this.http.post<any>(url, data);
   }
+
+  registerAdultoMayor(data: any): Observable<any> {
+    const url =
+      'https://cuidadorapi.azurewebsites.net/api/Usuario/regAdultoMayor';
+    return this.http.post<any>(url, data);
+  }
 }

@@ -1,0 +1,45 @@
+<div>
+  <div class="overflow-x-auto">
+    <table
+      class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate border-spacing-y-4"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Transaccion</th>
+          <th scope="col" class="px-6 py-3">Fecha Transaccion</th>
+          <th scope="col" class="px-6 py-3">Monto</th>
+          <th scope="col" class="px-6 py-3">Tipo</th>
+          <th scope="col" class="px-6 py-3 text-right">Acciones</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of transacciones">
+        <tr class="bg-white dark:bg-gray-800 shadow">
+          <td class="px-6 py-4 flex items-center space-x-4">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+              alt="PDF icon"
+              class="w-6 h-6"
+            />
+            <span class="text-gray-900 dark:text-white font-medium"
+              >CU-00{{ item.idTransaccionsaldo }}</span
+            >
+          </td>
+          <td class="px-6 py-4">
+            {{ formatDate(item.fechaMovimiento) }}
+          </td>
+          <td class="px-6 py-4">${{ formatSaldo(item.fechaTransaccion) }}</td>
+          <td class="px-6 py-4">{{ item.tipoMovimiento }}</td>
+          <td class="px-6 py-4 text-right space-x-2">
+            <button
+              class="px-4 py-2 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+            >
+              Vizualizar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
